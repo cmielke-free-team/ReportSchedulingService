@@ -1,0 +1,659 @@
+﻿<Options>
+  <ReportParametersURL>/InVisionMvc/InCommand/Subscriptions/EditSubscription</ReportParametersURL>
+  <ReportPath>/Production/InCommand Reports/Transcriptionist Production Report with Custom Columns</ReportPath>
+  <SortingAndGroupings>
+    <GroupOption Name="Client" Value="1" />
+    <GroupOption Name="Clinician" Value="2" />
+    <GroupOption Name="Document Type" Value="3" />
+    <GroupOption Name="Date Transcribed" Value="4" />
+    <GroupOption Name="Location" Value="5" />
+    <GroupOption Name="Transcriptionist" Value="6" />
+  </SortingAndGroupings>
+  <ReportColumns>
+    <AvailableColumns>
+      
+      <AvailableColumn>
+        <FieldName>TranscriptionistDisplayName</FieldName>
+        <CaptionExpression>Transcriptionist</CaptionExpression>
+        <ValueExpression>=Fields!TranscriptionistDisplayName.Value</ValueExpression>
+        <SortExpression>=Fields!TranscriptionistDisplayName.Value</SortExpression>
+        <GroupExpression>=Fields!Transcriptionist_ID.Value</GroupExpression>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>          
+        </AvailableFunctions>        
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Client_Name</FieldName>
+        <CaptionExpression>Client</CaptionExpression>
+        <ValueExpression>=Fields!Client_Name.Value</ValueExpression>
+        <SortExpression>=Fields!Client_Name.Value</SortExpression>
+        <GroupExpression>=Fields!Client_ID.Value</GroupExpression>
+        <Width>1.5</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Location</FieldName>
+        <CaptionExpression>Location</CaptionExpression>
+        <ValueExpression>=Fields!Location.Value</ValueExpression>
+        <SortExpression>=Fields!Location.Value</SortExpression>
+        <GroupExpression>=Fields!Location_ID.Value</GroupExpression>
+        <Width>1.5</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Clinician</FieldName>
+        <CaptionExpression>Clinician</CaptionExpression>
+        <ValueExpression>=Fields!Clinician.Value</ValueExpression>
+        <SortExpression>=Fields!Clinician.Value</SortExpression>
+        <GroupExpression>=Fields!Clinician_ID.Value</GroupExpression>
+        <Width>2</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Department</FieldName>
+        <CaptionExpression>Department</CaptionExpression>
+        <ValueExpression>=Fields!Department.Value</ValueExpression>
+        <SortExpression>=Fields!Department.Value</SortExpression>
+        <GroupExpression>=Fields!Department.Value</GroupExpression>
+        <Width>1.7</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>DocumentType</FieldName>
+        <CaptionExpression>Document Type</CaptionExpression>
+        <ValueExpression>=Fields!Document_Type.Value</ValueExpression>
+        <SortExpression>=Fields!Document_Type.Value</SortExpression>
+        <GroupExpression>=Fields!Document_Type.Value</GroupExpression>
+        <Width>1.2</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>QA_Level</FieldName>
+        <CaptionExpression>QA Level</CaptionExpression>
+        <ValueExpression>=Fields!QA_Level.Value</ValueExpression>
+        <SortExpression>=Fields!QA_Level.Value</SortExpression>
+        <GroupExpression>=Fields!QA_Level.Value</GroupExpression>
+        <Width>0.5</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>TID</FieldName>
+        <CaptionExpression>Transcription ID</CaptionExpression>
+        <ValueExpression>=Fields!TID.Value</ValueExpression>
+        <SortExpression>=Fields!TID.Value</SortExpression>
+        <GroupExpression>=Fields!TID.Value</GroupExpression>
+        <Width>0.6</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>DateTranscribedInBaseCoTZ</FieldName>
+        <CaptionExpression>Date Transcribed</CaptionExpression>
+        <ValueExpression>=Fields!DateTranscribedInBaseCoTZ.Value</ValueExpression>
+        <SortExpression>=Fields!DateTranscribedInBaseCoTZ.Value</SortExpression>
+        <GroupExpression>=Fields!DateTranscribedInBaseCoTZ.Value</GroupExpression>
+        <Width>2.1</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!DateTranscribedInBaseCoTZ.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!DateTranscribedInBaseCoTZ.Value)</Function>
+          <Function Name="Average">=Avg(Fields!DateTranscribedInBaseCoTZ.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>DateDeliveredInBaseCoTZ</FieldName>
+        <CaptionExpression>Date Delivered</CaptionExpression>
+        <ValueExpression>=Fields!DateDeliveredInBaseCoTZ.Value</ValueExpression>
+        <SortExpression>=Fields!DateDeliveredInBaseCoTZ.Value</SortExpression>
+        <GroupExpression>=Fields!DateDeliveredInBaseCoTZ.Value</GroupExpression>
+        <Width>2.1</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!DateDeliveredInBaseCoTZ.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!DateDeliveredInBaseCoTZ.Value</Function>
+          <Function Name="Average">=Avg(Fields!DateDeliveredInBaseCoTZ.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Patient_Name</FieldName>
+        <CaptionExpression>Patient</CaptionExpression>
+        <ValueExpression>=Fields!Patient_Name.Value</ValueExpression>
+        <SortExpression>=Fields!Patient_Name.Value</SortExpression>
+        <GroupExpression>=Fields!Patient_Name.Value</GroupExpression>
+        <Width>2.5</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Transcription_Length_In_Seconds</FieldName>
+        <CaptionExpression>Length</CaptionExpression>
+        <ValueExpression>=Format(Int(Fields!Transcription_Length_In_Seconds.Value / 3600), "00") &amp; ":" &amp; Format(Int((Fields!Transcription_Length_In_Seconds.Value - (Int(Fields!Transcription_Length_In_Seconds.Value / 3600) * 3600)) / 60), "00") &amp; ":" &amp; Format((Fields!Transcription_Length_In_Seconds.Value Mod 60), "00")</ValueExpression>
+        <SortExpression>=Fields!Transcription_Length_In_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Transcription_Length_In_Seconds.Value</GroupExpression>        
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Format(Int(Min(Fields!Transcription_Length_In_Seconds.Value) / 3600), "00") &amp; ":" &amp; Format(Int((Min(Fields!Transcription_Length_In_Seconds.Value) - (Int(Min(Fields!Transcription_Length_In_Seconds.Value) / 3600) * 3600)) / 60), "00") &amp; ":" &amp; Format((Min(Fields!Transcription_Length_In_Seconds.Value) Mod 60), "00")</Function>
+          <Function Name="Maximum">=Format(Int(Max(Fields!Transcription_Length_In_Seconds.Value) / 3600), "00") &amp; ":" &amp; Format(Int((Max(Fields!Transcription_Length_In_Seconds.Value) - (Int(Max(Fields!Transcription_Length_In_Seconds.Value) / 3600) * 3600)) / 60), "00") &amp; ":" &amp; Format((Max(Fields!Transcription_Length_In_Seconds.Value) Mod 60), "00")</Function>
+          <Function Name="Average">=Format(Int(Avg(Fields!Transcription_Length_In_Seconds.Value) / 3600), "00") &amp; ":" &amp; Format(Int((Avg(Fields!Transcription_Length_In_Seconds.Value) - (Int(Avg(Fields!Transcription_Length_In_Seconds.Value) / 3600) * 3600)) / 60), "00") &amp; ":" &amp; Format((Avg(Fields!Transcription_Length_In_Seconds.Value) Mod 60), "00")</Function>
+          <Function Name="Sum">=Format(Int(Sum(Fields!Transcription_Length_In_Seconds.Value) / 3600), "00") &amp; ":" &amp; Format(Int((Sum(Fields!Transcription_Length_In_Seconds.Value) - (Int(Sum(Fields!Transcription_Length_In_Seconds.Value) / 3600) * 3600)) / 60), "00") &amp; ":" &amp; Format((Sum(Fields!Transcription_Length_In_Seconds.Value) Mod 60), "00")</Function>
+          <Function Name="None">=""</Function>          
+        </AvailableFunctions>        
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Type</FieldName>
+        <CaptionExpression>Type</CaptionExpression>
+        <ValueExpression>=Fields!Type.Value</ValueExpression>
+        <SortExpression>=Fields!Type.Value</SortExpression>
+        <GroupExpression>=Fields!Type.Value</GroupExpression>
+        <Width>0.5</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Chars</FieldName>
+        <CaptionExpression>Chars</CaptionExpression>
+        <ValueExpression>=Fields!Chars.Value</ValueExpression>
+        <SortExpression>=Fields!Chars.Value</SortExpression>
+        <GroupExpression>=Fields!Chars.Value</GroupExpression>
+        <Width>0.8</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Chars.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Chars.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Chars.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Chars.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>QTChars</FieldName>
+        <CaptionExpression>QT Chars</CaptionExpression>
+        <ValueExpression>=Fields!QTChars.Value</ValueExpression>
+        <SortExpression>=Fields!QTChars.Value</SortExpression>
+        <GroupExpression>=Fields!QTChars.Value</GroupExpression>
+        <Width>0.8</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!QTChars.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!QTChars.Value)</Function>
+          <Function Name="Average">=Avg(Fields!QTChars.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!QTChars.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>TotalChars</FieldName>
+        <CaptionExpression>Total Chars</CaptionExpression>
+        <ValueExpression>=Fields!TotalChars.Value</ValueExpression>
+        <SortExpression>=Fields!TotalChars.Value</SortExpression>
+        <GroupExpression>=Fields!TotalChars.Value</GroupExpression>
+        <Width>0.8</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!TotalChars.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!TotalChars.Value)</Function>
+          <Function Name="Average">=Avg(Fields!TotalChars.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!TotalChars.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Lines</FieldName>
+        <CaptionExpression>Lines</CaptionExpression>
+        <ValueExpression>=Fields!Lines.Value</ValueExpression>
+        <SortExpression>=Fields!Lines.Value</SortExpression>
+        <GroupExpression>=Fields!Lines.Value</GroupExpression>
+        <Width>0.8</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Lines.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Lines.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Lines.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Lines.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>QTLines</FieldName>
+        <CaptionExpression>QT Lines</CaptionExpression>
+        <ValueExpression>=Fields!QTLines.Value</ValueExpression>
+        <SortExpression>=Fields!QTLines.Value</SortExpression>
+        <GroupExpression>=Fields!QTLines.Value</GroupExpression>
+        <Width>0.8</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!QTLines.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!QTLines.Value)</Function>
+          <Function Name="Average">=Avg(Fields!QTLines.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!QTLines.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Rate</FieldName>
+        <CaptionExpression>Rate</CaptionExpression>
+        <ValueExpression>=Fields!Rate.Value</ValueExpression>
+        <SortExpression>=Fields!Rate.Value</SortExpression>
+        <GroupExpression>=Fields!Rate.Value</GroupExpression>
+        <Width>1.1</Width>
+        <Format>'$'0.0000;('$'0.0000)</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Rate.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Rate.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Rate.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Rate.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>QTRate</FieldName>
+        <CaptionExpression>QT Rate</CaptionExpression>
+        <ValueExpression>=Fields!QTRate.Value</ValueExpression>
+        <SortExpression>=Fields!QTRate.Value</SortExpression>
+        <GroupExpression>=Fields!QTRate.Value</GroupExpression>
+        <DisplayName>QT Rate</DisplayName>
+        <GroupFieldName>QTRate</GroupFieldName>
+        <Width>1.1</Width>
+        <Format>'$'0.0000;('$'0.0000)</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!QTRate.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!QTRate.Value)</Function>
+          <Function Name="Average">=Avg(Fields!QTRate.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!QTRate.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>TotalLines</FieldName>
+        <CaptionExpression>Total Lines</CaptionExpression>
+        <ValueExpression>=Fields!TotalLines.Value</ValueExpression>
+        <SortExpression>=Fields!TotalLines.Value</SortExpression>
+        <GroupExpression>=Fields!TotalLines.Value</GroupExpression>
+        <DisplayName>Total Lines</DisplayName>
+        <GroupFieldName>TotalLines</GroupFieldName>
+        <Width>0.8</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!TotalLines.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!TotalLines.Value)</Function>
+          <Function Name="Average">=Avg(Fields!TotalLines.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!TotalLines.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Score</FieldName>
+        <CaptionExpression>Score</CaptionExpression>
+        <ValueExpression>=Fields!Score.Value</ValueExpression>
+        <SortExpression>=Fields!Score.Value</SortExpression>
+        <GroupExpression>=Fields!Score.Value</GroupExpression>
+        <DisplayName>Score</DisplayName>
+        <GroupFieldName>Score</GroupFieldName>
+        <Width>0.6</Width>
+        <Format>0%</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Score.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Score.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Score.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Score.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>MTRateModifier</FieldName>
+        <CaptionExpression>MT Rate Modifier</CaptionExpression>
+        <ValueExpression>=Fields!MTRateModifier.Value</ValueExpression>
+        <SortExpression>=Fields!MTRateModifier.Value</SortExpression>
+        <GroupExpression>=Fields!MTRateModifier.Value</GroupExpression>
+        <Width>0.7</Width>        
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Score.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Score.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Score.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Score.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Cost</FieldName>
+        <CaptionExpression>Cost</CaptionExpression>
+        <ValueExpression>=Fields!Cost.Value</ValueExpression>
+        <SortExpression>=Fields!Cost.Value</SortExpression>
+        <GroupExpression>=Fields!Cost.Value</GroupExpression>
+        <Width>0.5</Width>
+        <Format>'$'0.0000;('$'0.0000)</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Cost.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Cost.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Cost.Value</Function>
+          <Function Name="Sum">=Sum(Fields!Cost.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Length</FieldName>
+        <CaptionExpression>Length</CaptionExpression>
+        <ValueExpression>=Fields!Length.Value</ValueExpression>
+        <SortExpression>=Fields!Length.Value</SortExpression>
+        <GroupExpression>=Fields!Length.Value</GroupExpression>
+        <Width>0.5</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Length.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Length.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Length.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Length.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>MT_Rate</FieldName>
+        <CaptionExpression>MT Rate</CaptionExpression>
+        <ValueExpression>=Fields!MT_Rate.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Rate.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Rate.Value</GroupExpression>
+        <Width>0.5</Width>
+        <Format>'$'0.0000;('$'0.0000)</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!MT_Rate.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!MT_Rate.Value)</Function>
+          <Function Name="Average">=Avg(Fields!MT_Rate.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!MT_Rate.Value)</Function>
+          <Function Name="None">=""</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+    </AvailableColumns>
+    <Columns>
+      <Column>
+        <FieldName>QA_Level</FieldName>
+        <Width>2.0</Width>
+        <GroupOrder>0</GroupOrder>
+        <SortOrder>0</SortOrder>
+        <DisplayOrder>-1</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>TranscriptionistDisplayName</FieldName>
+        <Width>1.5</Width>
+        <GroupOrder>1</GroupOrder>
+        <SortOrder>1</SortOrder>
+        <DisplayOrder>-1</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>TID</FieldName>
+        <Width>1.0</Width>
+        <FunctionName>Count</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>0</SortOrder>
+        <DisplayOrder>0</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>DateTranscribedInBaseCoTZ</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>1</SortOrder>
+        <DisplayOrder>1</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>DateDeliveredInBaseCoTZ</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>2</SortOrder>
+        <DisplayOrder>2</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Patient_Name</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>3</SortOrder>
+        <DisplayOrder>3</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Clinician</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Count</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>4</SortOrder>
+        <DisplayOrder>4</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Length</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>5</SortOrder>
+        <DisplayOrder>5</DisplayOrder>     
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Type</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>6</SortOrder>
+        <DisplayOrder>6</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Characters</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>7</SortOrder>
+        <DisplayOrder>7</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>QTCharacters</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>8</SortOrder>
+        <DisplayOrder>8</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>TotalCharacters</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>9</SortOrder>
+        <DisplayOrder>9</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Lines</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>10</SortOrder>
+        <DisplayOrder>10</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Rate</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>11</SortOrder>
+        <DisplayOrder>11</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>QTLines</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>12</SortOrder>
+        <DisplayOrder>12</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>QTRate</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>13</SortOrder>
+        <DisplayOrder>13</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Total_Lines</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>14</SortOrder>
+        <DisplayOrder>14</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Score</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Average</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>15</SortOrder>
+        <DisplayOrder>15</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>MT_Rate</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>None</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>16</SortOrder>
+        <DisplayOrder>16</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Cost</FieldName>
+        <Width>2.0</Width>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>17</SortOrder>
+        <DisplayOrder>17</DisplayOrder>
+        <SortDirection>Descending</SortDirection>
+      </Column>
+    </Columns>
+    <Page>
+      <Height>8.5</Height>
+    </Page>
+    <SampleData>
+      <Row>
+        <TranscriptionistDisplayName>John Doe</TranscriptionistDisplayName>
+        <Client_Name>Client X</Client_Name>
+        <Location>West Clinic</Location>
+        <Clinician>Dr. Jones</Clinician>
+        <Department>West Clinic RAD</Department>
+        <DocumentType>Letter</DocumentType>
+        <QALevel>Transcription</QALevel>
+        <TID>12345</TID>
+        <DateTranscribedInBaseCoTZ>1/1/2013 12:01</DateTranscribedInBaseCoTZ>
+        <DateDeliveredInBaseCoTZ>1/1/2013 12:00</DateDeliveredInBaseCoTZ>
+        <Transcription_Length_In_Seconds>123</Transcription_Length_In_Seconds>
+        <Type>Unknown</Type>
+        <Chars>800</Chars>
+        <QTChars>400</QTChars>
+        <TotalChars>1200</TotalChars>
+        <Lines>18</Lines>
+        <QTLines>6</QTLines>
+        <Rate>0.03</Rate>
+        <QTRate>0.01</QTRate>
+        <TotalLines>24</TotalLines>
+        <Score>100</Score>
+        <MTRateModifier>0.05</MTRateModifier>
+        <Cost>1.5000</Cost>
+      </Row>
+      <Row>
+        <TranscriptionistDisplayName>John Doe</TranscriptionistDisplayName>
+        <Client_Name>Client X</Client_Name>
+        <Location>West Clinic</Location>
+        <Clinician>Dr. Wound</Clinician>
+        <Department>West Clinic RAD</Department>
+        <DocumentType>Letter</DocumentType>
+        <QALevel>Transcription</QALevel>
+        <TID>12346</TID>
+        <DateTranscribedInBaseCoTZ>1/1/2013 12:01</DateTranscribedInBaseCoTZ>
+        <DateDeliveredInBaseCoTZ>1/1/2013 12:00</DateDeliveredInBaseCoTZ>
+        <Transcription_Length_In_Seconds>123</Transcription_Length_In_Seconds>
+        <Type>Unknown</Type>
+        <Chars>800</Chars>
+        <QTChars>400</QTChars>
+        <TotalChars>1200</TotalChars>
+        <Lines>18</Lines>
+        <QTLines>6</QTLines>
+        <Rate>0.03</Rate>
+        <QTRate>0.01</QTRate>
+        <TotalLines>24</TotalLines>
+        <Score>100</Score>
+        <MTRateModifier>0.05</MTRateModifier>
+        <Cost>1.5000</Cost>
+      </Row>
+      <Row>
+        <TranscriptionistDisplayName>Jane Doe</TranscriptionistDisplayName>
+        <Client_Name>Client Y</Client_Name>
+        <Location>East Clinic</Location>
+        <Clinician>Dr. Myers</Clinician>
+        <Department>East Clinic Pediatrics</Department>
+        <DocumentType>Chart Note</DocumentType>
+        <QALevel>1</QALevel>
+        <TID>123457</TID>
+        <DateTranscribedInBaseCoTZ>1/1/2013 12:01</DateTranscribedInBaseCoTZ>
+        <DateDeliveredInBaseCoTZ>1/1/2013 12:00</DateDeliveredInBaseCoTZ>
+        <Transcription_Length_In_Seconds>123</Transcription_Length_In_Seconds>
+        <Type>Unknown</Type>
+        <Chars>800</Chars>
+        <QTChars>400</QTChars>
+        <TotalChars>1200</TotalChars>
+        <Lines>18</Lines>
+        <QTLines>6</QTLines>
+        <Rate>0.03</Rate>
+        <QTRate>0.01</QTRate>
+        <TotalLines>24</TotalLines>
+        <Score>100</Score>
+        <MTRateModifier>0.05</MTRateModifier>
+        <Cost>1.5000</Cost>
+      </Row>
+    </SampleData>
+  </ReportColumns>
+</Options>

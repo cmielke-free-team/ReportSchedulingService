@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InVision.SchedulingService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MaxConsecutiveFailures" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="InitialRecoveryInterval" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="MaxConcurrentExecutions" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="PollingInterval" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="ServiceName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Emdat Report Execution Service</Value>
+    </Setting>
+    <Setting Name="ReportServerExecutionTimeout" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:30:00</Value>
+    </Setting>
+    <Setting Name="ReportServerKeepAliveEnabled" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ReportServerTestReport" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Production/ASP Reports/InScribe Login Report</Value>
+    </Setting>
+    <Setting Name="ServerTimeZoneIdentifier" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Central Standard Time</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

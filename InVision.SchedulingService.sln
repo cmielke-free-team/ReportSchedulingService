@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.SchedulingService", "InVision.SchedulingService\InVision.SchedulingService.csproj", "{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.Sandbox", "InVision.Sandbox\InVision.Sandbox.csproj", "{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.Common", "..\..\WebApps.Net\InVision\InVision.Common\InVision.Common.csproj", "{EA34A937-45DE-465D-A8D6-CC932CD215A7}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://fvsts02:8080/tfs/main
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = InVision.SchedulingService\\InVision.SchedulingService.csproj
+		SccProjectName1 = InVision.SchedulingService
+		SccLocalPath1 = InVision.SchedulingService
+		SccProjectUniqueName2 = InVision.Sandbox\\InVision.Sandbox.csproj
+		SccProjectName2 = InVision.Sandbox
+		SccLocalPath2 = InVision.Sandbox
+		SccProjectUniqueName3 = ..\\..\\WebApps.Net\\InVision\\InVision.Common\\InVision.Common.csproj
+		SccProjectName3 = ../../WebApps.Net/InVision/InVision.Common
+		SccLocalPath3 = ..\\..\\WebApps.Net\\InVision\\InVision.Common
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = InVision.SchedulingService.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Dev|Any CPU = Dev|Any CPU
+		Production|Any CPU = Production|Any CPU
+		QA|Any CPU = QA|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Production|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Production|Any CPU.Build.0 = Release|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.QA|Any CPU.Build.0 = Release|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Production|Any CPU.ActiveCfg = Release|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Production|Any CPU.Build.0 = Release|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.QA|Any CPU.Build.0 = Release|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Production|Any CPU.Build.0 = Production|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.QA|Any CPU.Build.0 = QA|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

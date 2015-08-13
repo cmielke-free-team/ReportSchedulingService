@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75CE9872-0D09-4B27-B690-E3D5EFF7A858}"
+	ProjectSection(SolutionItems) = preProject
+		InVision.SchedulingService.vsmdi = InVision.SchedulingService.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.SchedulingService", "InVision.SchedulingService\InVision.SchedulingService.csproj", "{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.SchedulingService.TestProject", "InVision.SchedulingService.TestProject\InVision.SchedulingService.TestProject.csproj", "{8874B89E-9D77-49A6-B5F9-EB28D442CA76}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://dev-vsts01:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = InVision.SchedulingService.TestProject\\InVision.SchedulingService.TestProject.csproj
+		SccProjectName1 = InVision.SchedulingService.TestProject
+		SccLocalPath1 = InVision.SchedulingService.TestProject
+		SccProjectUniqueName2 = InVision.SchedulingService\\InVision.SchedulingService.csproj
+		SccProjectName2 = InVision.SchedulingService
+		SccLocalPath2 = InVision.SchedulingService
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = InVision.SchedulingService.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Dev|Any CPU = Dev|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

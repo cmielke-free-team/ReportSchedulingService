@@ -1,0 +1,656 @@
+﻿<Options>
+	<ReportParametersURL>/InVisionMvc/InQuiry/Subscriptions/EditSubscription</ReportParametersURL>
+	<ReportPath>/Production/InQuiry Reports/Unsigned Transcription Summary with Custom Columns</ReportPath>
+	<SortingAndGroupings>
+		<GroupOption Name="By Location then Department then Clinician" Value="1" />
+		<GroupOption Name="By Clinician" Value="2" />
+	</SortingAndGroupings>
+	<ReportColumns>
+		<Columns>
+			<Column>
+				<FieldName>Clinician</FieldName>
+				<FunctionName>None</FunctionName>
+				<GroupOrder>-1</GroupOrder>
+				<SortOrder>-1</SortOrder>
+				<DisplayOrder>3</DisplayOrder>
+				<SortDirection>None</SortDirection>
+			</Column>
+			<Column>
+				<FieldName>Document_Type</FieldName>
+				<FunctionName>None</FunctionName>
+				<GroupOrder>-1</GroupOrder>
+				<SortOrder>-1</SortOrder>
+				<DisplayOrder>2</DisplayOrder>
+				<SortDirection>None</SortDirection>
+			</Column>
+			<Column>
+				<FieldName>Hours_Ready1</FieldName>
+				<FunctionName>None</FunctionName>
+				<GroupOrder>-1</GroupOrder>
+				<SortOrder>-1</SortOrder>
+				<DisplayOrder>12</DisplayOrder>
+				<SortDirection>None</SortDirection>
+			</Column>
+			<Column>
+				<FieldName>Days</FieldName>
+				<FunctionName>None</FunctionName>
+				<GroupOrder>-1</GroupOrder>
+				<SortOrder>-1</SortOrder>
+				<DisplayOrder>14</DisplayOrder>
+				<SortDirection>None</SortDirection>
+			</Column>
+		</Columns>
+		<AvailableLayouts>
+			<Columns Title="By Location then Department then Clinician" IsDefault="True">
+				<Column>
+					<FieldName>Location</FieldName>
+					<Width>0.1</Width>
+					<GroupOrder>0</GroupOrder>
+					<SortOrder>0</SortOrder>
+					<DisplayOrder>-1</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Department</FieldName>
+					<Width>0.1</Width>
+					<GroupOrder>1</GroupOrder>
+					<SortOrder>1</SortOrder>
+					<DisplayOrder>-1</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Clinician</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>Count</FunctionName>
+					<GroupOrder>2</GroupOrder>
+					<SortOrder>2</SortOrder>
+					<DisplayOrder>-1</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>TID</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>3</SortOrder>
+					<DisplayOrder>0</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Document_Type</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>1</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Patient_ID</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>2</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Patient_Name</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>3</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Appt_Date</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>4</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Dictated</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>5</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Recieved</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>6</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Delivered1</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>7</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>DateReadyInBaseCoTZ1</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>9</SortOrder>
+					<DisplayOrder>8</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Hours_Ready1</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>9</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Marked_For_Review</FieldName>
+					<Width>2.0</Width>
+					<FunctionName>Count</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>10</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+			</Columns>
+			<Columns Title="By Clinician">
+				<Column>
+					<FieldName>Clinician</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>0</GroupOrder>
+					<SortOrder>0</SortOrder>
+					<DisplayOrder>-1</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>TID</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>0</SortOrder>
+					<DisplayOrder>0</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Document_Type</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>1</SortOrder>
+					<DisplayOrder>1</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Patient_ID</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>2</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Patient_Name</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>2</SortOrder>
+					<DisplayOrder>3</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Appt_Date</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>4</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Dictated</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>5</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Recieved</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>6</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Delivered1</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>7</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>DateReadyInBaseCoTZ1</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>8</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Hours_Ready1</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>9</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Marked_For_Review</FieldName>
+					<Width>0.5</Width>
+					<FunctionName>Count</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>10</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+			</Columns>
+			<Columns Title="Ungrouped">
+				<Column>
+					<FieldName>Location</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>0</SortOrder>
+					<DisplayOrder>0</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Department</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>1</SortOrder>
+					<DisplayOrder>1</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Clinician</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>2</SortOrder>
+					<DisplayOrder>2</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>TID</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>3</SortOrder>
+					<DisplayOrder>3</DisplayOrder>
+					<SortDirection>Ascending</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Document_Type</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>4</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Patient_ID</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>5</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Patient_Name</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>6</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Appt_Date</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>7</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Dictated</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>8</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Recieved</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>9</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Date_Delivered1</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>10</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>DateReadyInBaseCoTZ1</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>11</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Hours_Ready1</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>12</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+				<Column>
+					<FieldName>Marked_For_Review</FieldName>
+					<Width>1.0</Width>
+					<FunctionName>None</FunctionName>
+					<GroupOrder>-1</GroupOrder>
+					<SortOrder>-1</SortOrder>
+					<DisplayOrder>13</DisplayOrder>
+					<SortDirection>None</SortDirection>
+				</Column>
+			</Columns>
+		</AvailableLayouts>
+		<AvailableColumns>
+			<AvailableColumn>
+				<FieldName>Location</FieldName>
+				<UIDisplayName>Location</UIDisplayName>
+				<CaptionExpression>Location</CaptionExpression>
+				<ValueExpression>=Fields!Location.Value</ValueExpression>
+				<SortExpression>=Fields!Location.Value</SortExpression>
+				<GroupExpression>=Fields!Location_ID.Value</GroupExpression>
+				<Width>1.5</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Department</FieldName>
+				<UIDisplayName>Department</UIDisplayName>
+				<CaptionExpression>Department</CaptionExpression>
+				<ValueExpression>=Fields!Department.Value</ValueExpression>
+				<SortExpression>=Fields!Department.Value</SortExpression>
+				<GroupExpression>=Fields!Department_ID.Value</GroupExpression>
+				<Width>1.5</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Clinician</FieldName>
+				<UIDisplayName>Clinician</UIDisplayName>
+				<CaptionExpression>Clinician</CaptionExpression>
+				<ValueExpression>=Fields!Clinician.Value</ValueExpression>
+				<SortExpression>=Fields!Clinician.Value</SortExpression>
+				<GroupExpression>=Fields!Clinician_ID.Value</GroupExpression>
+				<Width>1.5</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>TID</FieldName>
+				<UIDisplayName>TID</UIDisplayName>
+				<CaptionExpression>TID</CaptionExpression>
+				<ValueExpression>=Fields!Transcription_ID.Value</ValueExpression>
+				<SortExpression>=Fields!Transcription_ID.Value</SortExpression>
+				<GroupExpression>=Fields!Transcription_ID.Value</GroupExpression>
+				<Width>1.5</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Document_Type</FieldName>
+				<UIDisplayName>Document Type</UIDisplayName>
+				<CaptionExpression>Document Type</CaptionExpression>
+				<ValueExpression>=Fields!Document_Type.Value</ValueExpression>
+				<SortExpression>=Fields!Document_Type.Value</SortExpression>
+				<GroupExpression>=Fields!Document_Type.Value</GroupExpression>
+				<Width>1.2</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Patient_ID</FieldName>
+				<UIDisplayName>[Patient_ID]</UIDisplayName>
+				<CaptionExpression>=First(Fields!Label_Patient_ID.Value, "SSRS_Inq_Get_ReportStyleOptions")</CaptionExpression>
+				<ValueExpression>=Fields!Patient_ID.Value</ValueExpression>
+				<SortExpression>=Fields!Patient_ID.Value</SortExpression>
+				<GroupExpression>=Fields!Patient_ID.Value</GroupExpression>
+				<Width>0.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Patient_Name</FieldName>
+				<UIDisplayName>[Patient_Name]</UIDisplayName>
+				<CaptionExpression>=First(Fields!Label_Patient_Name.Value, "SSRS_Inq_Get_ReportStyleOptions")</CaptionExpression>
+				<ValueExpression>=Fields!Patient_Name.Value</ValueExpression>
+				<SortExpression>=Fields!Patient_Name.Value</SortExpression>
+				<GroupExpression>=Fields!Patient_Name.Value</GroupExpression>
+				<Width>0.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Appt_Date</FieldName>
+				<UIDisplayName>[Appointment_Date]</UIDisplayName>
+				<CaptionExpression>=First(Fields!Label_AppointmentDate.Value, "SSRS_Inq_Get_ReportStyleOptions")</CaptionExpression>
+				<ValueExpression>=Fields!Appt_Date.Value</ValueExpression>
+				<SortExpression>=Fields!Appt_Date.Value</SortExpression>
+				<GroupExpression>=Fields!Appt_Date.Value</GroupExpression>
+				<Width>1.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Date_Dictated</FieldName>
+				<UIDisplayName>Date Dictated</UIDisplayName>
+				<CaptionExpression>Date Dictated</CaptionExpression>
+				<ValueExpression>=Fields!Date_Dictated.Value</ValueExpression>
+				<SortExpression>=Fields!Date_Dictated.Value</SortExpression>
+				<GroupExpression>=Fields!Date_Dictated.Value</GroupExpression>
+				<Width>1.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Date_Recieved</FieldName>
+				<UIDisplayName>Date Recieved</UIDisplayName>
+				<CaptionExpression>Date Recieved</CaptionExpression>
+				<ValueExpression>=Fields!DateReceivedInBaseCoTZ.Value</ValueExpression>
+				<SortExpression>=Fields!DateReceivedInBaseCoTZ.Value</SortExpression>
+				<GroupExpression>=Fields!DateReceivedInBaseCoTZ.Value</GroupExpression>
+				<Width>1.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Date_Delivered1</FieldName>
+				<UIDisplayName>Date Delivered</UIDisplayName>
+				<CaptionExpression>Date Delivered</CaptionExpression>
+				<ValueExpression>=Fields!Date_Delivered.Value</ValueExpression>
+				<SortExpression>=Fields!Date_Delivered.Value</SortExpression>
+				<GroupExpression>=Fields!Date_Delivered.Value</GroupExpression>
+				<Width>1.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>DateReadyInBaseCoTZ1</FieldName>
+				<UIDisplayName>Date Ready for Signature</UIDisplayName>
+				<CaptionExpression>Date Ready for Signature</CaptionExpression>
+				<ValueExpression>=Fields!DateReadyInBaseCoTZ.Value</ValueExpression>
+				<SortExpression>=Fields!DateReadyInBaseCoTZ.Value</SortExpression>
+				<GroupExpression>=Fields!DateReadyInBaseCoTZ.Value</GroupExpression>
+				<Width>1.75</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Hours_Ready1</FieldName>
+				<UIDisplayName>Hours Waiting to Sign</UIDisplayName>
+				<CaptionExpression>Hours Waiting to Sign</CaptionExpression>
+				<ValueExpression>=Fields!Hours_Ready.Value</ValueExpression>
+				<SortExpression>=Fields!Hours_Ready.Value</SortExpression>
+				<GroupExpression>=Fields!Hours_Ready.Value</GroupExpression>
+				<Width>1.5</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+					<Function Name="Minimum">=Min(Fields!Hours_Ready.Value)</Function>
+					<Function Name="Maximum">=Max(Fields!Hours_Ready.Value)</Function>
+					<Function Name="Average">=Avg(Fields!Hours_Ready.Value)</Function>
+					<Function Name="Sum">=Sum(Fields!Hours_Ready.Value)</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Days</FieldName>
+				<UIDisplayName>Days Waiting to Sign</UIDisplayName>
+				<CaptionExpression>Days Waiting to Sign</CaptionExpression>
+				<ValueExpression>=Fields!Days_Ready.Value</ValueExpression>
+				<SortExpression>=Fields!Days_Ready.Value</SortExpression>
+				<GroupExpression>=Fields!Days_Ready.Value</GroupExpression>
+				<Width>1.5</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+					<Function Name="Minimum">=Min(Fields!Days_Ready.Value)</Function>
+					<Function Name="Maximum">=Max(Fields!Days_Ready.Value)</Function>
+					<Function Name="Average">=Avg(Fields!Days_Ready.Value)</Function>
+					<Function Name="Sum">=Sum(Fields!Days_Ready.Value)</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+			<AvailableColumn>
+				<FieldName>Marked_For_Review</FieldName>
+				<UIDisplayName>Review</UIDisplayName>
+				<CaptionExpression>Review</CaptionExpression>
+				<ValueExpression>=Fields!MarkedForReviewText.Value</ValueExpression>
+				<SortExpression>=Fields!MarkedForReviewText.Value</SortExpression>
+				<GroupExpression>=Fields!MarkedForReviewText.Value</GroupExpression>
+				<Width>0.8</Width>
+				<AvailableFunctions>
+					<Function Name="Count">=CountRows()</Function>
+				</AvailableFunctions>
+			</AvailableColumn>
+		</AvailableColumns>
+		<Page>
+			<Height>8.5</Height>
+		</Page>
+		<SampleData>
+			<Row>
+				<Location>West Clinic</Location>
+				<Clinician>Dr. Jones</Clinician>
+				<Department>West Clinic RAD</Department>
+				<Document_Type>Letter</Document_Type>
+				<TID>12345</TID>
+				<Patient_ID>123456</Patient_ID>
+				<Patient_Name>John Doe</Patient_Name>
+				<Appt_Date>2/19/13 11:54AM</Appt_Date>
+				<Date_Dictated>2/19/13 11:54AM</Date_Dictated>
+				<Date_Recieved>2/21/2013 12:54:49PM</Date_Recieved>
+				<Date_Delivered1>2/21/2013 12:54:49PM</Date_Delivered1>
+				<DateReadyInBaseCoTZ1>2/21/2013 12:54:49PM</DateReadyInBaseCoTZ1>
+				<Hours_Ready1>48</Hours_Ready1>
+				<Days>2</Days>
+				<Marked_For_Review>Yes</Marked_For_Review>
+			</Row>
+			<Row>
+				<Location>West Clinic</Location>
+				<Clinician>Dr. Wound</Clinician>
+				<Department>West Clinic RAD</Department>
+				<Document_Type>Letter</Document_Type>
+				<TID>12346</TID>
+				<Patient_ID>123456</Patient_ID>
+				<Patient_Name>John Doe</Patient_Name>
+				<Appt_Date>2/19/13 11:54AM</Appt_Date>
+				<Date_Dictated>2/19/13 11:54AM</Date_Dictated>
+				<Date_Recieved>2/21/2013 12:54:49PM</Date_Recieved>
+				<Date_Delivered1>2/21/2013 12:54:49PM</Date_Delivered1>
+				<DateReadyInBaseCoTZ1>2/21/2013 12:54:49PM</DateReadyInBaseCoTZ1>
+				<Hours_Ready1>48</Hours_Ready1>
+				<Days>2</Days>
+				<Marked_For_Review>Yes</Marked_For_Review>
+			</Row>
+			<Row>
+				<Location>East Clinic</Location>
+				<Clinician>Dr. Myers</Clinician>
+				<Department>East Clinic Pediatrics</Department>
+				<Document_Type>Chart Note</Document_Type>
+				<TID>123457</TID>
+				<Patient_ID>123456</Patient_ID>
+				<Patient_Name>John Doe</Patient_Name>
+				<Appt_Date>2/19/13 11:54AM</Appt_Date>
+				<Date_Dictated>2/19/13 11:54AM</Date_Dictated>
+				<Date_Recieved>2/21/2013 12:54:49PM</Date_Recieved>
+				<Date_Delivered1>2/21/2013 12:54:49PM</Date_Delivered1>
+				<DateReadyInBaseCoTZ1>2/21/2013 12:54:49PM</DateReadyInBaseCoTZ1>
+				<Hours_Ready1>24</Hours_Ready1>
+				<Days>1</Days>
+				<Marked_For_Review>No</Marked_For_Review>
+			</Row>
+		</SampleData>
+	</ReportColumns>
+</Options>
