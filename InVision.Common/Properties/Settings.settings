@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Emdat.InVision.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InVision_Presentation_SSRS_ReportingService2005" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://CHRIS-PC:80/ReportServer/ReportService2005.asmx</Value>
+    </Setting>
+    <Setting Name="InVision_Presentation_SSRSExecution_ReportExecutionService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://CHRIS-PC:80/ReportServer/ReportExecution2005.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

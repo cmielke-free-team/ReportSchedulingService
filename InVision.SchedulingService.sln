@@ -1,31 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.SchedulingService", "InVision.SchedulingService\InVision.SchedulingService.csproj", "{D8F8B79F-67AB-476B-A777-9C6979F6BF1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.Sandbox", "InVision.Sandbox\InVision.Sandbox.csproj", "{FBACAD93-7DB7-4A96-94DE-4D9ABB8F54C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.Common", "..\..\WebApps.Net\InVision\InVision.Common\InVision.Common.csproj", "{EA34A937-45DE-465D-A8D6-CC932CD215A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.Common", "InVision.Common\InVision.Common.csproj", "{EA34A937-45DE-465D-A8D6-CC932CD215A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVision.SchedulingService.TestProject", "InVision.SchedulingService.TestProject\InVision.SchedulingService.TestProject.csproj", "{8874B89E-9D77-49A6-B5F9-EB28D442CA76}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://fvsts02:8080/tfs/main
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = InVision.SchedulingService\\InVision.SchedulingService.csproj
-		SccProjectName1 = InVision.SchedulingService
-		SccLocalPath1 = InVision.SchedulingService
-		SccProjectUniqueName2 = InVision.Sandbox\\InVision.Sandbox.csproj
-		SccProjectName2 = InVision.Sandbox
-		SccLocalPath2 = InVision.Sandbox
-		SccProjectUniqueName3 = ..\\..\\WebApps.Net\\InVision\\InVision.Common\\InVision.Common.csproj
-		SccProjectName3 = ../../WebApps.Net/InVision/InVision.Common
-		SccLocalPath3 = ..\\..\\WebApps.Net\\InVision\\InVision.Common
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = InVision.SchedulingService.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Dev|Any CPU = Dev|Any CPU
@@ -64,8 +50,21 @@ Global
 		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.QA|Any CPU.Build.0 = QA|Any CPU
 		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA34A937-45DE-465D-A8D6-CC932CD215A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Production|Any CPU.ActiveCfg = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Production|Any CPU.Build.0 = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.QA|Any CPU.Build.0 = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8874B89E-9D77-49A6-B5F9-EB28D442CA76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = InVision.SchedulingService.vsmdi
 	EndGlobalSection
 EndGlobal

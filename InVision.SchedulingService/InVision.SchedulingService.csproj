@@ -183,7 +183,7 @@
     <None Include="parameters.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\WebApps.Net\InVision\InVision.Common\InVision.Common.csproj">
+    <ProjectReference Include="..\InVision.Common\InVision.Common.csproj">
       <Project>{ea34a937-45de-465d-a8d6-cc932cd215a7}</Project>
       <Name>InVision.Common</Name>
     </ProjectReference>

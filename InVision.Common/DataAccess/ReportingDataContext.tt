@@ -1,0 +1,715 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Linq" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+
+<#
+// Database connection information 
+var dataSource = "(LocalDB)\\Projects";
+var catalog = "DATA_001";
+var useIntegratedSecurity = true; 
+var userId = ""; 
+var password = "";
+
+var procs = new Proc[]
+{	
+	new Proc("DATA_001", "Reporting", "Get_Associate"),	
+	new Proc("DATA_001", "Reporting", "Search_Associates"),	
+	new Proc("DATA_001", "Reporting", "List_Reports_ByASPUser"),
+	new Proc("DATA_001", "Reporting", "List_Reports_ByMntUser"),
+	new Proc("DATA_001", "Reporting", "List_Reports_ByInqUser"),
+	new Proc("DATA_001", "Reporting", "List_Execution_Statuses"),
+	new Proc("DATA_001", "Reporting", "List_Formats"),
+	new Proc("DATA_001", "Reporting", "Get_Format"),
+	new Proc("DATA_001", "Reporting", "List_Executions_ByASPUser"),
+	new Proc("DATA_001", "Reporting", "List_Executions_ByMntUser"),
+	new Proc("DATA_001", "Reporting", "List_Executions_ByInqUser"),
+	new Proc("DATA_001", "Reporting", "List_Subscriptions_ByASPUser"),
+	new Proc("DATA_001", "Reporting", "List_Subscriptions_ByMntUser"),
+	new Proc("DATA_001", "Reporting", "List_Subscriptions_ByInqUser"),
+	new Proc("DATA_001", "Reporting", "Get_Subscription_NextExecution"),
+	new Proc("DATA_001", "Reporting", "Get_Subscription_PreviousExecution"),
+	new Proc("DATA_001", "Reporting", "Get_Report"),
+	new Proc("DATA_001", "Reporting", "Add_Subscription_Execution"),
+	new Proc("DATA_001", "Reporting", "Get_Execution_ForASPUser"),
+	new Proc("DATA_001", "Reporting", "Get_Execution_ForMntUser"),
+	new Proc("DATA_001", "Reporting", "Get_Execution_ForInqUser"),
+	new Proc("DATA_001", "Reporting", "Get_Subscription"),	
+	new Proc("DATA_001", "Reporting", "Get_Subscription_Notifications"),
+	new Proc("DATA_Reports", "Reporting", "Get_Execution_Data"),
+	new Proc("DATA_001", "Reporting", "Add_Subscription_ForASPUser"),
+	new Proc("DATA_001", "Reporting", "Add_Subscription_ForInqUser"),
+	new Proc("DATA_001", "Reporting", "Add_Subscription_ForMntUser"),
+	new Proc("DATA_001", "Reporting", "Add_Execution_ForASPUser"),
+	new Proc("DATA_001", "Reporting", "Add_Execution_ForInqUser"),
+	new Proc("DATA_001", "Reporting", "Add_Execution_ForMntUser"),
+	new Proc("DATA_001", "Reporting", "Edit_Subscription_ForASPUser"),
+	new Proc("DATA_001", "Reporting", "Edit_Subscription_ForInqUser"),
+	new Proc("DATA_001", "Reporting", "Edit_Subscription_ForMntUser"),
+	new Proc("DATA_Reports", "Reporting", "Set_Execution_Data"),
+	new Proc("DATA_001", "Reporting", "Delete_Subscription"),
+	new Proc("DATA_001", "Reporting", "Delete_Execution"),
+	new Proc("DATA_Reports", "Reporting", "Delete_Execution_Data"),
+	new Proc("DATA_001", "Reporting", "Get_Execution_FromQueue"),
+	new Proc("DATA_001", "Reporting", "Set_Execution_Retry"),
+	new Proc("DATA_001", "Reporting", "Reset_Execution_Queue"),
+	new Proc("DATA_001", "Reporting", "Set_Execution_Status"),
+	new Proc("DATA_001", "Reporting", "Get_Client_Labels"),
+	new Proc("DATA_001", "Reporting", "SSRS_Inq_Get_Users")
+};
+
+//The following prefix will be removed when generating the method name
+var prefixToRemove = "";
+
+#>
+namespace Emdat.InVision.Sql
+{
+    partial class ReportingDataContext : IReportingDataContext
+    {
+<# try {
+		var connectionString = GetConnectionString(dataSource, catalog, useIntegratedSecurity, userId, password);
+		var allProcs = new List<Proc>();
+
+		foreach (var proc in procs)
+		{
+			String procName = proc.ProcName;
+
+			string methodName = procName;
+			if(!string.IsNullOrEmpty(prefixToRemove) && procName.StartsWith(prefixToRemove))
+			{
+				methodName = procName.Remove(0, prefixToRemove.Length);
+			}
+			methodName = ToMethodCase(methodName);
+			if (allProcs.Any(i => i.MethodName == methodName))
+			{
+				Error(String.Format("Collision detected for generated method name: {0}", methodName));
+				continue;
+			}
+			proc.MethodName = methodName;
+			
+
+			try
+			{
+				using (var sql = new SqlConnection(connectionString))
+				using (var cmd = sql.CreateCommand())
+				{
+					sql.Open();
+					sql.ChangeDatabase(proc.Catalog);
+					cmd.CommandType = System.Data.CommandType.Text;
+					cmd.CommandText = String.Format("SELECT object_id FROM sys.procedures AS P JOIN sys.schemas AS S ON (P.schema_id = S.schema_id) WHERE P.Name = '{0}' AND S.Name = '{1}'", proc.ProcName, proc.Schema);
+					proc.ProcId = (int)cmd.ExecuteScalar();
+				}
+			}
+			catch (Exception e)
+			{
+				Warning(String.Format("Unable to obtain proc info for {0}: {1}", proc.ProcName, e));
+				continue;
+			}
+
+			var _prms = new List<ProcParam>();
+			try
+			{
+				using (var getPrmsConn = new SqlConnection(connectionString))
+				using (var getPrmsCmd = getPrmsConn.CreateCommand())
+				{
+					getPrmsCmd.CommandType = System.Data.CommandType.Text;
+					getPrmsCmd.CommandText = GetPrmsCommandText();
+					getPrmsCmd.Parameters.AddWithValue("@ProcID", proc.ProcId);
+					getPrmsConn.Open();
+					getPrmsConn.ChangeDatabase(proc.Catalog);
+					using (var prmsReader = getPrmsCmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection))
+					{
+						while(prmsReader.Read())
+						{					
+							ProcParam prm = new ProcParam();
+							prm.Name = (string)prmsReader["Parameter_Name"];
+							prm.ParamType = (string)prmsReader["Parameter_Type"];
+							prm.IsNullable = (bool)prmsReader["Is_Nullable"];
+							prm.Length = (short)prmsReader["Parameter_Length"];
+							prm.HasDefault = (bool)prmsReader["Has_Default"];
+							prm.DefaultValue = prmsReader["Default_Value"];
+							prm.IsOutput = (bool)prmsReader["Is_Output"];                    
+							_prms.Add(prm);
+						}				
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Warning(String.Format("Unable to obtain parameters for {0}: {1}", proc.ProcName, e));
+				continue;
+			}
+			proc.Parameters = _prms;
+
+			var _fields = new List<ProcField>();
+			try
+			{
+				//using (var schemaReader = GetProcSchema(proc, connectionString))
+				//{
+				//	if(schemaReader.NextResult())
+				//	{
+				//		Warning(String.Format("Multiple result sets: {0}", proc.ProcName));
+				//		proc.HasMultipleResultSets = true;
+				//	}
+				//}
+				if(!proc.HasMultipleResultSets)
+				{
+					using (var schemaReader = GetProcSchema(proc, connectionString))
+					using (var schemaTable = schemaReader.GetSchemaTable())
+					{
+						if(schemaTable != null)
+						{
+							foreach (DataRow row in schemaTable.Rows)
+							{
+								if(_fields.Any(f => f.Name == (string)row["ColumnName"])) continue;
+								ProcField fld = new ProcField();
+								fld.Name = (string)row["ColumnName"];
+								if(string.IsNullOrEmpty(fld.Name))
+								{
+									fld.Name = string.Format("Field{0}", _fields.Count);
+								}
+								fld.FieldType = (Type)row["DataType"];
+								fld.IsNullable = (bool)row["AllowDBNull"];
+								fld.Ordinal = (int)row["ColumnOrdinal"];
+								_fields.Add(fld);
+							}					
+						}	
+						else
+						{
+							
+						}									
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Warning(String.Format("Unable to obtain fields for {0}: {1}", proc.ProcName, e));
+				continue;
+			}
+			proc.Fields = _fields;
+
+			allProcs.Add(proc);
+		}  
+#><# foreach(var proc in allProcs) { try { var fieldCount = proc.Fields.Count(); var prmCount = proc.Parameters.Count(); #>
+		public <#= proc.MethodReturnType #> <#= proc.MethodName #>(<#= proc.MethodArgs #>)
+		{
+			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "<#= proc.MethodName #>");
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+				using (SqlCommand cmd = conn.CreateCommand())
+				{
+					conn.Open();
+					cmd.CommandType = System.Data.CommandType.StoredProcedure;
+					cmd.CommandText = "<#= proc.CommandText #>";
+				
+<# foreach(var prm in proc.Parameters) { #>					
+					SqlParameter <#= prm.MethodArgName #>Parameter = new SqlParameter("<#= prm.Name #>", (object)<#= prm.MethodArgName #> ?? DBNull.Value); 
+					<#= prm.MethodArgName #>Parameter.Size = <#= prm.Length #>;
+					<#= prm.MethodArgName #>Parameter.Direction = ParameterDirection.<#= prm.Direction #>;
+					<#= prm.MethodArgName #>Parameter.SqlDbType = SqlDbType.<#= GetSqlDbType(prm.ParamType) #>;
+					cmd.Parameters.Add(<#= prm.MethodArgName #>Parameter);
+<# } #>
+
+<# if (proc.HasMultipleResultSets) { #>
+					return cmd.ExecuteReader(CommandBehavior.CloseConnection);
+<# } else if (proc.HasOutputParameters && proc.Fields.Count() > 0) { #>
+					List<<#= proc.MethodName #>Row> resultSet = new List<<#= proc.MethodName #>Row>();
+					using(SqlDataReader reader = cmd.ExecuteReader())
+					{				
+<#	int curCol = 0; 
+foreach(var field in proc.Fields) { 
+	string fieldName = ToMethodCase(field.Name); 
+	fieldName = string.IsNullOrEmpty(fieldName) ? "Field" + curCol : fieldName;		
+#> 
+						int ord<#= fieldName #> = <# if(string.IsNullOrEmpty(fieldName)) { #> <#= field.Ordinal #> <# } else { #>  reader.GetOrdinal("<#= field.Name #>"); <# } #>
+<# curCol++; } #>												
+						while(reader.Read())
+						{
+							<#= proc.MethodName #>Row row = new <#= proc.MethodName #>Row();
+<#	curCol = 0; 
+foreach(var field in proc.Fields) { 
+	string fieldName = ToMethodCase(field.Name); 
+	fieldName = string.IsNullOrEmpty(fieldName) ? "Field" + curCol : fieldName;		
+#>
+							row.<#= fieldName #> = <#= GetCodeToReadFromDB(field) #>;
+<# curCol++; } #>
+							resultSet.Add(row);
+						}																					
+					}
+<# foreach(var prm in proc.Parameters) { 
+if(prm.IsOutput) { 
+	var clrName = prm.ParamTypeClr.FullName;
+	if (prm.IsNullable) clrName += "?";
+#>
+					<#= prm.MethodArgName #> = (<#= prm.MethodArgName #>Parameter.Value == DBNull.Value) ? (default(<#=clrName#>)) : ((<#=clrName#>)<#= prm.MethodArgName #>Parameter.Value);
+<# } } #>
+					return resultSet;			
+<# } else if (proc.Fields.Count() > 0) { #>
+					SqlDataReader reader;
+					try
+					{
+						reader = cmd.ExecuteReader();
+					}
+					catch (SqlException e)
+					{
+						if (String.IsNullOrEmpty(e.Procedure))
+						{
+							throw new System.Data.DataException(String.Format("Unable to execute data reader on {0}: {1}", "<#= proc.CommandText #>", e.Message), e);
+						}
+						else
+						{
+							throw;
+						}
+					}
+
+					using (reader)
+					{
+						if (!reader.Read())
+						{							
+							yield break;
+						}
+<#	int curCol = 0; 
+foreach(var field in proc.Fields) { 
+	string fieldName = ToMethodCase(field.Name); 
+	fieldName = string.IsNullOrEmpty(fieldName) ? "Field" + curCol : fieldName;		
+#> 
+						int ord<#= fieldName #> = reader.GetOrdinal("<#= field.Name #>");<# curCol++; } #>
+
+						do
+						{
+							<#= proc.MethodName #>Row row = new <#= proc.MethodName #>Row();
+<#	curCol = 0; 
+foreach(var field in proc.Fields) { 
+	string fieldName = ToMethodCase(field.Name); 
+	fieldName = string.IsNullOrEmpty(fieldName) ? "Field" + curCol : fieldName;		
+#>
+							row.<#= fieldName #> = <#= GetCodeToReadFromDB(field) #>;
+<# curCol++; } #>
+							yield return row;
+						}
+						while (reader.Read());
+					}				
+<# }
+else { #>
+					var executeNonQueryResult = cmd.ExecuteNonQuery();
+<# foreach(var prm in proc.Parameters) { 
+if(prm.IsOutput) { 
+	var clrName = prm.ParamTypeClr.FullName;
+	if (prm.IsNullable) clrName += "?";
+#>
+					<#= prm.MethodArgName #> = (<#= prm.MethodArgName #>Parameter.Value == DBNull.Value) ? (default(<#=clrName#>)) : ((<#=clrName#>)<#= prm.MethodArgName #>Parameter.Value);
+<# } } #>
+					return executeNonQueryResult;
+<# } #>									
+				}
+			}
+			finally
+			{
+				this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Stop, 0);
+			}
+		}
+					
+<# } catch(Exception ex) { Warning(string.Format("Error generating wrapper for {0}.\r\n\r\n{1}", proc.CommandText, ex.ToString()));  } } //foreach #>
+	}
+
+	public partial interface IReportingDataContext : IDisposable
+	{
+		String ConnectionString { get; }
+		<# foreach(var proc in allProcs) { try { var fieldCount = proc.Fields.Count(); var prmCount = proc.Parameters.Count(); #>
+		<#= proc.MethodReturnType #> <#= proc.MethodName #>(<#= proc.MethodArgs #>);
+		<# } catch(Exception ex) { Error(string.Format("Error generating interface for {0}.\r\n\r\n{1}", proc.CommandText, ex.ToString()));  } } //foreach #>
+	}
+	
+<# foreach(var proc in allProcs) { try { if(proc.Fields.Count() > 0) { #>
+	public partial class <#= proc.MethodName #>Row
+	{
+<#	int curCol = 0; 
+	foreach(var field in proc.Fields) { 
+		string methodName = ToMethodCase(field.Name); 
+		methodName = string.IsNullOrEmpty(methodName) ? "Field" + curCol : methodName;
+#>
+		public <#= field.FieldType.FullName #><#= field.IsNullable ? "?" : string.Empty #> <#= methodName #> { get; set; }
+<# } #>
+	}
+<# } } catch(Exception ex) { Warning(string.Format("Error generating row class for {0}.\r\n\r\n{1}", proc.CommandText, ex.ToString())); } } } catch(Exception ex) { Error(ex.ToString()); } 
+#>	
+}
+
+<#+
+/**
+* Code Generation helpers
+**/
+private class Proc
+{
+	public int ProcId { get; set; }
+	public string Catalog { get; set; }
+    public string Schema { get; set; }
+    public string ProcName { get; set; }
+
+	public Proc(String catalog, String schema, String procName)
+	{
+		this.Catalog = catalog;
+		this.Schema = schema;
+		this.ProcName = procName;
+	}
+
+    public string CommandText
+    {
+        get
+        {
+            return string.Format("{0}.{1}.{2}", this.Catalog, this.Schema, this.ProcName);
+        }
+    }
+	public bool HasMultipleResultSets { get; set; }
+    public List<ProcParam> Parameters { get; set; }
+
+    public List<ProcField> Fields { get; set; }
+
+    public string MethodName { get; set; }
+
+    public string MethodArgs
+    {
+        get
+        {
+            return GetProcMethodArgs(this);
+        }
+    }
+	public String MethodCall
+	{
+		get
+		{
+			return GetProcMethodCall(this);
+		}
+	}
+	public string MethodReturnType
+	{
+		get
+		{
+			if (this.HasMultipleResultSets) return "SqlDataReader";
+			if (this.Fields.Count() > 0) return string.Format("IEnumerable<{0}Row>", this.MethodName);			
+			return "int";
+		}
+	}
+	public bool HasOutputParameters
+	{
+		get
+		{
+			return (this.Parameters.Any(p => p.IsOutput));
+		}		
+	}
+}
+private class ProcParam
+{
+    public string Name { get; set; }
+    public string ParamType { get; set; }
+    public short Length { get; set; }            
+    public bool HasDefault { get; set; }
+    public object DefaultValue { get; set; }
+    public Type ParamTypeClr
+    {
+        get
+        {
+            return GetClrType(this.ParamType);
+        }
+    }
+    public bool IsNullable
+    {
+        get
+        {
+            return _isNullable && !ParamTypeClr.IsClass;
+        }
+        set
+        {
+            _isNullable = value;
+        }
+    }
+    private bool _isNullable = false;
+	public string MethodArgName
+    {
+        get
+        {
+            return ToFieldCase(this.Name.Replace("@", string.Empty));
+        }
+    }
+	public bool IsOutput { get; set; }
+	public ParameterDirection Direction
+    {
+        get
+        {
+            return this.IsOutput ? ParameterDirection.Output : ParameterDirection.Input;
+        }
+    }
+}
+private class ProcField
+{
+    public string Name { get; set; }
+    public Type FieldType { get; set; }
+    public bool IsNullable 
+    {
+        get
+        {
+            return _isNullable && !FieldType.IsClass;
+        }
+        set
+        {
+            _isNullable = value;
+        }
+    }
+    private bool _isNullable = false;
+	public int Ordinal { get; set;}
+}
+private static string GetConnectionString(String dataSource, String initialCatalog, bool useIntegratedSecurity, String userId, String password)
+{
+    SqlConnectionStringBuilder connStrBuilder = new SqlConnectionStringBuilder();
+    connStrBuilder.DataSource = dataSource;
+    connStrBuilder.InitialCatalog = initialCatalog;
+	connStrBuilder.IntegratedSecurity = useIntegratedSecurity;
+	if(!connStrBuilder.IntegratedSecurity)
+	{
+		connStrBuilder.UserID = userId;
+		connStrBuilder.Password = password;
+	}
+	connStrBuilder.ApplicationName = "Code Generator";
+    return connStrBuilder.ConnectionString;
+}
+private static string GetProcsCommandText()
+{
+    StringBuilder getProcsCmdText = new StringBuilder();
+    getProcsCmdText.AppendLine("select  s.name as [Schema], p.name as [Proc],");
+    getProcsCmdText.AppendLine("p.object_id as [Proc_ID]");
+    getProcsCmdText.AppendLine("from sys.procedures as p");
+    getProcsCmdText.AppendLine("inner join sys.schemas as s");
+    getProcsCmdText.AppendLine("on (p.schema_id = s.schema_id)");
+    getProcsCmdText.AppendLine("where s.name = @Schema");
+	getProcsCmdText.AppendLine("AND p.name like @ProcFilter");
+	return getProcsCmdText.ToString();
+}
+private static string GetPrmsCommandText()
+{
+    StringBuilder getPrmsCmdText = new StringBuilder();
+    getPrmsCmdText.AppendLine("select prm.name as [Parameter_Name],");
+    getPrmsCmdText.AppendLine("t.name as [Parameter_Type],");
+    getPrmsCmdText.AppendLine("prm.max_length as [Parameter_Length],");
+    getPrmsCmdText.AppendLine("prm.has_default_value as [Has_Default],");
+    getPrmsCmdText.AppendLine("prm.default_value as [Default_Value],");
+    getPrmsCmdText.AppendLine("prm.is_output as [Is_Output],");
+    getPrmsCmdText.AppendLine("t.is_nullable as [Is_Nullable]");
+    getPrmsCmdText.AppendLine("from sys.parameters as prm ");
+    getPrmsCmdText.AppendLine("inner join sys.types as t");
+    getPrmsCmdText.AppendLine("on (prm.system_type_id = t.user_type_id)");
+    getPrmsCmdText.AppendLine("where prm.object_id = @ProcID");
+	getPrmsCmdText.AppendLine("order by prm.parameter_id");
+    return getPrmsCmdText.ToString();
+}
+private static SqlDataReader GetProcSchema(Proc proc, String connectionString)
+{
+	SqlConnection conn = new SqlConnection(connectionString);
+	SqlCommand cmd = conn.CreateCommand();
+	cmd.CommandType = System.Data.CommandType.StoredProcedure;
+	cmd.CommandText = proc.CommandText;
+	foreach (var prm in proc.Parameters)
+	{
+		cmd.Parameters.Add(prm.Name, GetSqlDbType(prm.ParamType)).Value = prm.DefaultValue;
+	}
+	conn.Open();
+	return cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection | CommandBehavior.SchemaOnly);
+}
+private static string ToMethodCase(string text)
+{
+	
+    return System.Text.RegularExpressions.Regex.Replace(text, @"[^a-zA-Z0-9_]", string.Empty).Replace("_", string.Empty).Replace(" ", string.Empty);            
+}
+private static string ToFieldCase(string text)
+{           
+    string[] parts = System.Text.RegularExpressions.Regex.Replace(text, @"[^a-zA-Z0-9_]", string.Empty).Split('_');
+    parts[0] = parts[0].ToLower();
+    return string.Join(string.Empty, parts);            
+}
+private static string GetProcMethodArgs(Proc proc)
+{
+    var args =
+        from p in proc.Parameters
+        select string.Format("{3}{0}{1} {2}", p.ParamTypeClr.FullName, p.IsNullable ? "?" : string.Empty, p.MethodArgName, p.IsOutput ? "ref " : string.Empty);
+    return string.Join(", ", args.ToArray());
+}
+private static string GetProcMethodCall(Proc proc)
+{
+    var args =
+        from p in proc.Parameters
+        select string.Format("{1} {0}", p.MethodArgName, p.IsOutput ? "ref " : string.Empty);
+    return string.Join(", ", args.ToArray());
+}
+private static Type GetClrType(string dbDataTypeName)
+{
+    switch (dbDataTypeName)
+    {
+        case "tinyint":
+            return typeof(byte);
+        case "smallint":
+            return typeof(short);
+        case "int":
+            return typeof(int);
+        case "time":
+			return typeof(TimeSpan);
+		case "datetime":
+        case "date":        
+        case "datetime2":
+            return typeof(DateTime);
+		case "datetimeoffset":
+			return typeof(DateTimeOffset);			
+        case "varchar":
+        case "char":
+        case "text":
+        case "ntext":
+        case "nvarchar":
+        case "xml":
+            return typeof(string);
+        case "uniqueidentifier":
+            return typeof(System.Guid);
+        case "float":
+			return typeof(double);
+        case "real":
+        case "money":
+        case "decimal":
+        case "numeric":
+            return typeof(decimal);
+        case "bit":
+            return typeof(bool);
+        case "bigint":
+            return typeof(long);
+        case "varbinary":
+            return typeof(byte[]);
+        default:
+            return typeof(object);
+    }
+}
+private static SqlDbType GetSqlDbType(string dbDataTypeName)
+{
+	switch (dbDataTypeName)
+    {
+        case "tinyint":
+            return SqlDbType.TinyInt;
+        case "smallint":
+            return SqlDbType.SmallInt;
+        case "int":
+            return SqlDbType.Int;
+        case "time":
+			return SqlDbType.Time;
+		case "datetime":
+			return SqlDbType.DateTime;
+        case "date":        
+			return SqlDbType.Date;
+        case "datetime2":
+            return SqlDbType.DateTime2;
+		case "datetimeoffset":
+			return SqlDbType.DateTimeOffset;			
+        case "varchar":
+			return SqlDbType.VarChar;
+        case "char":
+			return SqlDbType.Char;
+        case "text":
+			return SqlDbType.Text;
+        case "ntext":
+			return SqlDbType.NText;
+        case "nvarchar":
+			return SqlDbType.NVarChar;
+        case "xml":
+            return SqlDbType.Xml;
+        case "uniqueidentifier":
+            return SqlDbType.UniqueIdentifier;
+        case "float":
+			return SqlDbType.Float;
+        case "real":
+			return SqlDbType.Real;
+        case "money":
+			return SqlDbType.Money;
+        case "decimal":
+			return SqlDbType.Decimal;
+        case "bit":
+            return SqlDbType.Bit;
+        case "bigint":
+            return SqlDbType.BigInt;
+        case "varbinary":
+            return SqlDbType.VarBinary;
+        default:
+            throw new InvalidOperationException("Unexpected DB TYPE: " + dbDataTypeName);
+    }
+}
+private static string GetCodeToReadFromDB(ProcField field)
+{            
+    StringBuilder text = new StringBuilder();
+    if (field.FieldType == typeof(string))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetString(ord{0}).Trim() : default(string))", ToMethodCase(field.Name));
+    }
+    else if (field.FieldType == typeof(int))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetInt32(ord{0}) : default(int{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if (field.FieldType == typeof(short))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetInt16(ord{0}) : default(short{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if (field.FieldType == typeof(long))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetInt64(ord{0}) : default(long{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if(field.FieldType == typeof(byte))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetByte(ord{0}) : default(byte{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+	else if(field.FieldType == typeof(TimeSpan))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetTimeSpan(ord{0}) : default(TimeSpan{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if(field.FieldType == typeof(DateTime))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetDateTime(ord{0}) : default(DateTime{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+	else if(field.FieldType == typeof(DateTimeOffset))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetDateTimeOffset(ord{0}) : default(DateTimeOffset{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if(field.FieldType == typeof(System.Guid))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetGuid(ord{0}) : default(Guid{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+	else if(field.FieldType == typeof(double))
+	{
+		text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetDouble(ord{0}) : default(double{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+	}
+    else if(field.FieldType == typeof(decimal))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetDecimal(ord{0}) : default(decimal{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if(field.FieldType == typeof(bool))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetBoolean(ord{0}) : default(bool{1}))", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else if(field.FieldType == typeof(byte[]))
+    {
+        text.AppendFormat("(!reader.IsDBNull(ord{0}) ? reader.GetSqlBinary(ord{0}).Value : null)", ToMethodCase(field.Name), field.IsNullable ? "?" : string.Empty);
+    }
+    else
+    {
+        text.AppendFormat("reader.GetValue(ord{0})", ToMethodCase(field.Name));
+    }
+    return text.ToString();
+}
+#>
