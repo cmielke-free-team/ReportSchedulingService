@@ -72,6 +72,10 @@
   <ItemGroup>
     <Reference Include="Emdat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7554a3dbfe92db3b, processorArchitecture=MSIL" />
     <Reference Include="Emdat.Net20, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Essential.Diagnostics, Version=1.2.0.0, Culture=neutral, PublicKeyToken=9d041bca93991466, processorArchitecture=MSIL">
+      <HintPath>..\packages\Essential.Diagnostics.1.2.501.0\lib\Essential.Diagnostics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -206,7 +210,7 @@
     <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
   </PropertyGroup>
   <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
-  <!--<Target Name="AfterBuild" DependsOnTargets="TransformAllFiles">
+  <Target Name="AfterBuild" DependsOnTargets="TransformAllFiles">
     <PropertyGroup>
       <MsDeployPackageDir>$(TargetDir)Package</MsDeployPackageDir>
       <MsDeployPackageFilePath>$(MsDeployPackageDir)\$(TargetName).package.zip</MsDeployPackageFilePath>
@@ -219,5 +223,5 @@
     <Copy SourceFiles="@(MsDeployAdditionalFiles)" DestinationFolder="$(MsDeployPackageDir)">
     </Copy>
     <Exec ContinueOnError="false" Command="&quot;$(ProgramFiles)\IIS\Microsoft Web Deploy V3\msdeploy.exe&quot; -verb:sync -source:dirPath=&quot;$(TargetDir)&quot; -dest:package=&quot;$(MsDeployPackageFilePath)&quot; -declareParamFile=parameters.xml -skip:Directory=Package -skip:File=.+\.vshost\..+ -skip:File=.+\.test\..+" />
-  </Target>-->
+  </Target>
 </Project>
