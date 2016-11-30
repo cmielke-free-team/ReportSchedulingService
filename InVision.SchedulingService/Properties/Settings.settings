@@ -24,7 +24,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ReportServerTestReport" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">/Production/ASP Reports/InScribe Login Report</Value>
+      <Value Profile="(Default)">/Production/ASP Reports/Application Login Report</Value>
     </Setting>
     <Setting Name="ServerTimeZoneIdentifier" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Central Standard Time</Value>
