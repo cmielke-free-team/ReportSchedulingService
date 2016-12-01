@@ -1,7 +1,98 @@
 ﻿<Options>
-  <ReportParametersURL>/InVisionMvc/InCommand/Subscriptions/EditSubscription</ReportParametersURL>
-  <ReportPath>/Production/InCommand Reports/Validation Rule Action</ReportPath>
   <ReportColumns>
+    <Columns>
+      <Column>
+        <FieldName>Client_Name</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>0</SortOrder>
+        <DisplayOrder>0</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Location</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>1</SortOrder>
+        <DisplayOrder>1</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Document_Type_Description</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>2</SortOrder>
+        <DisplayOrder>2</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Clinician_Name</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>3</SortOrder>
+        <DisplayOrder>3</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Transcription_ID</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>4</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>QALevel</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>4</SortOrder>
+        <DisplayOrder>5</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>MT_Username</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>6</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>MT_Name</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>7</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Date_Uploaded_By_MT_In_Display_Time_Zone</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>8</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Validation_Rule_Name</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>9</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Marked_For_QA</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>10</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Marked_For_Review</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>11</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Comment_Tag_Name</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>12</DisplayOrder>
+        <SortDirection>None</SortDirection>
+      </Column>
+    </Columns>
     <AvailableColumns>
       <AvailableColumn>
         <FieldName>Client_Name</FieldName>
@@ -438,309 +529,5 @@
         </AvailableFunctions>
       </AvailableColumn>
     </AvailableColumns>
-    <Columns>
-      <Column>
-        <FieldName>Client_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>0</SortOrder>
-        <DisplayOrder>0</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Location</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>1</SortOrder>
-        <DisplayOrder>1</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Document_Type_Description</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>2</SortOrder>
-        <DisplayOrder>2</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Clinician_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>3</SortOrder>
-        <DisplayOrder>3</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Transcription_ID</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>4</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>QALevel</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>4</SortOrder>
-        <DisplayOrder>5</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>MT_Username</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>6</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>MT_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>7</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Date_Uploaded_By_MT_In_Display_Time_Zone</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>8</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Validation_Rule_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>9</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Marked_For_QA</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>10</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Marked_For_Review</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>11</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Comment_Tag_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>12</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-    </Columns>
-    <AvailableLayouts>
-      <Columns Title="Default" IsDefault="True">
-        <Column>
-          <FieldName>Client_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>0</SortOrder>
-          <DisplayOrder>0</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Location</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>1</SortOrder>
-          <DisplayOrder>1</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Document_Type_Description</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>2</SortOrder>
-          <DisplayOrder>2</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Clinician_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>3</SortOrder>
-          <DisplayOrder>3</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Transcription_ID</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>4</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>QALevel</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>4</SortOrder>
-          <DisplayOrder>5</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>MT_Username</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>6</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>MT_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>7</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Date_Uploaded_By_MT_In_Display_Time_Zone</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>8</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Validation_Rule_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>9</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Marked_For_QA</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>10</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Marked_For_Review</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>11</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Comment_Tag_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>12</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-      </Columns>
-    </AvailableLayouts>
-    <SampleData>
-      <Row>
-        <Client_Name>Sample Client Name</Client_Name>
-        <Client_FullName>Sample Client FullName</Client_FullName>
-        <Transcription_ID>0</Transcription_ID>
-        <Location>Sample Location</Location>
-        <Location_Client_Code>Sample Location Client Code</Location_Client_Code>
-        <Location_Dictation_ID>Sample Location Dictation ID</Location_Dictation_ID>
-        <Document_Type>Sample Document Type</Document_Type>
-        <Document_Description>Sample Document Description</Document_Description>
-        <Document_Type_TAT>0</Document_Type_TAT>
-        <Dictation_Document_Type>Sample Dictation Document Type</Dictation_Document_Type>
-        <Dictation_Location>Sample Dictation Location</Dictation_Location>
-        <MT_Username>Sample MT Username</MT_Username>
-        <MT_Name>Sample MT Name</MT_Name>
-        <QALevel>0</QALevel>
-        <Clinician_Username>Sample Clinician Username</Clinician_Username>
-        <Clinician_Name>Sample Clinician Name</Clinician_Name>
-        <Department>Sample Department</Department>
-        <Appointment_Date>2016-11-14 13:37</Appointment_Date>
-        <Admit_Date>2016-11-14 13:37</Admit_Date>
-        <Discharge_Date>2016-11-14 13:37</Discharge_Date>
-        <Patient_Class_Code>Sample Patient Class Code</Patient_Class_Code>
-        <Patient_Class>Sample Patient Class</Patient_Class>
-        <Patient_Type_Code>Sample Patient Type Code</Patient_Type_Code>
-        <Patient_Type>Sample Patient Type</Patient_Type>
-        <Admitting_Provider>Sample Admitting Provider</Admitting_Provider>
-        <Attending_Provider>Sample Attending Provider</Attending_Provider>
-        <Consulting_Provider>Sample Consulting Provider</Consulting_Provider>
-        <Primary_Care_Provider>Sample Primary Care Provider</Primary_Care_Provider>
-        <Referring_Provider>Sample Referring Provider</Referring_Provider>
-        <Validation_Rule_Name>Sample Validation Rule Name</Validation_Rule_Name>
-        <Marked_For_QA>True</Marked_For_QA>
-        <Marked_For_Review>True</Marked_For_Review>
-        <Comment_Tag_Name>Sample Comment Tag Name</Comment_Tag_Name>
-        <Date_Received_In_Display_Time_Zone>2016-11-14 13:37</Date_Received_In_Display_Time_Zone>
-        <Date_Delivered_In_Display_Time_Zone>2016-11-14 13:37</Date_Delivered_In_Display_Time_Zone>
-        <Date_Uploaded_By_MT_In_Display_Time_Zone>2016-11-14 13:37</Date_Uploaded_By_MT_In_Display_Time_Zone>
-      </Row>
-      <Row>
-        <Client_Name>Sample Client Name</Client_Name>
-        <Client_FullName>Sample Client FullName</Client_FullName>
-        <Transcription_ID>0</Transcription_ID>
-        <Location>Sample Location</Location>
-        <Location_Client_Code>Sample Location Client Code</Location_Client_Code>
-        <Location_Dictation_ID>Sample Location Dictation ID</Location_Dictation_ID>
-        <Document_Type>Sample Document Type</Document_Type>
-        <Document_Description>Sample Document Description</Document_Description>
-        <Document_Type_TAT>0</Document_Type_TAT>
-        <Dictation_Document_Type>Sample Dictation Document Type</Dictation_Document_Type>
-        <Dictation_Location>Sample Dictation Location</Dictation_Location>
-        <MT_Username>Sample MT Username</MT_Username>
-        <MT_Name>Sample MT Name</MT_Name>
-        <QALevel>0</QALevel>
-        <Clinician_Username>Sample Clinician Username</Clinician_Username>
-        <Clinician_Name>Sample Clinician Name</Clinician_Name>
-        <Department>Sample Department</Department>
-        <Appointment_Date>2016-11-14 13:37</Appointment_Date>
-        <Admit_Date>2016-11-14 13:37</Admit_Date>
-        <Discharge_Date>2016-11-14 13:37</Discharge_Date>
-        <Patient_Class_Code>Sample Patient Class Code</Patient_Class_Code>
-        <Patient_Class>Sample Patient Class</Patient_Class>
-        <Patient_Type_Code>Sample Patient Type Code</Patient_Type_Code>
-        <Patient_Type>Sample Patient Type</Patient_Type>
-        <Admitting_Provider>Sample Admitting Provider</Admitting_Provider>
-        <Attending_Provider>Sample Attending Provider</Attending_Provider>
-        <Consulting_Provider>Sample Consulting Provider</Consulting_Provider>
-        <Primary_Care_Provider>Sample Primary Care Provider</Primary_Care_Provider>
-        <Referring_Provider>Sample Referring Provider</Referring_Provider>
-        <Validation_Rule_Name>Sample Validation Rule Name</Validation_Rule_Name>
-        <Marked_For_QA>True</Marked_For_QA>
-        <Marked_For_Review>True</Marked_For_Review>
-        <Comment_Tag_Name>Sample Comment Tag Name</Comment_Tag_Name>
-        <Date_Received_In_Display_Time_Zone>2016-11-14 13:37</Date_Received_In_Display_Time_Zone>
-        <Date_Delivered_In_Display_Time_Zone>2016-11-14 13:37</Date_Delivered_In_Display_Time_Zone>
-        <Date_Uploaded_By_MT_In_Display_Time_Zone>2016-11-14 13:37</Date_Uploaded_By_MT_In_Display_Time_Zone>
-      </Row>
-      <Row>
-        <Client_Name>Sample Client Name</Client_Name>
-        <Client_FullName>Sample Client FullName</Client_FullName>
-        <Transcription_ID>0</Transcription_ID>
-        <Location>Sample Location</Location>
-        <Location_Client_Code>Sample Location Client Code</Location_Client_Code>
-        <Location_Dictation_ID>Sample Location Dictation ID</Location_Dictation_ID>
-        <Document_Type>Sample Document Type</Document_Type>
-        <Document_Description>Sample Document Description</Document_Description>
-        <Document_Type_TAT>0</Document_Type_TAT>
-        <Dictation_Document_Type>Sample Dictation Document Type</Dictation_Document_Type>
-        <Dictation_Location>Sample Dictation Location</Dictation_Location>
-        <MT_Username>Sample MT Username</MT_Username>
-        <MT_Name>Sample MT Name</MT_Name>
-        <QALevel>0</QALevel>
-        <Clinician_Username>Sample Clinician Username</Clinician_Username>
-        <Clinician_Name>Sample Clinician Name</Clinician_Name>
-        <Department>Sample Department</Department>
-        <Appointment_Date>2016-11-14 13:37</Appointment_Date>
-        <Admit_Date>2016-11-14 13:37</Admit_Date>
-        <Discharge_Date>2016-11-14 13:37</Discharge_Date>
-        <Patient_Class_Code>Sample Patient Class Code</Patient_Class_Code>
-        <Patient_Class>Sample Patient Class</Patient_Class>
-        <Patient_Type_Code>Sample Patient Type Code</Patient_Type_Code>
-        <Patient_Type>Sample Patient Type</Patient_Type>
-        <Admitting_Provider>Sample Admitting Provider</Admitting_Provider>
-        <Attending_Provider>Sample Attending Provider</Attending_Provider>
-        <Consulting_Provider>Sample Consulting Provider</Consulting_Provider>
-        <Primary_Care_Provider>Sample Primary Care Provider</Primary_Care_Provider>
-        <Referring_Provider>Sample Referring Provider</Referring_Provider>
-        <Validation_Rule_Name>Sample Validation Rule Name</Validation_Rule_Name>
-        <Marked_For_QA>True</Marked_For_QA>
-        <Marked_For_Review>True</Marked_For_Review>
-        <Comment_Tag_Name>Sample Comment Tag Name</Comment_Tag_Name>
-        <Date_Received_In_Display_Time_Zone>2016-11-14 13:37</Date_Received_In_Display_Time_Zone>
-        <Date_Delivered_In_Display_Time_Zone>2016-11-14 13:37</Date_Delivered_In_Display_Time_Zone>
-        <Date_Uploaded_By_MT_In_Display_Time_Zone>2016-11-14 13:37</Date_Uploaded_By_MT_In_Display_Time_Zone>
-      </Row>
-    </SampleData>
-  </ReportColumns>
+  </ReportColumns>  
 </Options>
