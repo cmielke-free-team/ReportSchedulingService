@@ -1,0 +1,1482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="ParametersTxt">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Date Range: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=FormatDateTime(Parameters!Start_Date.Value, DateFormat.ShortDate)</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> - </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=FormatDateTime(Parameters!End_Date.Value, DateFormat.ShortDate)</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Search: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!Action_1_Desc.Value</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Switch(Parameters!Operator.Value = "1","OR",Parameters!Operator.Value = "2","AND" ,Parameters!Operator.Value=3,"AND NOT")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!Action_2_Desc.Value</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Parameters_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.74347in</Top>
+        <Height>0.40973in</Height>
+        <Width>10in</Width>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="NoteTimeZone">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>All times are in the time zone of "</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>=First(Fields!Note_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!BaseTranCo_TZ.Value</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>=First(Fields!Note_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>"</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>=First(Fields!Note_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Data on this report was last updated on </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>=First(Fields!Note_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Globals!ExecutionTime</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>=First(Fields!Note_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> CST</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>=First(Fields!Note_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.29347in</Top>
+        <Height>0.38056in</Height>
+        <Width>10in</Width>
+        <ZIndex>1</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="ReportName">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Action Audit Report</Value>
+                <Style>
+                  <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>=First(Fields!Title_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>ReportName</rd:DefaultName>
+        <Height>0.25in</Height>
+        <Width>10in</Width>
+        <ZIndex>2</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.61198in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="x123456">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Client Name</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>x123456</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName></DataSetName>
+        <Top>1.24347in</Top>
+        <Height>0.5in</Height>
+        <Width>9.64584in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="PlaceHolderTablix">
+        <TablixCorner>
+          <TablixCornerRows>
+            <TablixCornerRow>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox17">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>TID</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox17</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+            </TablixCornerRow>
+          </TablixCornerRows>
+        </TablixCorner>
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.23264in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.84722in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Clinician_ID">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Clinician_ID.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Clinician_ID</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Clinician_Username">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Clinician_Username.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Clinician_Username</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="ColumnGroup">
+                <GroupExpressions>
+                  <GroupExpression />
+                </GroupExpressions>
+              </Group>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox15">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Clinician ID</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox15</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox18">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Clinician Username</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox18</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="TID">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!TID.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!TID.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>1.23264in</Size>
+                <CellContents>
+                  <Textbox Name="TID">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!TID.Value</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>TID</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>SSRS_Mnt_Rpt_Action_Audit</DataSetName>
+        <Top>2.2175in</Top>
+        <Left>0.15625in</Left>
+        <Height>0.5in</Height>
+        <Width>4.3125in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Rectangle Name="NoDataRect">
+        <ReportItems>
+          <Image Name="NoDataImage">
+            <Source>Embedded</Source>
+            <Value>attention</Value>
+            <Sizing>FitProportional</Sizing>
+            <Left>0.21333in</Left>
+            <Height>0.33333in</Height>
+            <Width>0.33333in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Label>NoDataLabel</Label>
+                    <Value>="No data for selected report criteria."</Value>
+                    <Style>
+                      <FontFamily>=First(Fields!FontFamily.Value, "SSRS_Mnt_Get_ReportStyleOptions")</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <Color>=First(Fields!NoData_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.00354in</Top>
+            <Left>0.71354in</Left>
+            <Height>0.33333in</Height>
+            <Width>2.57292in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Top>1.38302in</Top>
+        <Left>3.00004in</Left>
+        <Height>0.33687in</Height>
+        <Width>4in</Width>
+        <ZIndex>4</ZIndex>
+        <Visibility>
+          <Hidden>=CountRows("SSRS_Mnt_Rpt_Action_Audit") &gt; 0</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+    </ReportItems>
+    <Height>3.10292in</Height>
+    <Style />
+  </Body>
+  <Width>10.00008in</Width>
+  <Page>
+    <PageFooter>
+      <Height>1.225in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="PageNumber">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Label>Page X of Y</Label>
+                  <Value>="Page " &amp; Globals!PageNumber &amp; " of " &amp; Globals!TotalPages</Value>
+                  <MarkupType>HTML</MarkupType>
+                  <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Color>=First(Fields!Data_Color.Value, "SSRS_Mnt_Get_ReportStyleOptions")</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>0in</Top>
+          <Height>0.35in</Height>
+          <Width>10in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>8.5in</PageHeight>
+    <PageWidth>11in</PageWidth>
+    <InteractiveHeight>8.5in</InteractiveHeight>
+    <InteractiveWidth>14in</InteractiveWidth>
+    <LeftMargin>0.5in</LeftMargin>
+    <RightMargin>0.5in</RightMargin>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DATA_001">
+      <DataSourceReference>DATA_001</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>f068b5c6-2e1e-456c-b8a9-62c2f88551e0</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="SSRS_Mnt_Get_ReportStyleOptions">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Company_ID">
+            <Value>=Parameters!Company_ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Get_ReportStyleOptions</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="FontFamily">
+          <DataField>FontFamily</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FontSize">
+          <DataField>FontSize</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Back_image_path">
+          <DataField>Back_image_path</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Back_color">
+          <DataField>Back_color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Head_fill">
+          <DataField>Head_fill</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Head_font">
+          <DataField>Head_font</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Parameters_BorderStyle">
+          <DataField>Parameters_BorderStyle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Parameters_BorderWidth">
+          <DataField>Parameters_BorderWidth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Parameters_Color">
+          <DataField>Parameters_Color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="group_fill">
+          <DataField>group_fill</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Data_Color">
+          <DataField>Data_Color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Title_Color">
+          <DataField>Title_Color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Group_BackColor">
+          <DataField>Group_BackColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GrandTotal_BackColor">
+          <DataField>GrandTotal_BackColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="group_font">
+          <DataField>group_font</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Parameters_BorderColor">
+          <DataField>Parameters_BorderColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NoData_Color">
+          <DataField>NoData_Color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Note_Color">
+          <DataField>Note_Color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="row_header_fill">
+          <DataField>row_header_fill</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="row_header_font">
+          <DataField>row_header_font</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="row_fill_1">
+          <DataField>row_fill_1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="row_font_1">
+          <DataField>row_font_1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="row_fill_2">
+          <DataField>row_fill_2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="row_font_21">
+          <DataField>row_font_21</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="totals_fill">
+          <DataField>totals_fill</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="totals_font">
+          <DataField>totals_font</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BaseCo_TimeZone">
+          <DataField>BaseCo_TimeZone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Server_TimeZone">
+          <DataField>Server_TimeZone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Locale_ID">
+          <DataField>Locale_ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SSRS_Mnt_Get_Clients">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Company_ID">
+            <Value>=Parameters!Company_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@User_ID">
+            <Value>=Parameters!User_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeSelectAllOption">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeInactiveClients">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SelectAllLabel">
+            <Value>All</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Include_Outsource">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@VR_Only">
+            <Value>0</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Get_Clients</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Client_ID">
+          <DataField>Client_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Display_Name">
+          <DataField>Display_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Client_Name">
+          <DataField>Client_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Is_Active">
+          <DataField>Is_Active</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SSRS_Mnt_Get_DocumentTypes">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Client_ID">
+            <Value>=Parameters!Client_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeSelectAllOption">
+            <Value>1</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeInactive">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SelectAllLabel">
+            <Value>All</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Get_DocumentTypes</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Document_ID">
+          <DataField>Document_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Display_Name">
+          <DataField>Display_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Document_Type">
+          <DataField>Document_Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Document_Description">
+          <DataField>Document_Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SSRS_Mnt_Get_Users">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Client_ID">
+            <Value>=Parameters!Client_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeNonDictating">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeSelectAllOption">
+            <Value>1</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeInactive">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SelectAllLabel">
+            <Value>All</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Get_Users</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="User_ID">
+          <DataField>User_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Display_Name">
+          <DataField>Display_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Name_Last">
+          <DataField>Name_Last</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Name_First">
+          <DataField>Name_First</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Username">
+          <DataField>Username</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Is_Dictating">
+          <DataField>Is_Dictating</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IsActive">
+          <DataField>IsActive</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SSRS_Mnt_Get_LogActions">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Client_ID">
+            <Value>=Parameters!Client_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Search_Filter">
+            <Value>1</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeSelectAllOption">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SelectAllLabel">
+            <Value>All</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Get_LogActions</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Action_ID">
+          <DataField>Action_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Action_Description">
+          <DataField>Action_Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Sort">
+          <DataField>Sort</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SSRS_Mnt_Get_Locations">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Client_ID">
+            <Value>=Parameters!Client_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeSelectAllOption">
+            <Value>1</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IncludeInactive">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SelectAllLabel">
+            <Value>All</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Get_Locations</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Location_ID">
+          <DataField>Location_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Display_Name">
+          <DataField>Display_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Medical_Records_Location_Name">
+          <DataField>Medical_Records_Location_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SSRS_Mnt_Rpt_Action_Audit">
+      <Query>
+        <DataSourceName>DATA_001</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Client_ID">
+            <Value>=Parameters!Client_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Clinician_ID">
+            <Value>=Parameters!Clinician_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Document_ID">
+            <Value>=Parameters!Document_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Location_ID">
+            <Value>=Parameters!Location_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Action1_ID">
+            <Value>=Parameters!Action1_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Action1_User_ID">
+            <Value>=Parameters!Action1_User_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Action2_ID">
+            <Value>=Parameters!Action2_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Action2_User_ID">
+            <Value>=Parameters!Action2_User_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Start_Date">
+            <Value>=Emdat.RDL.DateTimeEx.GetStartDate(Parameters!Start_Date.Value)</Value>
+          </QueryParameter>
+          <QueryParameter Name="@End_Date">
+            <Value>=Emdat.RDL.DateTimeEx.GetEndDate(Parameters!End_Date.Value)</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Date_Range_Based_On">
+            <Value>=Parameters!Date_Range_Based_On.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Operator">
+            <Value>=Parameters!Operator.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reporting.SSRS_Mnt_Rpt_Action_Audit</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="TID">
+          <DataField>TID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Clinician_ID">
+          <DataField>Clinician_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Clinician_Username">
+          <DataField>Clinician_Username</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Clinician_Fullname">
+          <DataField>Clinician_Fullname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Document_ID">
+          <DataField>Document_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Document_Type">
+          <DataField>Document_Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Location_ID">
+          <DataField>Location_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Medical_Records_Location_Name">
+          <DataField>Medical_Records_Location_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Patient_Name">
+          <DataField>Patient_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Action_1">
+          <DataField>Action_1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date_Action_1">
+          <DataField>Date_Action_1</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Action_1_User">
+          <DataField>Action_1_User</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Action_1_User_Full_Name">
+          <DataField>Action_1_User_Full_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date_Action_2">
+          <DataField>Date_Action_2</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Action_2_User">
+          <DataField>Action_2_User</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Action_2_User_Full_Name">
+          <DataField>Action_2_User_Full_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Count_Mail_Associates">
+          <DataField>Count_Mail_Associates</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Patient_ID">
+          <DataField>Patient_ID</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Dictated">
+          <DataField>Date_Dictated</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Dictated_Time_Zone">
+          <DataField>Date_Dictated_Time_Zone</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Dictation_Received">
+          <DataField>Date_Dictation_Received</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Dictation_Received_Time_Zone">
+          <DataField>Date_Dictation_Received_Time_Zone</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Delivered">
+          <DataField>Date_Delivered</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Delivered_Time_Zone">
+          <DataField>Date_Delivered_Time_Zone</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Date_Dictated_In_BaseTranCo_Tz">
+          <Value>=Emdat.RDL.DateTimeEx.ConvertTimeZone(Fields!Date_Dictated.Value, Fields!Date_Dictated_Time_Zone.Value, Parameters!BaseTranCo_TZ.Value)</Value>
+        </Field>
+        <Field Name="Date_Received_In_BaseTranCo_Tz">
+          <Value>=Emdat.RDL.DateTimeEx.ConvertTimeZone(Fields!Date_Dictation_Received.Value, Fields!Date_Dictation_Received_Time_Zone.Value, Parameters!BaseTranCo_TZ.Value)</Value>
+        </Field>
+        <Field Name="Date_Delivered_In_BaseTranCo_Tz">
+          <Value>=Emdat.RDL.DateTimeEx.ConvertTimeZone(Fields!Date_Delivered.Value, Fields!Date_Delivered_Time_Zone.Value, Parameters!BaseTranCo_TZ.Value)</Value>
+        </Field>
+        <Field Name="Action_2_Val">
+          <DataField>Action_2</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Action_2">
+          <Value>=IIf(Parameters!Operator.Value=3,"n/a",Fields!Action_2_Val.Value)</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="Company_ID">
+      <DataType>Integer</DataType>
+      <Prompt>Company ID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="User_ID">
+      <DataType>Integer</DataType>
+      <Prompt>User ID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="BaseTranCo_TZ">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_ReportStyleOptions</DataSetName>
+          <ValueField>BaseCo_TimeZone</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Server_TZ">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_ReportStyleOptions</DataSetName>
+          <ValueField>Server_TimeZone</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Locale_ID">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>en-us</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Locale_ID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Start_Date">
+      <DataType>DateTime</DataType>
+      <Prompt>Start Date (Data only goes back 90 days)</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="End_Date">
+      <DataType>DateTime</DataType>
+      <Prompt>End Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Client_ID">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Client</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_Clients</DataSetName>
+          <ValueField>Client_ID</ValueField>
+          <LabelField>Display_Name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Clinician_ID">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Clinician</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_Users</DataSetName>
+          <ValueField>User_ID</ValueField>
+          <LabelField>Display_Name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Document_ID">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Document</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_DocumentTypes</DataSetName>
+          <ValueField>Document_ID</ValueField>
+          <LabelField>Display_Name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Location_ID">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Location</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_Locations</DataSetName>
+          <ValueField>Location_ID</ValueField>
+          <LabelField>Display_Name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Action1_ID">
+      <DataType>Integer</DataType>
+      <Prompt>Action 1</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_LogActions</DataSetName>
+          <ValueField>Action_ID</ValueField>
+          <LabelField>Action_Description</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Action1_User_ID">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+        </Values>
+      </DefaultValue>
+      <Prompt>Action 1 User</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_Users</DataSetName>
+          <ValueField>User_ID</ValueField>
+          <LabelField>Display_Name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Operator">
+      <DataType>Integer</DataType>
+      <Prompt>Operator</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>AND</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>OR</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>3</Value>
+            <Label>AND NOT</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Action2_ID">
+      <DataType>Integer</DataType>
+      <Prompt>Action 2</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_LogActions</DataSetName>
+          <ValueField>Action_ID</ValueField>
+          <LabelField>Action_Description</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Action2_User_ID">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Action 2 User</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SSRS_Mnt_Get_Users</DataSetName>
+          <ValueField>User_ID</ValueField>
+          <LabelField>Display_Name</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Date_Range_Based_On">
+      <DataType>Integer</DataType>
+      <Prompt>Date Range Based On</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>4</Value>
+            <Label>Date Delivered</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>3</Value>
+            <Label>Date Received</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>Date Dictated</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Date of Action 1</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="HideDetail">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>false</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Hide Detail</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Action_1_Desc">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Parameters!Action1_ID.Label</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Action_2_Desc">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Parameters!Action2_ID.Label</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="attention">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>R0lGODlhIAAgAMQfAP3yzeCeX/e1Jv/4VP/pR/7FKf/XOf336/HPrsNxMblcFfGmHdZ7BueSEtlqAtCDFNKCO8FQAPzbR//xT/7MLuCJNuy3g9p4HOB6BP3lUv//X8pjBf/fP6o2AP/RMwAAACH5BAEAAB8ALAAAAAAgACAAAAX/4CeOZGmeaKqubOuaiPW6gOMg83pUGOYAuZTFsRA4KocgzNEoFBYOmXJ0uGAETkrjNhUFMAtnwUPBXJJKBLMg6Ak4UGlud6VANw0DZwvMBRxYTzYNHHoOZzNqTQV2DngEBgQFDgEvABeLYwsbEQ2QHASbOCx0gRQeApwLBBygBA8XfSqKWRQGAhERCxOtBBMUG5UqVRiMjB63ubuuvgsKoycHX1gUp8gUHR0CBNy+AxMMCWgmQ2HVHsh6DwmuE+4TGhIbFSc1TefpHLwGE9zuAwM0aBCgQI4IOlnQGVhIIJWudwAFCnygQNaHcvgWtprQIEKHB98ABpQ4QQGEEfYYcZ1aqAfUngcSQo6UODACjh0OxqRrycqbyJk0J1YcYgGA0aNIARxYulRpUqMHAJi0sqBqVQFYsYpRmU+ChAxgCWQYUEHBBQc90qrFwKCt27YPGMR9QLfuhoIVKkDQC6Gv374JAidQILiwYWFdEiteTCIEADs=</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>=Parameters!Locale_ID.Value</Language>
+  <CodeModules>
+    <CodeModule>Emdat.RDL.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7554a3dbfe92db3b</CodeModule>
+  </CodeModules>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>9c98e4f3-bd62-44a2-86cf-6b330a9eb662</rd:ReportID>
+</Report>

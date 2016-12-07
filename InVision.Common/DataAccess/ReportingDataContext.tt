@@ -20,7 +20,7 @@ using System.Configuration;
 
 <#
 // Database connection information 
-var dataSource = "(LocalDB)\\Projects";
+var dataSource = "(LocalDB)\\ProjectsV13";
 var catalog = "DATA_001";
 var useIntegratedSecurity = true; 
 var userId = ""; 

@@ -24,7 +24,7 @@ namespace InVision.Sandbox
                  select new ParameterValue 
                  { 
                      Name = parts[0],
-                     Value = parts[1]
+                     Value = (string.IsNullOrEmpty(parts[1]) ? null : parts[1])
                  })
                  .ToArray();
 
@@ -46,7 +46,7 @@ namespace InVision.Sandbox
 
             using (var rdlTemplateStream = new MemoryStream(rdlTemplate))
             {
-                string format = "CSV";
+                string format = "EXCEL";
 
                 //load RDL into XElement
                 XElement rdlTemplateElement = XElement.Load(rdlTemplateStream);
