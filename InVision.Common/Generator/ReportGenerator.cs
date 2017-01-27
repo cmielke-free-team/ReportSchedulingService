@@ -6,15 +6,13 @@ using System.Xml;
 using System.IO;
 using Emdat.InVision.Models;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using System.Xml.Serialization;
 
 namespace Emdat.InVision.Generator
 {
 	public static class ReportGenerator
-	{
-		private static readonly String ReportDefinitionNamespace = "http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition";
-		private static readonly String ReportDesignerNamespace = "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner";
-
+	{		
 		private static String GetStyleDataColor(string styleDataSetName)
 		{
 			return string.Format("=First(Fields!Data_Color.Value, \"{0}\")", styleDataSetName);
@@ -41,15 +39,99 @@ namespace Emdat.InVision.Generator
 			return "TextBox" + Guid.NewGuid().ToString().Replace("-", "");
 		}
 
+		internal static XElement GetPlaceHolderTablixElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var tablix = rdlTemplate.XPathSelectElement("//rdl:Body/rdl:ReportItems/rdl:Tablix[@Name='PlaceHolderTablix']", nsman);
+			if (tablix == null)
+			{
+				tablix = rdlTemplate.XPathSelectElement("//rdl:Body/rdl:ReportItems/rdl:Tablix[1]", nsman);
+			}
+			return tablix;
+		}
+
+		internal static XElement GetPageElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			XElement page = rdlTemplate.XPathSelectElement("//rdl:Page", nsman);
+			return page;
+		}
+
+		internal static XElement GetBodyWidthElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var bodyElement = rdlTemplate.XPathSelectElement("//rdl:Body", nsman);
+			if (bodyElement == null)
+			{
+				return null;
+			}
+			var bodyWidthElement = bodyElement.Parent.Elements(xmlns + "Width").FirstOrDefault();
+			return bodyWidthElement;
+		}
+
+		internal static XElement GetPageNumberTextBoxElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var pageNumber = rdlTemplate.XPathSelectElement("//rdl:Textbox[@Name='PageNumber']", nsman);
+			return pageNumber;			
+		}
+
+		internal static XElement GetReportNameTexBoxElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var reportName = rdlTemplate.XPathSelectElement("//rdl:Textbox[@Name='ReportName']", nsman);
+			return reportName;
+		}
+
+		internal static XElement GetTimeZoneNoteTextBoxElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var timezone = rdlTemplate.XPathSelectElement("//rdl:Textbox[@Name='NoteTimeZone']", nsman);
+			return timezone;
+		}
+
+		internal static XElement GetParametersTextBoxElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var timezone = rdlTemplate.XPathSelectElement("//rdl:Textbox[@Name='ParametersTextbox']", nsman);
+			if (timezone == null)
+			{
+				timezone = rdlTemplate.XPathSelectElement("//rdl:Textbox[@Name='ParametersTxt']", nsman);
+			}
+			return timezone;			
+		}
+
+		private static XElement GetNoDataRectangleElement(XElement rdlTemplate)
+		{
+			XNamespace xmlns = rdlTemplate.GetDefaultNamespace();
+			XmlNamespaceManager nsman = new XmlNamespaceManager(new NameTable());
+			nsman.AddNamespace("rdl", xmlns.NamespaceName);
+			var timezone = rdlTemplate.XPathSelectElement("//rdl:Rectangle[@Name='NoDataRect']", nsman);
+			return timezone;
+		}
+
 		public static byte[] GenerateReportDefinition(XElement rdlTemplate, XElement reportColumns, bool hideDetail, string reportFormat)
 		{
-			//get placeholder tablix
-			XNamespace xmlns = "http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition";
-			XElement tablixPlaceholder = rdlTemplate
-				.Elements(xmlns + "Body")
-				.Elements(xmlns + "ReportItems")
-				.Elements(xmlns + "Tablix")
-				.First();
+			var xmlns = rdlTemplate.GetDefaultNamespace();
+			var tablixPlaceholder = GetPlaceHolderTablixElement(rdlTemplate);
+			if (tablixPlaceholder == null)
+			{
+				throw new Exception("Placeholder tablix could not be found");
+			}
 
 			string mainDataSetName = (string)tablixPlaceholder.Element(xmlns + "DataSetName");
 			string styleDataSetName =
@@ -62,451 +144,68 @@ namespace Emdat.InVision.Generator
 
 			double tablixWidth;
 
+			XElement noDataRectElement = GetNoDataRectangleElement(rdlTemplate);
+			bool hideTablixIfNoData = false;
+			if(noDataRectElement != null)
+			{
+				hideTablixIfNoData = true;
+			}
+
 			//generate tablix
-            XElement newTablix;
-            if(reportFormat.ToUpper()=="CSV"){ //&& hideDetail == true){
-               newTablix  = GenerateCSVTablix(mainDataSetName, styleDataSetName, reportColumns, hideDetail, out tablixWidth, reportFormat);
-            }
-            else{
-                newTablix = GenerateTablix(mainDataSetName, styleDataSetName, reportColumns, hideDetail, out tablixWidth, reportFormat);
-            }
+			XElement newTablix;
+			if (reportFormat.ToUpper() == "CSV") //&& hideDetail == true)
+			{
+				newTablix = GenerateCSVTablix(mainDataSetName, styleDataSetName, reportColumns, hideDetail, out tablixWidth, reportFormat, xmlns.NamespaceName);
+			}
+			else
+			{
+				newTablix = GenerateTablix(mainDataSetName, styleDataSetName, reportColumns, hideDetail, out tablixWidth, reportFormat, xmlns.NamespaceName, hideTablixIfNoData);
+			}
 
 			//replace placeholder tablix with the generated tablix 
 			tablixPlaceholder.ReplaceWith(newTablix);
 
-			// Set the width of non-tablix elements
-			rdlTemplate.SetElementValue(xmlns + "Width", string.Format("{0}in", tablixWidth));
-			var page = rdlTemplate.Elements(xmlns + "Page").FirstOrDefault();
-			page.SetElementValue(xmlns + "PageWidth", string.Format("{0}in", tablixWidth + 1));
-			var parametersTxt = rdlTemplate.Elements(xmlns + "Body").Elements(xmlns + "ReportItems").Elements(xmlns + "Textbox").Where(e => e.Attribute("Name").Value == "ParametersTxt").FirstOrDefault();
+			// Set the width of non-tablix elements			
+			XElement widthElement = GetBodyWidthElement(rdlTemplate);
+			if (widthElement != null)
+			{
+				widthElement.SetValue(string.Format("{0}in", tablixWidth));
+			}
+			
+			XElement page = GetPageElement(rdlTemplate);
+			if (page != null)
+			{
+				page.SetElementValue(xmlns + "PageWidth", string.Format("{0}in", tablixWidth + 1));
+			}
+
+			XElement parametersTxt = GetParametersTextBoxElement(rdlTemplate);
 			if (parametersTxt != null)
 			{
 				parametersTxt.SetElementValue(xmlns + "Width", string.Format("{0}in", tablixWidth));
 			}
-			var noteTimeZone = rdlTemplate.Elements(xmlns + "Body").Elements(xmlns + "ReportItems").Elements(xmlns + "Textbox").Where(e => e.Attribute("Name").Value == "NoteTimeZone").FirstOrDefault();
+
+			XElement noteTimeZone = GetTimeZoneNoteTextBoxElement(rdlTemplate);
 			if (noteTimeZone != null)
 			{
 				noteTimeZone.SetElementValue(xmlns + "Width", string.Format("{0}in", tablixWidth));
 			}
-			var reportName = rdlTemplate.Elements(xmlns + "Body").Elements(xmlns + "ReportItems").Elements(xmlns + "Textbox").Where(e => e.Attribute("Name").Value == "ReportName").FirstOrDefault();
+
+			XElement reportName = GetReportNameTexBoxElement(rdlTemplate);
 			if (reportName != null)
 			{
 				reportName.SetElementValue(xmlns + "Width", string.Format("{0}in", tablixWidth));
 			}
-			var pageNumber = rdlTemplate.Elements(xmlns + "Page").Elements(xmlns + "PageFooter").Elements(xmlns + "ReportItems").Elements(xmlns + "Textbox").Where(e => e.Attribute("Name").Value == "PageNumber").FirstOrDefault();
+
+			XElement pageNumber = GetPageNumberTextBoxElement(rdlTemplate);
 			if (pageNumber != null)
 			{
 				pageNumber.SetElementValue(xmlns + "Width", string.Format("{0}in", tablixWidth));
 			}
+			
+			return Encoding.UTF8.GetBytes(rdlTemplate.ToString());			
+		}		
 
-			//save new RDL XML to byte[]
-			return Encoding.UTF8.GetBytes(rdlTemplate.ToString());
-			//using (var newRdlStream = new MemoryStream())
-			//using (var newRdlWriter = XmlWriter.Create(newRdlStream))
-			//{
-			//    rdlTemplate.Save(newRdlWriter);
-
-			//    newRdlWriter.Flush();
-			//    newRdlStream.Flush();
-			//    return newRdlStream.ToArray();
-			//}
-		}
-
-        private static XElement GenerateCSVTablix(string mainDataSetName, string styleDataSetName, XElement reportColumns, bool hideDetail, out double tablixWidth, string reportFormat)
-        {
-            var viewModelSerializer = new XmlSerializer(typeof(ColumnEditorViewModel));
-            ColumnEditorViewModel viewModel;
-            using (var reader = reportColumns.CreateReader())
-            {
-                viewModel = viewModelSerializer.Deserialize(reader) as ColumnEditorViewModel;
-            }
-
-            var customColumns =
-                from c in viewModel.Columns
-                join a in viewModel.AvailableColumns on c.FieldName equals a.FieldName
-                select new CustomColumn
-                {
-                    CaptionExpression = a.CaptionExpression,
-                    DisplayOrder = c.DisplayOrder,
-                    FieldName = c.FieldName,
-                    Format = a.Format,
-                    FunctionExpression = a.AvailableFunctions
-                        .Where(f => f.Name.Equals(c.FunctionName, StringComparison.InvariantCultureIgnoreCase))
-                        .Select(f => f.Expression).FirstOrDefault(),
-                    GroupExpression = a.GroupExpression,
-                    GroupOrder = c.GroupOrder,
-                    SortDirection = c.SortDirection,
-                    SortExpression = a.SortExpression,
-                    SortOrder = c.SortOrder,
-                    ValueExpression = a.ValueExpression,
-                    Width = a.Width,
-                    FunctionName = c.FunctionName
-                };
-
-            var groupColumns = customColumns.Where(c => c.GroupOrder >= 0).OrderBy(c => c.GroupOrder).ToList();
-
-            // Details columns are filtered by hide detail here, if details are hidden then only ungrouped columns with functions are relevant
-            var detailColumns = customColumns.Where(c => (c.GroupOrder < 0) && (!hideDetail || !string.IsNullOrEmpty(c.FunctionName))).OrderBy(c => c.DisplayOrder).ToList();
-            var sortColumns = customColumns.Where(c => c.GroupOrder < 0 && c.SortOrder.HasValue && c.SortOrder.Value > -1).OrderBy(c => c.SortOrder.Value).ToList();
-            var columns = new List<CustomColumn>();
-            columns.AddRange(groupColumns);
-            columns.AddRange(detailColumns);
-
-            var groupCount = groupColumns.Count;
-            var columnCount = columns.Count;
-
-            // Set override column width to hide detail because we always want to stretch the innermost group column if we're hiding details, otherwise it is up to the layout of the columns if we need to stretch the column or not
-            var overrideColumnWidth = hideDetail;
-
-            var bodyBuilder = new StringBuilder();
-            var bodyWriterSettings = new XmlWriterSettings();
-            bodyWriterSettings.OmitXmlDeclaration = true;
-            bodyWriterSettings.Indent = true;
-            bodyWriterSettings.ConformanceLevel = ConformanceLevel.Fragment;
-            using (var bodyWriter = XmlWriter.Create(bodyBuilder, bodyWriterSettings))
-            {
-
-                bodyWriter.WriteStartElement("Tablix", ReportDefinitionNamespace);
-                bodyWriter.WriteAttributeString("Name", "tblCustomColumns");
-                bodyWriter.WriteAttributeString("Top", "1.5in");
-                bodyWriter.WriteStartElement("TablixBody");
-
-                bodyWriter.WriteStartElement("TablixRows");
-
-                var rowCount = 0;
-                var groupColCount = 0;
-                var detailColCount = 0;
-                var totalColCount = 0;
-
-                // Write Grand Header Row if HideDetail
-
-                //get the number of groupings if any plus a row for details
-                rowCount = groupCount + 2; //header row, row for each group, details row
-
-                //BEGIN HEADER ROW
-                bodyWriter.WriteStartElement("TablixRow");
-                bodyWriter.WriteElementString("Height", "0.25in");
-                bodyWriter.WriteStartElement("TablixCells");
-
-                for (var i = 0; i < groupCount; i++)
-                {
-                    var groupColumn = groupColumns[i];
-                    WriteCSVHeaderCell(bodyWriter, groupColumn.CaptionExpression, groupColumn.ValueExpression, 1, styleDataSetName, groupColumn.FieldName,"NoOutput");
-                    groupColCount++;
-                    
-                }
-                foreach (var detailColumn in detailColumns)
-                {
-                    if (hideDetail)
-                    {
-                        if (detailColumn.FunctionName.ToUpper() != "NONE")
-                        {
-                            WriteCSVHeaderCell(bodyWriter, detailColumn.FunctionName + "_" + detailColumn.CaptionExpression, detailColumn.ValueExpression, 1, styleDataSetName, detailColumn.FieldName, "NoOutput");
-                            detailColCount++;
-                        }
-                    }
-                    else
-                    {
-                        WriteCSVHeaderCell(bodyWriter, detailColumn.CaptionExpression, detailColumn.ValueExpression, 1, styleDataSetName, detailColumn.FieldName, "NoOutput");
-                        detailColCount++;
-                    }
-                }
-                totalColCount = groupColCount + detailColCount;
-                bodyWriter.WriteEndElement(); // TablixCells
-                bodyWriter.WriteEndElement(); // TablixRow
-                //END HEADER ROW
-
-                //BEGIN GROUP ROWS
-
-                //If hideDetail = false then just show details
-                var groupRowCount = 0;
-
-                if (!hideDetail)
-                {
-                    bodyWriter.WriteStartElement("TablixRow");
-                    bodyWriter.WriteElementString("Height", "0.25in");
-                    bodyWriter.WriteStartElement("TablixCells");
-
-                    for (var j = 0; j < groupCount; j++)
-                    {
-                        WriteCSVDetailCell(bodyWriter, groupColumns[j].ValueExpression, styleDataSetName, groupColumns[j].FieldName, null);
-                    }
-                    //now write the details
-                    //Now write the expression for the detail columns.
-                    foreach (var detailColumn in detailColumns)
-                    {
-                        WriteCSVDetailCell(bodyWriter, detailColumn.ValueExpression, styleDataSetName, detailColumn.FieldName, null);
-                    }
-
-                    bodyWriter.WriteEndElement(); // TablixCells
-                    bodyWriter.WriteEndElement(); // TablixRow
-                    groupRowCount++;
-                }
-                else
-                {
-                    for (var j = 0; j < groupCount; j++)
-                    {
-                        bodyWriter.WriteStartElement("TablixRow");
-                        bodyWriter.WriteElementString("Height", "0.25in");
-                        bodyWriter.WriteStartElement("TablixCells");
-                        if (j == 0)  //first group row
-                        {
-                            WriteCSVDetailCell(bodyWriter, groupColumns[j].ValueExpression, styleDataSetName, groupColumns[j].FieldName, null);
-                            if (j == groupCount - 1)
-                            {
-                                //Now write the expression for the detail columns.
-                                foreach (var detailColumn in detailColumns)
-                                {
-                                    if (detailColumn.FunctionName.ToUpper() != "NONE")
-                                    {
-                                        WriteCSVDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, detailColumn.FunctionName + "_" + detailColumn.FieldName, null);
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                WriteSpacerCells(bodyWriter, totalColCount - 1, styleDataSetName);
-                            }
-                        }
-                        else
-                        {
-                            WriteSpacerCells(bodyWriter, j, styleDataSetName);
-                            WriteCSVDetailCell(bodyWriter, groupColumns[j].ValueExpression, styleDataSetName, groupColumns[j].FieldName, null);
-                            if (j == groupCount - 1)
-                            {
-                                //Now write the expression for the detail columns.
-                                foreach (var detailColumn in detailColumns)
-                                {
-                                    if (detailColumn.FunctionName.ToUpper() != "NONE")
-                                    {
-                                        WriteCSVDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, detailColumn.FunctionName + "_" + detailColumn.FieldName, null);
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                WriteSpacerCells(bodyWriter, (totalColCount - (j + 1)), styleDataSetName);
-                            }
-                        }
-
-
-                        bodyWriter.WriteEndElement(); // TablixCells
-                        bodyWriter.WriteEndElement(); // TablixRow
-                        groupRowCount++;
-                    }
-                }
-                //END GROUP ROWS
-
-                //BEGIN TOTALS ROWS
-                bodyWriter.WriteStartElement("TablixRow");
-                bodyWriter.WriteElementString("Height", "0.25in");
-                bodyWriter.WriteStartElement("TablixCells");
-
-                WriteSpacerCells(bodyWriter, groupColCount, styleDataSetName);
-
-                string dataElementOutputVal = (groupCount == 0) ? "Output" : "NoOutput";
-
-                foreach (var detailColumn in detailColumns)
-                {
-                    if (hideDetail)
-                    {
-                        if (detailColumn.FunctionName.ToUpper() != "NONE")
-                        {
-                            WriteCSVGrandTotalDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, detailColumn.FunctionName + "_" + detailColumn.FieldName, dataElementOutputVal);
-                        }
-                    }
-                    else
-                    {
-                        string functionExpression = detailColumn.FunctionExpression;
-                        string functionName = detailColumn.FunctionName;
-                        if(functionName == null)
-                        {
-                            functionName = "None";
-                            functionExpression = "None";
-                        }
-                        WriteCSVGrandTotalDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, functionName + "_" + detailColumn.FieldName, "NoOutput");
-                    }
-
-                }
-                bodyWriter.WriteEndElement(); //TablixCells
-                bodyWriter.WriteEndElement(); //TablixRow
-
-                bodyWriter.WriteEndElement(); //TablixRows
-
-                bodyWriter.WriteStartElement("TablixColumns");
-                for (var j = 0; j < totalColCount; j++)
-                {
-                    bodyWriter.WriteStartElement("TablixColumn");
-                    bodyWriter.WriteElementString("Width", "2in");
-                    bodyWriter.WriteEndElement(); //TablixColumn
-                }
-                bodyWriter.WriteEndElement(); // TablixColumns
-
-
-                bodyWriter.WriteEndElement(); // TablixBody
-
-                bodyWriter.WriteStartElement("TablixColumnHierarchy");
-                bodyWriter.WriteStartElement("TablixMembers");
-
-                for (var i = 0; i < totalColCount; i++)
-                {
-                    bodyWriter.WriteStartElement("TablixMember");
-                    bodyWriter.WriteEndElement(); // TablixMember
-                }
-
-
-                bodyWriter.WriteEndElement(); // TablixMembers
-                bodyWriter.WriteEndElement(); // TablixColumnHierarchy
-
-                bodyWriter.WriteStartElement("TablixRowHierarchy");
-                bodyWriter.WriteStartElement("TablixMembers");
-
-
-                bodyWriter.WriteStartElement("TablixMember");
-                bodyWriter.WriteEndElement();
-
-                //write details else write goupings
-                if (!hideDetail)
-                {
-                    bodyWriter.WriteStartElement("TablixMember");
-                    bodyWriter.WriteStartElement("Group");
-                    bodyWriter.WriteAttributeString("Name", "Details");
-                    bodyWriter.WriteEndElement(); // Group
-
-                    if (groupCount > 0)
-                    {
-                        bodyWriter.WriteStartElement("SortExpressions");
-                        //for (var i = groupCount - 1; i >= 0; i--)
-                        for (var i = 0; i < groupCount; i++ )
-                        {
-                            var groupColumn = groupColumns[i];
-                            bodyWriter.WriteStartElement("SortExpression");
-                            bodyWriter.WriteElementString("Value", groupColumn.SortExpression);
-                            if (groupColumn.SortDirection == "Descending")
-                            {
-                                bodyWriter.WriteElementString("Direction", "Descending");
-                            }
-                            bodyWriter.WriteEndElement(); // SortExpression
-                        }
-                        bodyWriter.WriteEndElement(); // SortExpressions
-                    }
-                    bodyWriter.WriteEndElement(); // TablixMember
-                }
-                else
-                {
-                    if (groupCount > 0)
-                    {
-                        for (var i = 0; i < groupCount; i++)
-                        {
-                            var groupColumn = groupColumns[i];
-
-                            bodyWriter.WriteStartElement("TablixMember");
-                            bodyWriter.WriteStartElement("Group");
-                            bodyWriter.WriteAttributeString("Name", GetRandomTextboxName());
-                            bodyWriter.WriteStartElement("GroupExpressions");
-                            bodyWriter.WriteElementString("GroupExpression", groupColumn.GroupExpression);
-                            bodyWriter.WriteEndElement(); // GroupExpressions
-                            bodyWriter.WriteEndElement(); // Group
-                            bodyWriter.WriteStartElement("SortExpressions");
-                            bodyWriter.WriteStartElement("SortExpression");
-                            bodyWriter.WriteElementString("Value", groupColumn.SortExpression);
-                            if (groupColumn.SortDirection == "Descending")
-                            {
-                                bodyWriter.WriteElementString("Direction", "Descending");
-                            }
-                            bodyWriter.WriteEndElement(); // SortExpression
-                            bodyWriter.WriteEndElement(); // SortExpressions
-
-
-                            // If details are hidden then we need to suppress the innermost group header row
-                            if (i != groupCount - 1)
-                            {
-                                bodyWriter.WriteStartElement("TablixMembers");
-                                bodyWriter.WriteStartElement("TablixMember");
-                                bodyWriter.WriteEndElement(); // TablixMember
-                                bodyWriter.WriteStartElement("TablixMember");
-                                bodyWriter.WriteStartElement("TablixMembers");
-
-                            }
-
-                        }
-
-                        if (groupCount == 1)
-                        {
-                            bodyWriter.WriteStartElement("TablixMembers");
-                            bodyWriter.WriteStartElement("TablixMember");
-                            bodyWriter.WriteEndElement();  //TablixMember
-                        }
-
-
-                        var tablixClose = (groupCount == 2) ? groupCount : groupCount + groupCount / 2;
-                        for (var i = 0; i < tablixClose; i++)
-                        {
-                            bodyWriter.WriteEndElement(); // TablixMember
-                            bodyWriter.WriteEndElement(); // TablixMembers
-                        }
-
-                        if (groupCount > 1) { 
-                            bodyWriter.WriteEndElement(); //TablixMember\
-                        }
-                        //bodyWriter.WriteEndElement(); //TablixMember
-
-                    }
-
-                    if (groupCount == 0)
-                    {
-                        for (var i = 0; i < groupCount; i++)
-                        {
-                            // Group Total Value Row
-                            bodyWriter.WriteStartElement("TablixMember");
-                            //if (!hideDetail && (i == groupCount - 1))
-                            //{
-                            //    // Details Value Row
-                            //    bodyWriter.WriteStartElement("Group");
-                            //    bodyWriter.WriteAttributeString("Name", "Details");
-                            //    bodyWriter.WriteEndElement(); // Group
-                            //}
-                            //else
-                            //{
-                            bodyWriter.WriteElementString("KeepWithGroup", "Before");
-                            //}
-                            bodyWriter.WriteEndElement(); // TablixMember
-                            bodyWriter.WriteEndElement(); // TablixMembers
-                            bodyWriter.WriteEndElement(); // TablixMember
-                        }
-                    }
-                }
-
-                // Grand Total Value Row
-                bodyWriter.WriteStartElement("TablixMember");
-                bodyWriter.WriteElementString("KeepWithGroup", "Before");
-                bodyWriter.WriteEndElement(); // TablixMember
-
-                bodyWriter.WriteEndElement(); // TablixMembers
-                bodyWriter.WriteEndElement(); // TablixRowHierarchy
-
-                //bodyWriter.Flush();
-                //bodyBuilder.ToString();
-
-                //bodyWriter.WriteEndElement(); // TablixRowHierarchy
-
-                var tablixHeight = rowCount * 0.25;
-                var bodyHeight = tablixHeight + 2.2175;
-                tablixWidth = totalColCount * .25;
-                bodyWriter.WriteElementString("DataSetName", mainDataSetName);
-                bodyWriter.WriteElementString("Top", ".21in");
-                bodyWriter.WriteElementString("Height", string.Format("{0}in", tablixHeight));
-                bodyWriter.WriteElementString("Width", string.Format("{0}in", tablixWidth));
-                bodyWriter.WriteStartElement("Style");
-                bodyWriter.WriteEndElement(); //Style
-
-                bodyWriter.WriteEndElement(); //Tablix
-                bodyWriter.Flush();
-            }
-            return XElement.Parse(bodyBuilder.ToString());
-        }
-
-		private static XElement GenerateTablix(string mainDataSetName, string styleDataSetName, XElement reportColumns, bool hideDetail, out double tablixWidth, string reportFormat)
+		private static XElement GenerateCSVTablix(string mainDataSetName, string styleDataSetName, XElement reportColumns, bool hideDetail, out double tablixWidth, string reportFormat, string defaultNamespace)
 		{
 			var viewModelSerializer = new XmlSerializer(typeof(ColumnEditorViewModel));
 			ColumnEditorViewModel viewModel;
@@ -534,7 +233,7 @@ namespace Emdat.InVision.Generator
 					SortOrder = c.SortOrder,
 					ValueExpression = a.ValueExpression,
 					Width = a.Width,
-					FunctionName = c.FunctionName                    
+					FunctionName = c.FunctionName
 				};
 
 			var groupColumns = customColumns.Where(c => c.GroupOrder >= 0).OrderBy(c => c.GroupOrder).ToList();
@@ -559,9 +258,412 @@ namespace Emdat.InVision.Generator
 			bodyWriterSettings.ConformanceLevel = ConformanceLevel.Fragment;
 			using (var bodyWriter = XmlWriter.Create(bodyBuilder, bodyWriterSettings))
 			{
-				bodyWriter.WriteStartElement("Tablix", ReportDefinitionNamespace);
-				bodyWriter.WriteAttributeString("Name", "tblCustomColumns");
-				bodyWriter.WriteAttributeString("Top", "1.5in");
+
+				bodyWriter.WriteStartElement("Tablix", defaultNamespace);
+				bodyWriter.WriteAttributeString("Name", "tblCustomColumns");				
+				bodyWriter.WriteStartElement("TablixBody");
+
+				bodyWriter.WriteStartElement("TablixRows");
+
+				var rowCount = 0;
+				var groupColCount = 0;
+				var detailColCount = 0;
+				var totalColCount = 0;
+
+				// Write Grand Header Row if HideDetail
+
+				//get the number of groupings if any plus a row for details
+				rowCount = groupCount + 2; //header row, row for each group, details row
+
+				//BEGIN HEADER ROW
+				bodyWriter.WriteStartElement("TablixRow");
+				bodyWriter.WriteElementString("Height", "0.25in");
+				bodyWriter.WriteStartElement("TablixCells");
+
+				for (var i = 0; i < groupCount; i++)
+				{
+					var groupColumn = groupColumns[i];
+					WriteCSVHeaderCell(bodyWriter, groupColumn.CaptionExpression, groupColumn.ValueExpression, 1, styleDataSetName, groupColumn.FieldName, "NoOutput");
+					groupColCount++;
+
+				}
+				foreach (var detailColumn in detailColumns)
+				{
+					if (hideDetail)
+					{
+						if (detailColumn.FunctionName.ToUpper() != "NONE")
+						{
+							WriteCSVHeaderCell(bodyWriter, detailColumn.FunctionName + "_" + detailColumn.CaptionExpression, detailColumn.ValueExpression, 1, styleDataSetName, detailColumn.FieldName, "NoOutput");
+							detailColCount++;
+						}
+					}
+					else
+					{
+						WriteCSVHeaderCell(bodyWriter, detailColumn.CaptionExpression, detailColumn.ValueExpression, 1, styleDataSetName, detailColumn.FieldName, "NoOutput");
+						detailColCount++;
+					}
+				}
+				totalColCount = groupColCount + detailColCount;
+				bodyWriter.WriteEndElement(); // TablixCells
+				bodyWriter.WriteEndElement(); // TablixRow
+											  //END HEADER ROW
+
+				//BEGIN GROUP ROWS
+
+				//If hideDetail = false then just show details
+				var groupRowCount = 0;
+
+				if (!hideDetail)
+				{
+					bodyWriter.WriteStartElement("TablixRow");
+					bodyWriter.WriteElementString("Height", "0.25in");
+					bodyWriter.WriteStartElement("TablixCells");
+
+					for (var j = 0; j < groupCount; j++)
+					{
+						WriteCSVDetailCell(bodyWriter, groupColumns[j].ValueExpression, styleDataSetName, groupColumns[j].FieldName, null);
+					}
+					//now write the details
+					//Now write the expression for the detail columns.
+					foreach (var detailColumn in detailColumns)
+					{
+						WriteCSVDetailCell(bodyWriter, detailColumn.ValueExpression, styleDataSetName, detailColumn.FieldName, null);
+					}
+
+					bodyWriter.WriteEndElement(); // TablixCells
+					bodyWriter.WriteEndElement(); // TablixRow
+					groupRowCount++;
+				}
+				else
+				{
+					for (var j = 0; j < groupCount; j++)
+					{
+						bodyWriter.WriteStartElement("TablixRow");
+						bodyWriter.WriteElementString("Height", "0.25in");
+						bodyWriter.WriteStartElement("TablixCells");
+						if (j == 0)  //first group row
+						{
+							WriteCSVDetailCell(bodyWriter, groupColumns[j].ValueExpression, styleDataSetName, groupColumns[j].FieldName, null);
+							if (j == groupCount - 1)
+							{
+								//Now write the expression for the detail columns.
+								foreach (var detailColumn in detailColumns)
+								{
+									if (detailColumn.FunctionName.ToUpper() != "NONE")
+									{
+										WriteCSVDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, detailColumn.FunctionName + "_" + detailColumn.FieldName, null);
+									}
+								}
+							}
+							else
+							{
+								WriteSpacerCells(bodyWriter, totalColCount - 1, styleDataSetName);
+							}
+						}
+						else
+						{
+							WriteSpacerCells(bodyWriter, j, styleDataSetName);
+							WriteCSVDetailCell(bodyWriter, groupColumns[j].ValueExpression, styleDataSetName, groupColumns[j].FieldName, null);
+							if (j == groupCount - 1)
+							{
+								//Now write the expression for the detail columns.
+								foreach (var detailColumn in detailColumns)
+								{
+									if (detailColumn.FunctionName.ToUpper() != "NONE")
+									{
+										WriteCSVDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, detailColumn.FunctionName + "_" + detailColumn.FieldName, null);
+									}
+								}
+							}
+							else
+							{
+								WriteSpacerCells(bodyWriter, (totalColCount - (j + 1)), styleDataSetName);
+							}
+						}
+
+
+						bodyWriter.WriteEndElement(); // TablixCells
+						bodyWriter.WriteEndElement(); // TablixRow
+						groupRowCount++;
+					}
+				}
+				//END GROUP ROWS
+
+				//BEGIN TOTALS ROWS
+				bodyWriter.WriteStartElement("TablixRow");
+				bodyWriter.WriteElementString("Height", "0.25in");
+				bodyWriter.WriteStartElement("TablixCells");
+
+				WriteSpacerCells(bodyWriter, groupColCount, styleDataSetName);
+
+				string dataElementOutputVal = (groupCount == 0) ? "Output" : "NoOutput";
+
+				foreach (var detailColumn in detailColumns)
+				{
+					if (hideDetail)
+					{
+						if (detailColumn.FunctionName.ToUpper() != "NONE")
+						{
+							WriteCSVGrandTotalDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, detailColumn.FunctionName + "_" + detailColumn.FieldName, dataElementOutputVal);
+						}
+					}
+					else
+					{
+						string functionExpression = detailColumn.FunctionExpression;
+						string functionName = detailColumn.FunctionName;
+						if (functionName == null)
+						{
+							functionName = "None";
+							functionExpression = "None";
+						}
+						WriteCSVGrandTotalDetailCell(bodyWriter, detailColumn.FunctionExpression, styleDataSetName, functionName + "_" + detailColumn.FieldName, "NoOutput");
+					}
+
+				}
+				bodyWriter.WriteEndElement(); //TablixCells
+				bodyWriter.WriteEndElement(); //TablixRow
+
+				bodyWriter.WriteEndElement(); //TablixRows
+
+				bodyWriter.WriteStartElement("TablixColumns");
+				for (var j = 0; j < totalColCount; j++)
+				{
+					bodyWriter.WriteStartElement("TablixColumn");
+					bodyWriter.WriteElementString("Width", "2in");
+					bodyWriter.WriteEndElement(); //TablixColumn
+				}
+				bodyWriter.WriteEndElement(); // TablixColumns
+
+
+				bodyWriter.WriteEndElement(); // TablixBody
+
+				bodyWriter.WriteStartElement("TablixColumnHierarchy");
+				bodyWriter.WriteStartElement("TablixMembers");
+
+				for (var i = 0; i < totalColCount; i++)
+				{
+					bodyWriter.WriteStartElement("TablixMember");
+					bodyWriter.WriteEndElement(); // TablixMember
+				}
+
+
+				bodyWriter.WriteEndElement(); // TablixMembers
+				bodyWriter.WriteEndElement(); // TablixColumnHierarchy
+
+				bodyWriter.WriteStartElement("TablixRowHierarchy");
+				bodyWriter.WriteStartElement("TablixMembers");
+
+
+				bodyWriter.WriteStartElement("TablixMember");
+				bodyWriter.WriteEndElement();
+
+				//write details else write goupings
+				if (!hideDetail)
+				{
+					bodyWriter.WriteStartElement("TablixMember");
+					bodyWriter.WriteStartElement("Group");
+					bodyWriter.WriteAttributeString("Name", "Details");
+					bodyWriter.WriteEndElement(); // Group
+
+					if (groupCount > 0)
+					{
+						bodyWriter.WriteStartElement("SortExpressions");
+						//for (var i = groupCount - 1; i >= 0; i--)
+						for (var i = 0; i < groupCount; i++)
+						{
+							var groupColumn = groupColumns[i];
+							bodyWriter.WriteStartElement("SortExpression");
+							bodyWriter.WriteElementString("Value", groupColumn.SortExpression);
+							if (groupColumn.SortDirection == "Descending")
+							{
+								bodyWriter.WriteElementString("Direction", "Descending");
+							}
+							bodyWriter.WriteEndElement(); // SortExpression
+						}
+						bodyWriter.WriteEndElement(); // SortExpressions
+					}
+					bodyWriter.WriteEndElement(); // TablixMember
+				}
+				else
+				{
+					if (groupCount > 0)
+					{
+						for (var i = 0; i < groupCount; i++)
+						{
+							var groupColumn = groupColumns[i];
+
+							bodyWriter.WriteStartElement("TablixMember");
+							bodyWriter.WriteStartElement("Group");
+							bodyWriter.WriteAttributeString("Name", GetRandomTextboxName());
+							bodyWriter.WriteStartElement("GroupExpressions");
+							bodyWriter.WriteElementString("GroupExpression", groupColumn.GroupExpression);
+							bodyWriter.WriteEndElement(); // GroupExpressions
+							bodyWriter.WriteEndElement(); // Group
+							bodyWriter.WriteStartElement("SortExpressions");
+							bodyWriter.WriteStartElement("SortExpression");
+							bodyWriter.WriteElementString("Value", groupColumn.SortExpression);
+							if (groupColumn.SortDirection == "Descending")
+							{
+								bodyWriter.WriteElementString("Direction", "Descending");
+							}
+							bodyWriter.WriteEndElement(); // SortExpression
+							bodyWriter.WriteEndElement(); // SortExpressions
+
+
+							// If details are hidden then we need to suppress the innermost group header row
+							if (i != groupCount - 1)
+							{
+								bodyWriter.WriteStartElement("TablixMembers");
+								bodyWriter.WriteStartElement("TablixMember");
+								bodyWriter.WriteEndElement(); // TablixMember
+								bodyWriter.WriteStartElement("TablixMember");
+								bodyWriter.WriteStartElement("TablixMembers");
+
+							}
+
+						}
+
+						if (groupCount == 1)
+						{
+							bodyWriter.WriteStartElement("TablixMembers");
+							bodyWriter.WriteStartElement("TablixMember");
+							bodyWriter.WriteEndElement();  //TablixMember
+						}
+
+
+						var tablixClose = (groupCount == 2) ? groupCount : groupCount + groupCount / 2;
+						for (var i = 0; i < tablixClose; i++)
+						{
+							bodyWriter.WriteEndElement(); // TablixMember
+							bodyWriter.WriteEndElement(); // TablixMembers
+						}
+
+						if (groupCount > 1)
+						{
+							bodyWriter.WriteEndElement(); //TablixMember\
+						}
+						//bodyWriter.WriteEndElement(); //TablixMember
+
+					}
+
+					if (groupCount == 0)
+					{
+						for (var i = 0; i < groupCount; i++)
+						{
+							// Group Total Value Row
+							bodyWriter.WriteStartElement("TablixMember");
+							//if (!hideDetail && (i == groupCount - 1))
+							//{
+							//    // Details Value Row
+							//    bodyWriter.WriteStartElement("Group");
+							//    bodyWriter.WriteAttributeString("Name", "Details");
+							//    bodyWriter.WriteEndElement(); // Group
+							//}
+							//else
+							//{
+							bodyWriter.WriteElementString("KeepWithGroup", "Before");
+							//}
+							bodyWriter.WriteEndElement(); // TablixMember
+							bodyWriter.WriteEndElement(); // TablixMembers
+							bodyWriter.WriteEndElement(); // TablixMember
+						}
+					}
+				}
+
+				// Grand Total Value Row
+				bodyWriter.WriteStartElement("TablixMember");
+				bodyWriter.WriteElementString("KeepWithGroup", "Before");
+				bodyWriter.WriteEndElement(); // TablixMember
+
+				bodyWriter.WriteEndElement(); // TablixMembers
+				bodyWriter.WriteEndElement(); // TablixRowHierarchy
+
+				//bodyWriter.Flush();
+				//bodyBuilder.ToString();
+
+				//bodyWriter.WriteEndElement(); // TablixRowHierarchy
+
+				var tablixHeight = rowCount * 0.25;
+				var bodyHeight = tablixHeight + 2.2175;
+				tablixWidth = totalColCount * .25;
+				bodyWriter.WriteElementString("DataSetName", mainDataSetName);
+				bodyWriter.WriteElementString("Top", ".21in");
+				bodyWriter.WriteElementString("Height", string.Format("{0}in", tablixHeight));
+				bodyWriter.WriteElementString("Width", string.Format("{0}in", tablixWidth));
+				bodyWriter.WriteStartElement("Style");
+				bodyWriter.WriteEndElement(); //Style
+
+				bodyWriter.WriteEndElement(); //Tablix
+				bodyWriter.Flush();
+			}
+			return XElement.Parse(bodyBuilder.ToString());
+		}
+
+		private static XElement GenerateTablix(string mainDataSetName, string styleDataSetName, XElement reportColumns, bool hideDetail, out double tablixWidth, string reportFormat, string defaultNamespace, bool hideTablixIfNoData)
+		{
+			var viewModelSerializer = new XmlSerializer(typeof(ColumnEditorViewModel));
+			ColumnEditorViewModel viewModel;
+			using (var reader = reportColumns.CreateReader())
+			{
+				viewModel = viewModelSerializer.Deserialize(reader) as ColumnEditorViewModel;
+			}
+
+			if(viewModel.Columns == null || viewModel.Columns.Count == 0)
+			{
+				throw new ArgumentException("Columns are not defined in the report options");
+			}
+
+			if (viewModel.AvailableColumns == null || viewModel.AvailableColumns.Count == 0)
+			{
+				throw new ArgumentException("AvailableColumns are not defined in the report options");
+			}
+
+			var customColumns =
+				from c in viewModel.Columns
+				join a in viewModel.AvailableColumns on c.FieldName equals a.FieldName
+				select new CustomColumn
+				{
+					CaptionExpression = a.CaptionExpression,
+					DisplayOrder = c.DisplayOrder,
+					FieldName = c.FieldName,
+					Format = a.Format,
+					FunctionExpression = a.AvailableFunctions
+						.Where(f => f.Name.Equals(c.FunctionName, StringComparison.InvariantCultureIgnoreCase))
+						.Select(f => f.Expression).FirstOrDefault(),
+					GroupExpression = a.GroupExpression,
+					GroupOrder = c.GroupOrder,
+					SortDirection = c.SortDirection,
+					SortExpression = a.SortExpression,
+					SortOrder = c.SortOrder,
+					ValueExpression = a.ValueExpression,
+					Width = a.Width,
+					FunctionName = c.FunctionName
+				};
+
+			var groupColumns = customColumns.Where(c => c.GroupOrder >= 0).OrderBy(c => c.GroupOrder).ToList();
+
+			// Details columns are filtered by hide detail here, if details are hidden then only ungrouped columns with functions are relevant
+			var detailColumns = customColumns.Where(c => (c.GroupOrder < 0) && (!hideDetail || !string.IsNullOrEmpty(c.FunctionName))).OrderBy(c => c.DisplayOrder).ToList();
+			var sortColumns = customColumns.Where(c => c.GroupOrder < 0 && c.SortOrder.HasValue && c.SortOrder.Value > -1).OrderBy(c => c.SortOrder.Value).ToList();
+			var columns = new List<CustomColumn>();
+			columns.AddRange(groupColumns);
+			columns.AddRange(detailColumns);
+
+			var groupCount = groupColumns.Count;
+			var columnCount = columns.Count;
+
+			// Set override column width to hide detail because we always want to stretch the innermost group column if we're hiding details, otherwise it is up to the layout of the columns if we need to stretch the column or not
+			var overrideColumnWidth = hideDetail;
+
+			var bodyBuilder = new StringBuilder();
+			var bodyWriterSettings = new XmlWriterSettings();
+			bodyWriterSettings.OmitXmlDeclaration = true;
+			bodyWriterSettings.Indent = true;
+			bodyWriterSettings.ConformanceLevel = ConformanceLevel.Fragment;
+			using (var bodyWriter = XmlWriter.Create(bodyBuilder, bodyWriterSettings))
+			{
+				bodyWriter.WriteStartElement("Tablix", defaultNamespace);
+				bodyWriter.WriteAttributeString("Name", "tblCustomColumns");				
 				bodyWriter.WriteStartElement("TablixBody");
 
 				bodyWriter.WriteStartElement("TablixRows");
@@ -742,33 +844,34 @@ namespace Emdat.InVision.Generator
 				var grandTotalEmptyColumnsAvailable = 0;
 				var grandTotalGainedWidth = 0.0;
 
-                //if groupings > 0 then do this:
-                if (groupCount > 0)
-                { 
-				    foreach (var detailColumn in detailColumns)
-				    {
-					    if (string.IsNullOrEmpty(detailColumn.FunctionName))
-					    {
-						    grandTotalColSpan++;
-						    grandTotalEmptyColumnsAvailable++;
-						    grandTotalGainedWidth += detailColumn.Width;
-					    }
-					    else
-					    {
-						    break;
-					    }
-				    }
-                }
-                //
+				//if groupings > 0 then do this:
+				if (groupCount > 0)
+				{
+					foreach (var detailColumn in detailColumns)
+					{
+						if (string.IsNullOrEmpty(detailColumn.FunctionName))
+						{
+							grandTotalColSpan++;
+							grandTotalEmptyColumnsAvailable++;
+							grandTotalGainedWidth += detailColumn.Width;
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+				//
 
 				if (grandTotalGainedWidth < 2.0)
 				{
 					overrideColumnWidth = true;
 				}
 
-                if (groupCount !=0){
-				    WriteGrandTotalDetailCell(bodyWriter, "Grand Total", styleDataSetName, null, null, grandTotalColSpan.ToString());
-                }
+				if (groupCount != 0)
+				{
+					WriteGrandTotalDetailCell(bodyWriter, "Grand Total", styleDataSetName, null, null, grandTotalColSpan.ToString());
+				}
 
 				for (var i = 0; i < grandTotalColSpan - 1; i++)
 				{
@@ -866,7 +969,7 @@ namespace Emdat.InVision.Generator
 					bodyWriter.WriteEndElement(); // TablixMember
 				}
 
-                for (var i = 0; i < groupCount; i++)
+				for (var i = 0; i < groupCount; i++)
 				{
 					var groupColumn = groupColumns[i];
 					bodyWriter.WriteStartElement("TablixMember");
@@ -888,7 +991,7 @@ namespace Emdat.InVision.Generator
 					bodyWriter.WriteStartElement("TablixMembers");
 
 					// If details are hidden then we need to suppress the innermost group header row
-                    if (!hideDetail || i != groupCount - 1)
+					if (!hideDetail || i != groupCount - 1)
 					{
 						// Group Label Row
 						bodyWriter.WriteStartElement("TablixMember");
@@ -933,7 +1036,7 @@ namespace Emdat.InVision.Generator
 				}
 
 
-                for (var i = 0; i < groupCount; i++)
+				for (var i = 0; i < groupCount; i++)
 				{
 					// Group Total Value Row
 					bodyWriter.WriteStartElement("TablixMember");
@@ -960,9 +1063,13 @@ namespace Emdat.InVision.Generator
 				var bodyHeight = tablixHeight + 2.2175;
 				bodyWriter.WriteElementString("Height", string.Format("{0}in", tablixHeight));
 				bodyWriter.WriteElementString("Width", string.Format("{0}in", tablixWidth));
-				bodyWriter.WriteStartElement("Visibility");
-				bodyWriter.WriteElementString("Hidden", string.Format("=CountRows(\"{0}\") = 0", mainDataSetName));
-				bodyWriter.WriteEndElement(); // Visibility
+				bodyWriter.WriteElementString("NoRowsMessage", "No data was found for the specified parameters");				
+				if (hideTablixIfNoData)
+				{
+					bodyWriter.WriteStartElement("Visibility");
+					bodyWriter.WriteElementString("Hidden", string.Format("=CountRows(\"{0}\") = 0", mainDataSetName));
+					bodyWriter.WriteEndElement(); // Visibility
+				}
 				bodyWriter.WriteStartElement("Style");
 				bodyWriter.WriteStartElement("Border");
 				bodyWriter.WriteElementString("Style", "None");
@@ -1060,69 +1167,69 @@ namespace Emdat.InVision.Generator
 			xmlWriter.WriteEndElement(); // TablixCell
 		}
 
-        private static void WriteCSVDetailCell(XmlWriter xmlWriter, string detailValue, string styleDataSetName, string dataElementName, string format)
-        {
-            xmlWriter.WriteStartElement("TablixCell");
-            xmlWriter.WriteStartElement("CellContents");
-            xmlWriter.WriteStartElement("Textbox");
-            xmlWriter.WriteAttributeString("Name", GetRandomTextboxName());
-            xmlWriter.WriteElementString("DataElementName", dataElementName);
-            xmlWriter.WriteElementString("CanGrow", "true");
-            xmlWriter.WriteElementString("KeepTogether", "true");
-            xmlWriter.WriteStartElement("Paragraphs");
-            xmlWriter.WriteStartElement("Paragraph");
-            xmlWriter.WriteStartElement("TextRuns");
-            xmlWriter.WriteStartElement("TextRun");
-            xmlWriter.WriteElementString("Value", detailValue);
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // TextRun
-            xmlWriter.WriteEndElement(); // TextRuns
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteElementString("TextAlign", "Left");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // Paragraph
-            xmlWriter.WriteEndElement(); // Paragraphs
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // Textbox
-            xmlWriter.WriteEndElement(); // CellContents
-            xmlWriter.WriteEndElement(); // TablixCell
-        }
+		private static void WriteCSVDetailCell(XmlWriter xmlWriter, string detailValue, string styleDataSetName, string dataElementName, string format)
+		{
+			xmlWriter.WriteStartElement("TablixCell");
+			xmlWriter.WriteStartElement("CellContents");
+			xmlWriter.WriteStartElement("Textbox");
+			xmlWriter.WriteAttributeString("Name", GetRandomTextboxName());
+			xmlWriter.WriteElementString("DataElementName", dataElementName);
+			xmlWriter.WriteElementString("CanGrow", "true");
+			xmlWriter.WriteElementString("KeepTogether", "true");
+			xmlWriter.WriteStartElement("Paragraphs");
+			xmlWriter.WriteStartElement("Paragraph");
+			xmlWriter.WriteStartElement("TextRuns");
+			xmlWriter.WriteStartElement("TextRun");
+			xmlWriter.WriteElementString("Value", detailValue);
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // TextRun
+			xmlWriter.WriteEndElement(); // TextRuns
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteElementString("TextAlign", "Left");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // Paragraph
+			xmlWriter.WriteEndElement(); // Paragraphs
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // Textbox
+			xmlWriter.WriteEndElement(); // CellContents
+			xmlWriter.WriteEndElement(); // TablixCell
+		}
 
-        private static void WriteCSVGrandTotalDetailCell(XmlWriter xmlWriter, string detailValue, string styleDataSetName, string dataElementName, string dataElementOutput)
-        {
-            xmlWriter.WriteStartElement("TablixCell");
-            xmlWriter.WriteStartElement("CellContents");
-            xmlWriter.WriteStartElement("Textbox");
-            xmlWriter.WriteAttributeString("Name", GetRandomTextboxName());
-            if (!string.IsNullOrEmpty(dataElementName))
-            {
-                xmlWriter.WriteElementString("DataElementName", dataElementName);
-            }
-            xmlWriter.WriteElementString("DataElementOutput", dataElementOutput);
-            xmlWriter.WriteElementString("CanGrow", "true");
-            xmlWriter.WriteElementString("KeepTogether", "true");
-            xmlWriter.WriteStartElement("Paragraphs");
-            xmlWriter.WriteStartElement("Paragraph");
-            xmlWriter.WriteStartElement("TextRuns");
-            xmlWriter.WriteStartElement("TextRun");
-            xmlWriter.WriteElementString("Value", detailValue);
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // TextRun
-            xmlWriter.WriteEndElement(); // TextRuns
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteElementString("TextAlign", "Left");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // Paragraph
-            xmlWriter.WriteEndElement(); // Paragraphs
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // Textbox
-            xmlWriter.WriteEndElement(); // CellContents
-            xmlWriter.WriteEndElement(); // TablixCell
-        }
+		private static void WriteCSVGrandTotalDetailCell(XmlWriter xmlWriter, string detailValue, string styleDataSetName, string dataElementName, string dataElementOutput)
+		{
+			xmlWriter.WriteStartElement("TablixCell");
+			xmlWriter.WriteStartElement("CellContents");
+			xmlWriter.WriteStartElement("Textbox");
+			xmlWriter.WriteAttributeString("Name", GetRandomTextboxName());
+			if (!string.IsNullOrEmpty(dataElementName))
+			{
+				xmlWriter.WriteElementString("DataElementName", dataElementName);
+			}
+			xmlWriter.WriteElementString("DataElementOutput", dataElementOutput);
+			xmlWriter.WriteElementString("CanGrow", "true");
+			xmlWriter.WriteElementString("KeepTogether", "true");
+			xmlWriter.WriteStartElement("Paragraphs");
+			xmlWriter.WriteStartElement("Paragraph");
+			xmlWriter.WriteStartElement("TextRuns");
+			xmlWriter.WriteStartElement("TextRun");
+			xmlWriter.WriteElementString("Value", detailValue);
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // TextRun
+			xmlWriter.WriteEndElement(); // TextRuns
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteElementString("TextAlign", "Left");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // Paragraph
+			xmlWriter.WriteEndElement(); // Paragraphs
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // Textbox
+			xmlWriter.WriteEndElement(); // CellContents
+			xmlWriter.WriteEndElement(); // TablixCell
+		}
 
 		private static void WriteFooterDetailCell(XmlWriter xmlWriter, string detailValue, string styleDataSetName, string dataElementName, string format, string colSpan)
 		{
@@ -1186,7 +1293,7 @@ namespace Emdat.InVision.Generator
 			{
 				xmlWriter.WriteElementString("DataElementName", dataElementName);
 			}
-            xmlWriter.WriteElementString("DataElementOutput", "NoOutput");
+			xmlWriter.WriteElementString("DataElementOutput", "NoOutput");
 			xmlWriter.WriteElementString("CanGrow", "true");
 			xmlWriter.WriteElementString("KeepTogether", "true");
 			xmlWriter.WriteStartElement("Paragraphs");
@@ -1222,7 +1329,7 @@ namespace Emdat.InVision.Generator
 			xmlWriter.WriteEndElement(); // Textbox
 			if (!string.IsNullOrEmpty(colSpan))
 			{
-                xmlWriter.WriteElementString("ColSpan", colSpan.ToString());
+				xmlWriter.WriteElementString("ColSpan", colSpan.ToString());
 			}
 			xmlWriter.WriteEndElement(); // CellContents
 			xmlWriter.WriteEndElement(); // TablixCell
@@ -1295,14 +1402,14 @@ namespace Emdat.InVision.Generator
 			xmlWriter.WriteElementString("Color", GetStyleDataColor(styleDataSetName));
 			xmlWriter.WriteEndElement(); // Style
 			xmlWriter.WriteEndElement(); // TextRun
-            xmlWriter.WriteStartElement("TextRun");
-            xmlWriter.WriteElementString("Value", ":");
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteElementString("FontFamily", "Verdana");
-            xmlWriter.WriteElementString("FontSize", "8pt");
-            xmlWriter.WriteElementString("Color", GetStyleDataColor(styleDataSetName));
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // TextRun
+			xmlWriter.WriteStartElement("TextRun");
+			xmlWriter.WriteElementString("Value", ":");
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteElementString("FontFamily", "Verdana");
+			xmlWriter.WriteElementString("FontSize", "8pt");
+			xmlWriter.WriteElementString("Color", GetStyleDataColor(styleDataSetName));
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // TextRun
 			xmlWriter.WriteStartElement("TextRun");
 			xmlWriter.WriteElementString("Value", value);
 			xmlWriter.WriteStartElement("Style");
@@ -1331,34 +1438,34 @@ namespace Emdat.InVision.Generator
 			xmlWriter.WriteEndElement(); // TablixCell
 		}
 
-        private static void WriteCSVHeaderCell(XmlWriter xmlWriter, String label, String value, int colSpan, string styleDataSetName, string dataElementName, string dataElementOutput)
-        {
-            xmlWriter.WriteStartElement("TablixCell");
-            xmlWriter.WriteStartElement("CellContents");
-            xmlWriter.WriteStartElement("Textbox");
-            xmlWriter.WriteAttributeString("Name", GetRandomTextboxName());
-            xmlWriter.WriteElementString("DataElementName", dataElementName);
-            xmlWriter.WriteElementString("DataElementOutput", dataElementOutput);
-            xmlWriter.WriteElementString("CanGrow", "true");
-            xmlWriter.WriteElementString("KeepTogether", "true");
-            xmlWriter.WriteStartElement("Paragraphs");
-            xmlWriter.WriteStartElement("Paragraph");
-            xmlWriter.WriteStartElement("TextRuns");
-            xmlWriter.WriteStartElement("TextRun");
-            xmlWriter.WriteElementString("Value", value);
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // TextRun
-            xmlWriter.WriteEndElement(); // TextRuns
-            xmlWriter.WriteStartElement("Style");
-            xmlWriter.WriteElementString("TextAlign", "Right");
-            xmlWriter.WriteEndElement(); // Style
-            xmlWriter.WriteEndElement(); // Paragraph
-            xmlWriter.WriteEndElement(); // Paragraphs
-            xmlWriter.WriteEndElement(); // Textbox
-            xmlWriter.WriteEndElement(); // CellContents
-            xmlWriter.WriteEndElement(); // TablixCell
-        }
+		private static void WriteCSVHeaderCell(XmlWriter xmlWriter, String label, String value, int colSpan, string styleDataSetName, string dataElementName, string dataElementOutput)
+		{
+			xmlWriter.WriteStartElement("TablixCell");
+			xmlWriter.WriteStartElement("CellContents");
+			xmlWriter.WriteStartElement("Textbox");
+			xmlWriter.WriteAttributeString("Name", GetRandomTextboxName());
+			xmlWriter.WriteElementString("DataElementName", dataElementName);
+			xmlWriter.WriteElementString("DataElementOutput", dataElementOutput);
+			xmlWriter.WriteElementString("CanGrow", "true");
+			xmlWriter.WriteElementString("KeepTogether", "true");
+			xmlWriter.WriteStartElement("Paragraphs");
+			xmlWriter.WriteStartElement("Paragraph");
+			xmlWriter.WriteStartElement("TextRuns");
+			xmlWriter.WriteStartElement("TextRun");
+			xmlWriter.WriteElementString("Value", value);
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // TextRun
+			xmlWriter.WriteEndElement(); // TextRuns
+			xmlWriter.WriteStartElement("Style");
+			xmlWriter.WriteElementString("TextAlign", "Right");
+			xmlWriter.WriteEndElement(); // Style
+			xmlWriter.WriteEndElement(); // Paragraph
+			xmlWriter.WriteEndElement(); // Paragraphs
+			xmlWriter.WriteEndElement(); // Textbox
+			xmlWriter.WriteEndElement(); // CellContents
+			xmlWriter.WriteEndElement(); // TablixCell
+		}
 
 		private static void WriteFooterLabelCell(XmlWriter xmlWriter, String value, int colSpan, string styleDataSetName, string dataElementName)
 		{

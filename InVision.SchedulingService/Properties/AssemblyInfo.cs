@@ -37,3 +37,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("*")]
 #pragma warning restore
 [assembly: AssemblyInformationalVersion("*")]
+
+[assembly: InternalsVisibleTo("InVision.SchedulingService.TestProject")]
