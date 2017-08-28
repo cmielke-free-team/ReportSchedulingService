@@ -187,7 +187,7 @@
   <ItemGroup>
     <Content Include="Emdat.dll" />
     <Content Include="Emdat.Net20.dll" />
-    <None Include="parameters.xml" />
+    <None Include="MSDeployParameters.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InVision.Common\InVision.Common.csproj">
