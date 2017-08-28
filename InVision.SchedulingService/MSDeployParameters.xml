@@ -11,19 +11,19 @@
   <parameter name="Emdat.Invision.SchedulingService.SSRSReportExecutionServiceUrl" defaultValue="http://%(EMDAT_ENV_SSRS_HOSTNAME)%:80/ReportServer/ReportExecution2005.asmx">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/Emdat.InVision.Properties.Settings/setting[@name='InVision_Presentation_SSRSExecution_ReportExecutionService']/value/text()" />
   </parameter>
-  <parameter name="Emdat.Invision.SchedulingService.MaxConsecutiveFailures" defaultValue="5">
+  <parameter name="Emdat.Invision.SchedulingService.MaxConsecutiveFailures" defaultValue="%(EMDAT_ENV_INVISION_MAXCONSECUTIVEFAILURES)%">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='MaxConsecutiveFailures']/value/text()" />
   </parameter>
-  <parameter name="Emdat.Invision.SchedulingService.InitialRecoveryInterval" defaultValue="00:01:00">
+  <parameter name="Emdat.Invision.SchedulingService.InitialRecoveryInterval" defaultValue="%(EMDAT_ENV_INVISION_INITIALRECOVERYINTERVAL)%">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='InitialRecoveryInterval']/value/text()" />
   </parameter>
-  <parameter name="Emdat.Invision.SchedulingService.MaxConcurrentExecutions" defaultValue="10">
+  <parameter name="Emdat.Invision.SchedulingService.MaxConcurrentExecutions" defaultValue="%(EMDAT_ENV_INVISION_MAXCONCURRENTEXECUTIONS)%">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='MaxConcurrentExecutions']/value/text()" />
   </parameter>
-   <parameter name="Emdat.Invision.SchedulingService.PollingInterval" defaultValue="00:01:00">
+   <parameter name="Emdat.Invision.SchedulingService.PollingInterval" defaultValue="%(EMDAT_ENV_INVISION_POLLINGINTERVAL)%">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='PollingInterval']/value/text()" />
   </parameter>
-  <parameter name="Emdat.Invision.SchedulingService.ReportServerExecutionTimeout" defaultValue="00:30:00">
+  <parameter name="Emdat.Invision.SchedulingService.ReportServerExecutionTimeout" defaultValue="%(EMDAT_ENV_INVISION_REPORTSERVEREXECUTIONTIMEOUT)%">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='ReportServerExecutionTimeout']/value/text()" />
   </parameter>
 </parameters>
