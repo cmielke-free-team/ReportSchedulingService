@@ -70,6 +70,7 @@ namespace Emdat.InVision.Sql
 						int ordAssociateCity = reader.GetOrdinal("Associate_City"); 
 						int ordAssociateState = reader.GetOrdinal("Associate_State"); 
 						int ordAssociateZipCode = reader.GetOrdinal("Associate_Zip_Code"); 
+						int ordAssociateCompany = reader.GetOrdinal("Associate_Company"); 
 						int ordAssociatePhone = reader.GetOrdinal("Associate_Phone"); 
 						int ordModifiedUser = reader.GetOrdinal("Modified_User"); 
 						int ordModifiedDate = reader.GetOrdinal("Modified_Date"); 
@@ -107,6 +108,7 @@ namespace Emdat.InVision.Sql
 							row.AssociateCity = (!reader.IsDBNull(ordAssociateCity) ? reader.GetString(ordAssociateCity).Trim() : default(string));
 							row.AssociateState = (!reader.IsDBNull(ordAssociateState) ? reader.GetString(ordAssociateState).Trim() : default(string));
 							row.AssociateZipCode = (!reader.IsDBNull(ordAssociateZipCode) ? reader.GetString(ordAssociateZipCode).Trim() : default(string));
+							row.AssociateCompany = (!reader.IsDBNull(ordAssociateCompany) ? reader.GetString(ordAssociateCompany).Trim() : default(string));
 							row.AssociatePhone = (!reader.IsDBNull(ordAssociatePhone) ? reader.GetString(ordAssociatePhone).Trim() : default(string));
 							row.ModifiedUser = (!reader.IsDBNull(ordModifiedUser) ? reader.GetString(ordModifiedUser).Trim() : default(string));
 							row.ModifiedDate = (!reader.IsDBNull(ordModifiedDate) ? reader.GetDateTime(ordModifiedDate) : default(DateTime?));
@@ -221,6 +223,7 @@ namespace Emdat.InVision.Sql
 						int ordAssociateCity = reader.GetOrdinal("Associate_City"); 
 						int ordAssociateState = reader.GetOrdinal("Associate_State"); 
 						int ordAssociateZipCode = reader.GetOrdinal("Associate_Zip_Code"); 
+						int ordAssociateCompany = reader.GetOrdinal("Associate_Company"); 
 						int ordAssociatePhone = reader.GetOrdinal("Associate_Phone"); 
 						int ordModifiedUser = reader.GetOrdinal("Modified_User"); 
 						int ordModifiedDate = reader.GetOrdinal("Modified_Date"); 
@@ -258,6 +261,7 @@ namespace Emdat.InVision.Sql
 							row.AssociateCity = (!reader.IsDBNull(ordAssociateCity) ? reader.GetString(ordAssociateCity).Trim() : default(string));
 							row.AssociateState = (!reader.IsDBNull(ordAssociateState) ? reader.GetString(ordAssociateState).Trim() : default(string));
 							row.AssociateZipCode = (!reader.IsDBNull(ordAssociateZipCode) ? reader.GetString(ordAssociateZipCode).Trim() : default(string));
+							row.AssociateCompany = (!reader.IsDBNull(ordAssociateCompany) ? reader.GetString(ordAssociateCompany).Trim() : default(string));
 							row.AssociatePhone = (!reader.IsDBNull(ordAssociatePhone) ? reader.GetString(ordAssociatePhone).Trim() : default(string));
 							row.ModifiedUser = (!reader.IsDBNull(ordModifiedUser) ? reader.GetString(ordModifiedUser).Trim() : default(string));
 							row.ModifiedDate = (!reader.IsDBNull(ordModifiedDate) ? reader.GetDateTime(ordModifiedDate) : default(DateTime?));
@@ -1154,7 +1158,17 @@ namespace Emdat.InVision.Sql
 						int ordOwnerUsername = reader.GetOrdinal("Owner_Username"); 
 						int ordOptions = reader.GetOrdinal("Options"); 
 						int ordEnvironmentID = reader.GetOrdinal("Environment_ID"); 
-						int ordEnvironmentName = reader.GetOrdinal("Environment_Name");
+						int ordEnvironmentName = reader.GetOrdinal("Environment_Name"); 
+						int ordReportName = reader.GetOrdinal("Report_Name"); 
+						int ordReportDescription = reader.GetOrdinal("Report_Description"); 
+						int ordCategoryName = reader.GetOrdinal("Category_Name"); 
+						int ordPrevStartDate = reader.GetOrdinal("Prev_Start_Date"); 
+						int ordPrevScheduledStartDate = reader.GetOrdinal("Prev_Scheduled_Start_Date"); 
+						int ordPrevEndDate = reader.GetOrdinal("Prev_End_Date"); 
+						int ordPrevReportExecutionStatusID = reader.GetOrdinal("Prev_Report_Execution_Status_ID"); 
+						int ordPrevReportExecutionErrorDescription = reader.GetOrdinal("Prev_Report_Execution_Error_Description"); 
+						int ordNextScheduledStartDate = reader.GetOrdinal("Next_Scheduled_Start_Date"); 
+						int ordNextReportExecutionStatusID = reader.GetOrdinal("Next_Report_Execution_Status_ID");
 						do
 						{
 							ListSubscriptionsByASPUserRow row = new ListSubscriptionsByASPUserRow();
@@ -1179,6 +1193,16 @@ namespace Emdat.InVision.Sql
 							row.Options = (!reader.IsDBNull(ordOptions) ? reader.GetString(ordOptions).Trim() : default(string));
 							row.EnvironmentID = (!reader.IsDBNull(ordEnvironmentID) ? reader.GetInt32(ordEnvironmentID) : default(int?));
 							row.EnvironmentName = (!reader.IsDBNull(ordEnvironmentName) ? reader.GetString(ordEnvironmentName).Trim() : default(string));
+							row.ReportName = (!reader.IsDBNull(ordReportName) ? reader.GetString(ordReportName).Trim() : default(string));
+							row.ReportDescription = (!reader.IsDBNull(ordReportDescription) ? reader.GetString(ordReportDescription).Trim() : default(string));
+							row.CategoryName = (!reader.IsDBNull(ordCategoryName) ? reader.GetString(ordCategoryName).Trim() : default(string));
+							row.PrevStartDate = (!reader.IsDBNull(ordPrevStartDate) ? reader.GetDateTime(ordPrevStartDate) : default(DateTime?));
+							row.PrevScheduledStartDate = (!reader.IsDBNull(ordPrevScheduledStartDate) ? reader.GetDateTime(ordPrevScheduledStartDate) : default(DateTime?));
+							row.PrevEndDate = (!reader.IsDBNull(ordPrevEndDate) ? reader.GetDateTime(ordPrevEndDate) : default(DateTime?));
+							row.PrevReportExecutionStatusID = (!reader.IsDBNull(ordPrevReportExecutionStatusID) ? reader.GetInt32(ordPrevReportExecutionStatusID) : default(int?));
+							row.PrevReportExecutionErrorDescription = (!reader.IsDBNull(ordPrevReportExecutionErrorDescription) ? reader.GetString(ordPrevReportExecutionErrorDescription).Trim() : default(string));
+							row.NextScheduledStartDate = (!reader.IsDBNull(ordNextScheduledStartDate) ? reader.GetDateTime(ordNextScheduledStartDate) : default(DateTime?));
+							row.NextReportExecutionStatusID = (!reader.IsDBNull(ordNextReportExecutionStatusID) ? reader.GetInt32(ordNextReportExecutionStatusID) : default(int?));
 							yield return row;
 						}
 						while (reader.Read());
@@ -1261,7 +1285,17 @@ namespace Emdat.InVision.Sql
 						int ordOwnerUsername = reader.GetOrdinal("Owner_Username"); 
 						int ordOptions = reader.GetOrdinal("Options"); 
 						int ordEnvironmentID = reader.GetOrdinal("Environment_ID"); 
-						int ordEnvironmentName = reader.GetOrdinal("Environment_Name");
+						int ordEnvironmentName = reader.GetOrdinal("Environment_Name"); 
+						int ordReportName = reader.GetOrdinal("Report_Name"); 
+						int ordReportDescription = reader.GetOrdinal("Report_Description"); 
+						int ordCategoryName = reader.GetOrdinal("Category_Name"); 
+						int ordPrevStartDate = reader.GetOrdinal("Prev_Start_Date"); 
+						int ordPrevScheduledStartDate = reader.GetOrdinal("Prev_Scheduled_Start_Date"); 
+						int ordPrevEndDate = reader.GetOrdinal("Prev_End_Date"); 
+						int ordPrevReportExecutionStatusID = reader.GetOrdinal("Prev_Report_Execution_Status_ID"); 
+						int ordPrevReportExecutionErrorDescription = reader.GetOrdinal("Prev_Report_Execution_Error_Description"); 
+						int ordNextScheduledStartDate = reader.GetOrdinal("Next_Scheduled_Start_Date"); 
+						int ordNextReportExecutionStatusID = reader.GetOrdinal("Next_Report_Execution_Status_ID");
 						do
 						{
 							ListSubscriptionsByMntUserRow row = new ListSubscriptionsByMntUserRow();
@@ -1286,6 +1320,16 @@ namespace Emdat.InVision.Sql
 							row.Options = (!reader.IsDBNull(ordOptions) ? reader.GetString(ordOptions).Trim() : default(string));
 							row.EnvironmentID = (!reader.IsDBNull(ordEnvironmentID) ? reader.GetInt32(ordEnvironmentID) : default(int?));
 							row.EnvironmentName = (!reader.IsDBNull(ordEnvironmentName) ? reader.GetString(ordEnvironmentName).Trim() : default(string));
+							row.ReportName = (!reader.IsDBNull(ordReportName) ? reader.GetString(ordReportName).Trim() : default(string));
+							row.ReportDescription = (!reader.IsDBNull(ordReportDescription) ? reader.GetString(ordReportDescription).Trim() : default(string));
+							row.CategoryName = (!reader.IsDBNull(ordCategoryName) ? reader.GetString(ordCategoryName).Trim() : default(string));
+							row.PrevStartDate = (!reader.IsDBNull(ordPrevStartDate) ? reader.GetDateTime(ordPrevStartDate) : default(DateTime?));
+							row.PrevScheduledStartDate = (!reader.IsDBNull(ordPrevScheduledStartDate) ? reader.GetDateTime(ordPrevScheduledStartDate) : default(DateTime?));
+							row.PrevEndDate = (!reader.IsDBNull(ordPrevEndDate) ? reader.GetDateTime(ordPrevEndDate) : default(DateTime?));
+							row.PrevReportExecutionStatusID = (!reader.IsDBNull(ordPrevReportExecutionStatusID) ? reader.GetInt32(ordPrevReportExecutionStatusID) : default(int?));
+							row.PrevReportExecutionErrorDescription = (!reader.IsDBNull(ordPrevReportExecutionErrorDescription) ? reader.GetString(ordPrevReportExecutionErrorDescription).Trim() : default(string));
+							row.NextScheduledStartDate = (!reader.IsDBNull(ordNextScheduledStartDate) ? reader.GetDateTime(ordNextScheduledStartDate) : default(DateTime?));
+							row.NextReportExecutionStatusID = (!reader.IsDBNull(ordNextReportExecutionStatusID) ? reader.GetInt32(ordNextReportExecutionStatusID) : default(int?));
 							yield return row;
 						}
 						while (reader.Read());
@@ -1368,7 +1412,17 @@ namespace Emdat.InVision.Sql
 						int ordOwnerUsername = reader.GetOrdinal("Owner_Username"); 
 						int ordOptions = reader.GetOrdinal("Options"); 
 						int ordEnvironmentID = reader.GetOrdinal("Environment_ID"); 
-						int ordEnvironmentName = reader.GetOrdinal("Environment_Name");
+						int ordEnvironmentName = reader.GetOrdinal("Environment_Name"); 
+						int ordReportName = reader.GetOrdinal("Report_Name"); 
+						int ordReportDescription = reader.GetOrdinal("Report_Description"); 
+						int ordCategoryName = reader.GetOrdinal("Category_Name"); 
+						int ordPrevStartDate = reader.GetOrdinal("Prev_Start_Date"); 
+						int ordPrevScheduledStartDate = reader.GetOrdinal("Prev_Scheduled_Start_Date"); 
+						int ordPrevEndDate = reader.GetOrdinal("Prev_End_Date"); 
+						int ordPrevReportExecutionStatusID = reader.GetOrdinal("Prev_Report_Execution_Status_ID"); 
+						int ordPrevReportExecutionErrorDescription = reader.GetOrdinal("Prev_Report_Execution_Error_Description"); 
+						int ordNextScheduledStartDate = reader.GetOrdinal("Next_Scheduled_Start_Date"); 
+						int ordNextReportExecutionStatusID = reader.GetOrdinal("Next_Report_Execution_Status_ID");
 						do
 						{
 							ListSubscriptionsByInqUserRow row = new ListSubscriptionsByInqUserRow();
@@ -1393,6 +1447,16 @@ namespace Emdat.InVision.Sql
 							row.Options = (!reader.IsDBNull(ordOptions) ? reader.GetString(ordOptions).Trim() : default(string));
 							row.EnvironmentID = (!reader.IsDBNull(ordEnvironmentID) ? reader.GetInt32(ordEnvironmentID) : default(int?));
 							row.EnvironmentName = (!reader.IsDBNull(ordEnvironmentName) ? reader.GetString(ordEnvironmentName).Trim() : default(string));
+							row.ReportName = (!reader.IsDBNull(ordReportName) ? reader.GetString(ordReportName).Trim() : default(string));
+							row.ReportDescription = (!reader.IsDBNull(ordReportDescription) ? reader.GetString(ordReportDescription).Trim() : default(string));
+							row.CategoryName = (!reader.IsDBNull(ordCategoryName) ? reader.GetString(ordCategoryName).Trim() : default(string));
+							row.PrevStartDate = (!reader.IsDBNull(ordPrevStartDate) ? reader.GetDateTime(ordPrevStartDate) : default(DateTime?));
+							row.PrevScheduledStartDate = (!reader.IsDBNull(ordPrevScheduledStartDate) ? reader.GetDateTime(ordPrevScheduledStartDate) : default(DateTime?));
+							row.PrevEndDate = (!reader.IsDBNull(ordPrevEndDate) ? reader.GetDateTime(ordPrevEndDate) : default(DateTime?));
+							row.PrevReportExecutionStatusID = (!reader.IsDBNull(ordPrevReportExecutionStatusID) ? reader.GetInt32(ordPrevReportExecutionStatusID) : default(int?));
+							row.PrevReportExecutionErrorDescription = (!reader.IsDBNull(ordPrevReportExecutionErrorDescription) ? reader.GetString(ordPrevReportExecutionErrorDescription).Trim() : default(string));
+							row.NextScheduledStartDate = (!reader.IsDBNull(ordNextScheduledStartDate) ? reader.GetDateTime(ordNextScheduledStartDate) : default(DateTime?));
+							row.NextReportExecutionStatusID = (!reader.IsDBNull(ordNextReportExecutionStatusID) ? reader.GetInt32(ordNextReportExecutionStatusID) : default(int?));
 							yield return row;
 						}
 						while (reader.Read());
@@ -2141,7 +2205,17 @@ namespace Emdat.InVision.Sql
 						int ordEndTime = reader.GetOrdinal("End_Time"); 
 						int ordOptions = reader.GetOrdinal("Options"); 
 						int ordEnvironmentID = reader.GetOrdinal("Environment_ID"); 
-						int ordEnvironmentName = reader.GetOrdinal("Environment_Name");
+						int ordEnvironmentName = reader.GetOrdinal("Environment_Name"); 
+						int ordReportName = reader.GetOrdinal("Report_Name"); 
+						int ordReportDescription = reader.GetOrdinal("Report_Description"); 
+						int ordCategoryName = reader.GetOrdinal("Category_Name"); 
+						int ordPrevStartDate = reader.GetOrdinal("Prev_Start_Date"); 
+						int ordPrevScheduledStartDate = reader.GetOrdinal("Prev_Scheduled_Start_Date"); 
+						int ordPrevEndDate = reader.GetOrdinal("Prev_End_Date"); 
+						int ordPrevReportExecutionStatusID = reader.GetOrdinal("Prev_Report_Execution_Status_ID"); 
+						int ordPrevReportExecutionErrorDescription = reader.GetOrdinal("Prev_Report_Execution_Error_Description"); 
+						int ordNextScheduledStartDate = reader.GetOrdinal("Next_Scheduled_Start_Date"); 
+						int ordNextReportExecutionStatusID = reader.GetOrdinal("Next_Report_Execution_Status_ID");
 						do
 						{
 							GetSubscriptionRow row = new GetSubscriptionRow();
@@ -2162,6 +2236,16 @@ namespace Emdat.InVision.Sql
 							row.Options = (!reader.IsDBNull(ordOptions) ? reader.GetString(ordOptions).Trim() : default(string));
 							row.EnvironmentID = (!reader.IsDBNull(ordEnvironmentID) ? reader.GetInt32(ordEnvironmentID) : default(int));
 							row.EnvironmentName = (!reader.IsDBNull(ordEnvironmentName) ? reader.GetString(ordEnvironmentName).Trim() : default(string));
+							row.ReportName = (!reader.IsDBNull(ordReportName) ? reader.GetString(ordReportName).Trim() : default(string));
+							row.ReportDescription = (!reader.IsDBNull(ordReportDescription) ? reader.GetString(ordReportDescription).Trim() : default(string));
+							row.CategoryName = (!reader.IsDBNull(ordCategoryName) ? reader.GetString(ordCategoryName).Trim() : default(string));
+							row.PrevStartDate = (!reader.IsDBNull(ordPrevStartDate) ? reader.GetDateTime(ordPrevStartDate) : default(DateTime?));
+							row.PrevScheduledStartDate = (!reader.IsDBNull(ordPrevScheduledStartDate) ? reader.GetDateTime(ordPrevScheduledStartDate) : default(DateTime?));
+							row.PrevEndDate = (!reader.IsDBNull(ordPrevEndDate) ? reader.GetDateTime(ordPrevEndDate) : default(DateTime?));
+							row.PrevReportExecutionStatusID = (!reader.IsDBNull(ordPrevReportExecutionStatusID) ? reader.GetInt32(ordPrevReportExecutionStatusID) : default(int?));
+							row.PrevReportExecutionErrorDescription = (!reader.IsDBNull(ordPrevReportExecutionErrorDescription) ? reader.GetString(ordPrevReportExecutionErrorDescription).Trim() : default(string));
+							row.NextScheduledStartDate = (!reader.IsDBNull(ordNextScheduledStartDate) ? reader.GetDateTime(ordNextScheduledStartDate) : default(DateTime?));
+							row.NextReportExecutionStatusID = (!reader.IsDBNull(ordNextReportExecutionStatusID) ? reader.GetInt32(ordNextReportExecutionStatusID) : default(int?));
 							yield return row;
 						}
 						while (reader.Read());
@@ -3827,7 +3911,7 @@ namespace Emdat.InVision.Sql
 			}
 		}
 					
-		public IEnumerable<GetExecutionFromQueueRow> GetExecutionFromQueue()
+		public IEnumerable<GetExecutionFromQueueRow> GetExecutionFromQueue(System.Int32? maxFailures)
 		{
 			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "GetExecutionFromQueue");
 			try
@@ -3839,6 +3923,12 @@ namespace Emdat.InVision.Sql
 					cmd.CommandType = System.Data.CommandType.StoredProcedure;
 					cmd.CommandText = "DATA_001.Reporting.Get_Execution_FromQueue";
 				
+					
+					SqlParameter maxFailuresParameter = new SqlParameter("@Max_Failures", (object)maxFailures ?? DBNull.Value); 
+					maxFailuresParameter.Size = 4;
+					maxFailuresParameter.Direction = ParameterDirection.Input;
+					maxFailuresParameter.SqlDbType = SqlDbType.Int;
+					cmd.Parameters.Add(maxFailuresParameter);
 
 					SqlDataReader reader;
 					try
@@ -4378,7 +4468,7 @@ namespace Emdat.InVision.Sql
 				int DeleteSubscription(System.Int32? reportSubscriptionID);
 				int DeleteExecution(System.Int32? reportExecutionID);
 				int DeleteExecutionData(System.Int32? reportExecutionID);
-				IEnumerable<GetExecutionFromQueueRow> GetExecutionFromQueue();
+				IEnumerable<GetExecutionFromQueueRow> GetExecutionFromQueue(System.Int32? maxFailures);
 				int SetExecutionRetry(System.Int32? reportExecutionID, System.String name, System.DateTime? startDate, System.DateTime? endDate, System.String errorDescription, System.Int32? reportExecutionErrorID, System.Int32? errorCount, System.DateTime? retryDate, System.String modifiedUser, System.DateTime? modifiedDate);
 				int ResetExecutionQueue();
 				int SetExecutionStatus(System.Int32? reportExecutionID, System.String name, System.DateTime? startDate, System.DateTime? endDate, System.Int32? reportExecutionStatusID, System.String errorDescription, System.Int32? errorCount, System.Int32? reportExecutionErrorID, System.Boolean? usedHistory, System.DateTime? nextExecutionDate, System.String nextExecutionParameters, System.Int32? nextExecutionReportID, System.Int32? nextExecutionSubscriptionID, System.Int32? nextExecutionFormatID, System.String modifiedUser, System.DateTime? modifiedDate);
@@ -4405,6 +4495,7 @@ namespace Emdat.InVision.Sql
 		public System.String AssociateCity { get; set; }
 		public System.String AssociateState { get; set; }
 		public System.String AssociateZipCode { get; set; }
+		public System.String AssociateCompany { get; set; }
 		public System.String AssociatePhone { get; set; }
 		public System.String ModifiedUser { get; set; }
 		public System.DateTime? ModifiedDate { get; set; }
@@ -4442,6 +4533,7 @@ namespace Emdat.InVision.Sql
 		public System.String AssociateCity { get; set; }
 		public System.String AssociateState { get; set; }
 		public System.String AssociateZipCode { get; set; }
+		public System.String AssociateCompany { get; set; }
 		public System.String AssociatePhone { get; set; }
 		public System.String ModifiedUser { get; set; }
 		public System.DateTime? ModifiedDate { get; set; }
@@ -4640,6 +4732,16 @@ namespace Emdat.InVision.Sql
 		public System.String Options { get; set; }
 		public System.Int32? EnvironmentID { get; set; }
 		public System.String EnvironmentName { get; set; }
+		public System.String ReportName { get; set; }
+		public System.String ReportDescription { get; set; }
+		public System.String CategoryName { get; set; }
+		public System.DateTime? PrevStartDate { get; set; }
+		public System.DateTime? PrevScheduledStartDate { get; set; }
+		public System.DateTime? PrevEndDate { get; set; }
+		public System.Int32? PrevReportExecutionStatusID { get; set; }
+		public System.String PrevReportExecutionErrorDescription { get; set; }
+		public System.DateTime? NextScheduledStartDate { get; set; }
+		public System.Int32? NextReportExecutionStatusID { get; set; }
 	}
 	public partial class ListSubscriptionsByMntUserRow
 	{
@@ -4664,6 +4766,16 @@ namespace Emdat.InVision.Sql
 		public System.String Options { get; set; }
 		public System.Int32? EnvironmentID { get; set; }
 		public System.String EnvironmentName { get; set; }
+		public System.String ReportName { get; set; }
+		public System.String ReportDescription { get; set; }
+		public System.String CategoryName { get; set; }
+		public System.DateTime? PrevStartDate { get; set; }
+		public System.DateTime? PrevScheduledStartDate { get; set; }
+		public System.DateTime? PrevEndDate { get; set; }
+		public System.Int32? PrevReportExecutionStatusID { get; set; }
+		public System.String PrevReportExecutionErrorDescription { get; set; }
+		public System.DateTime? NextScheduledStartDate { get; set; }
+		public System.Int32? NextReportExecutionStatusID { get; set; }
 	}
 	public partial class ListSubscriptionsByInqUserRow
 	{
@@ -4688,6 +4800,16 @@ namespace Emdat.InVision.Sql
 		public System.String Options { get; set; }
 		public System.Int32? EnvironmentID { get; set; }
 		public System.String EnvironmentName { get; set; }
+		public System.String ReportName { get; set; }
+		public System.String ReportDescription { get; set; }
+		public System.String CategoryName { get; set; }
+		public System.DateTime? PrevStartDate { get; set; }
+		public System.DateTime? PrevScheduledStartDate { get; set; }
+		public System.DateTime? PrevEndDate { get; set; }
+		public System.Int32? PrevReportExecutionStatusID { get; set; }
+		public System.String PrevReportExecutionErrorDescription { get; set; }
+		public System.DateTime? NextScheduledStartDate { get; set; }
+		public System.Int32? NextReportExecutionStatusID { get; set; }
 	}
 	public partial class GetSubscriptionNextExecutionRow
 	{
@@ -4851,6 +4973,16 @@ namespace Emdat.InVision.Sql
 		public System.String Options { get; set; }
 		public System.Int32 EnvironmentID { get; set; }
 		public System.String EnvironmentName { get; set; }
+		public System.String ReportName { get; set; }
+		public System.String ReportDescription { get; set; }
+		public System.String CategoryName { get; set; }
+		public System.DateTime? PrevStartDate { get; set; }
+		public System.DateTime? PrevScheduledStartDate { get; set; }
+		public System.DateTime? PrevEndDate { get; set; }
+		public System.Int32? PrevReportExecutionStatusID { get; set; }
+		public System.String PrevReportExecutionErrorDescription { get; set; }
+		public System.DateTime? NextScheduledStartDate { get; set; }
+		public System.Int32? NextReportExecutionStatusID { get; set; }
 	}
 	public partial class GetSubscriptionNotificationsRow
 	{
