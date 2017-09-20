@@ -99,7 +99,7 @@ namespace InVision.SchedulingService
 								null,
 								ex.ToString(),
 								null,
-								execRow.ErrorCount + 1,
+								execRow.ErrorCount.GetValueOrDefault(0) + 1,
 								execRow.ScheduledStartDate,
 								"SYSTEM",
 								DateTime.Now);
