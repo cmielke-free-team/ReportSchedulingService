@@ -2,7 +2,7 @@
   <parameter name="Emdat.Invision.SchedulingService.DATA001ConnectionString" defaultValue="Data Source=%(EMDAT_ENV_SQL_PRIMARY_HOSTNAME)%; Initial Catalog=DATA_001; Application Name=InVision.SchedulingService; Integrated Security=SSPI">    
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/connectionStrings/add[@name='Emdat.InVision.ReportInfo']/@connectionString" />    
   </parameter>
-  <parameter name="Emdat.Invision.SchedulingService.DATAReportsConnectionString" defaultValue="Data Source=%(EMDAT_ENV_SQL_PRIMARY_HOSTNAME)%; Initial Catalog=DATA_Reports; Application Name=InVision.SchedulingService; Integrated Security=SSPI">
+  <parameter name="Emdat.Invision.SchedulingService.DATAReportsConnectionString" defaultValue="Data Source=%(EMDAT_ENV_SQL_SECONDARY_HOSTNAME)%; Initial Catalog=DATA_Reports; Application Name=InVision.SchedulingService; Integrated Security=SSPI">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/connectionStrings/add[@name='Emdat.InVision.ReportContent']/@connectionString" />
   </parameter>
   <parameter name="Emdat.Invision.SchedulingService.SSRSReportingService2005Url" defaultValue="http://%(EMDAT_ENV_SSRS_HOSTNAME)%:80/ReportServer/ReportService2005.asmx">
