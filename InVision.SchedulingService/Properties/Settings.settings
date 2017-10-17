@@ -29,5 +29,8 @@
     <Setting Name="ServerTimeZoneIdentifier" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Central Standard Time</Value>
     </Setting>
+    <Setting Name="MaxReportFailures" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -52,8 +52,9 @@ namespace InVision.SchedulingService
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
 
-            //reset running jobs
-            ReportExecution.ResetRunningJobs();
+			//reset running jobs
+			ReportExecution.MaxReportFailures = Settings.Default.MaxReportFailures;
+			ReportExecution.ResetRunningJobs();
 
             //start worker threads, timers, etc. here
             _dispatcher = new ReportDispatcher();
@@ -63,7 +64,7 @@ namespace InVision.SchedulingService
             _dispatcher.Name = "SCHEDULER";
             _dispatcher.PollingInterval = Settings.Default.PollingInterval;
             _dispatcher.ExecutionTimeout = Settings.Default.ReportServerExecutionTimeout;
-
+			
             //HACK: To get around issues between DEV-DB02 and the DC, use a local user
             if (0 == string.Compare(System.Configuration.ConfigurationManager.AppSettings["ReportServerUseDefaultCredentials"], "FALSE", StringComparison.OrdinalIgnoreCase))
             {
