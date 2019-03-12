@@ -10,9 +10,9 @@ namespace Emdat.InVision.Sql
 {
     partial class ReportingDataContext : IReportingDataContext
     {
-		public IEnumerable<GetAssociateRow> GetAssociate(System.Int32? associateID)
+		public IEnumerable<GetAssociate2Row> GetAssociate2(System.Int32? associateID)
 		{
-			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "GetAssociate");
+			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "GetAssociate2");
 			try
 			{
 				using (SqlConnection conn = new SqlConnection(this.ConnectionString))
@@ -20,7 +20,7 @@ namespace Emdat.InVision.Sql
 				{
 					conn.Open();
 					cmd.CommandType = System.Data.CommandType.StoredProcedure;
-					cmd.CommandText = "DATA_001.Reporting.Get_Associate";
+					cmd.CommandText = "DATA_001.Reporting.Get_Associate2";
 				
 					
 					SqlParameter associateIDParameter = new SqlParameter("@Associate_ID", (object)associateID ?? DBNull.Value); 
@@ -38,7 +38,7 @@ namespace Emdat.InVision.Sql
 					{
 						if (String.IsNullOrEmpty(e.Procedure))
 						{
-							throw new System.Data.DataException(String.Format("Unable to execute data reader on {0}: {1}", "DATA_001.Reporting.Get_Associate", e.Message), e);
+							throw new System.Data.DataException(String.Format("Unable to execute data reader on {0}: {1}", "DATA_001.Reporting.Get_Associate2", e.Message), e);
 						}
 						else
 						{
@@ -80,7 +80,6 @@ namespace Emdat.InVision.Sql
 						int ordReferralLocationID = reader.GetOrdinal("Referral_Location_ID"); 
 						int ordRegionMask = reader.GetOrdinal("Region_Mask"); 
 						int ordAssociateUsername = reader.GetOrdinal("Associate_Username"); 
-						int ordAssociatePassword = reader.GetOrdinal("Associate_Password"); 
 						int ordFilePath = reader.GetOrdinal("File_Path"); 
 						int ordExportType = reader.GetOrdinal("Export_Type"); 
 						int ordAssociateActive = reader.GetOrdinal("Associate_Active"); 
@@ -90,7 +89,7 @@ namespace Emdat.InVision.Sql
 						int ordAssociateAutoFax = reader.GetOrdinal("Associate_AutoFax");
 						do
 						{
-							GetAssociateRow row = new GetAssociateRow();
+							GetAssociate2Row row = new GetAssociate2Row();
 							row.AssociateID = (!reader.IsDBNull(ordAssociateID) ? reader.GetInt32(ordAssociateID) : default(int));
 							row.ClientID = (!reader.IsDBNull(ordClientID) ? reader.GetInt32(ordClientID) : default(int));
 							row.AssociateClientCode = (!reader.IsDBNull(ordAssociateClientCode) ? reader.GetString(ordAssociateClientCode).Trim() : default(string));
@@ -118,7 +117,6 @@ namespace Emdat.InVision.Sql
 							row.ReferralLocationID = (!reader.IsDBNull(ordReferralLocationID) ? reader.GetInt32(ordReferralLocationID) : default(int?));
 							row.RegionMask = (!reader.IsDBNull(ordRegionMask) ? reader.GetInt32(ordRegionMask) : default(int));
 							row.AssociateUsername = (!reader.IsDBNull(ordAssociateUsername) ? reader.GetString(ordAssociateUsername).Trim() : default(string));
-							row.AssociatePassword = (!reader.IsDBNull(ordAssociatePassword) ? reader.GetString(ordAssociatePassword).Trim() : default(string));
 							row.FilePath = (!reader.IsDBNull(ordFilePath) ? reader.GetString(ordFilePath).Trim() : default(string));
 							row.ExportType = (!reader.IsDBNull(ordExportType) ? reader.GetInt32(ordExportType) : default(int));
 							row.AssociateActive = (!reader.IsDBNull(ordAssociateActive) ? reader.GetBoolean(ordAssociateActive) : default(bool));
@@ -139,9 +137,9 @@ namespace Emdat.InVision.Sql
 			}
 		}
 					
-		public IEnumerable<SearchAssociatesRow> SearchAssociates(System.Int32? clientID, System.String associateFirstName, System.String associateLastName, System.String associateClientCode, System.Boolean? checkfax)
+		public IEnumerable<SearchAssociates2Row> SearchAssociates2(System.Int32? clientID, System.String associateFirstName, System.String associateLastName, System.String associateClientCode, System.Boolean? checkfax)
 		{
-			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "SearchAssociates");
+			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "SearchAssociates2");
 			try
 			{
 				using (SqlConnection conn = new SqlConnection(this.ConnectionString))
@@ -149,7 +147,7 @@ namespace Emdat.InVision.Sql
 				{
 					conn.Open();
 					cmd.CommandType = System.Data.CommandType.StoredProcedure;
-					cmd.CommandText = "DATA_001.Reporting.Search_Associates";
+					cmd.CommandText = "DATA_001.Reporting.Search_Associates2";
 				
 					
 					SqlParameter clientIDParameter = new SqlParameter("@Client_ID", (object)clientID ?? DBNull.Value); 
@@ -191,7 +189,7 @@ namespace Emdat.InVision.Sql
 					{
 						if (String.IsNullOrEmpty(e.Procedure))
 						{
-							throw new System.Data.DataException(String.Format("Unable to execute data reader on {0}: {1}", "DATA_001.Reporting.Search_Associates", e.Message), e);
+							throw new System.Data.DataException(String.Format("Unable to execute data reader on {0}: {1}", "DATA_001.Reporting.Search_Associates2", e.Message), e);
 						}
 						else
 						{
@@ -233,7 +231,6 @@ namespace Emdat.InVision.Sql
 						int ordReferralLocationID = reader.GetOrdinal("Referral_Location_ID"); 
 						int ordRegionMask = reader.GetOrdinal("Region_Mask"); 
 						int ordAssociateUsername = reader.GetOrdinal("Associate_Username"); 
-						int ordAssociatePassword = reader.GetOrdinal("Associate_Password"); 
 						int ordFilePath = reader.GetOrdinal("File_Path"); 
 						int ordExportType = reader.GetOrdinal("Export_Type"); 
 						int ordAssociateActive = reader.GetOrdinal("Associate_Active"); 
@@ -243,7 +240,7 @@ namespace Emdat.InVision.Sql
 						int ordAssociateAutoFax = reader.GetOrdinal("Associate_AutoFax");
 						do
 						{
-							SearchAssociatesRow row = new SearchAssociatesRow();
+							SearchAssociates2Row row = new SearchAssociates2Row();
 							row.AssociateID = (!reader.IsDBNull(ordAssociateID) ? reader.GetInt32(ordAssociateID) : default(int));
 							row.ClientID = (!reader.IsDBNull(ordClientID) ? reader.GetInt32(ordClientID) : default(int));
 							row.AssociateClientCode = (!reader.IsDBNull(ordAssociateClientCode) ? reader.GetString(ordAssociateClientCode).Trim() : default(string));
@@ -271,7 +268,6 @@ namespace Emdat.InVision.Sql
 							row.ReferralLocationID = (!reader.IsDBNull(ordReferralLocationID) ? reader.GetInt32(ordReferralLocationID) : default(int?));
 							row.RegionMask = (!reader.IsDBNull(ordRegionMask) ? reader.GetInt32(ordRegionMask) : default(int));
 							row.AssociateUsername = (!reader.IsDBNull(ordAssociateUsername) ? reader.GetString(ordAssociateUsername).Trim() : default(string));
-							row.AssociatePassword = (!reader.IsDBNull(ordAssociatePassword) ? reader.GetString(ordAssociatePassword).Trim() : default(string));
 							row.FilePath = (!reader.IsDBNull(ordFilePath) ? reader.GetString(ordFilePath).Trim() : default(string));
 							row.ExportType = (!reader.IsDBNull(ordExportType) ? reader.GetInt32(ordExportType) : default(int));
 							row.AssociateActive = (!reader.IsDBNull(ordAssociateActive) ? reader.GetBoolean(ordAssociateActive) : default(bool));
@@ -4431,8 +4427,8 @@ namespace Emdat.InVision.Sql
 	public partial interface IReportingDataContext : IDisposable
 	{
 		String ConnectionString { get; }
-				IEnumerable<GetAssociateRow> GetAssociate(System.Int32? associateID);
-				IEnumerable<SearchAssociatesRow> SearchAssociates(System.Int32? clientID, System.String associateFirstName, System.String associateLastName, System.String associateClientCode, System.Boolean? checkfax);
+				IEnumerable<GetAssociate2Row> GetAssociate2(System.Int32? associateID);
+				IEnumerable<SearchAssociates2Row> SearchAssociates2(System.Int32? clientID, System.String associateFirstName, System.String associateLastName, System.String associateClientCode, System.Boolean? checkfax);
 				IEnumerable<ListReportsByASPUserRow> ListReportsByASPUser(System.Int32? reportingUserID);
 				IEnumerable<ListReportsByMntUserRow> ListReportsByMntUser(System.Int32? reportingUserID);
 				IEnumerable<ListReportsByInqUserRow> ListReportsByInqUser(System.Int32? reportingUserID);
@@ -4476,7 +4472,7 @@ namespace Emdat.InVision.Sql
 				IEnumerable<SSRSInqGetUsersRow> SSRSInqGetUsers(System.Int32? clientID, System.Int32? userID, System.Boolean? includeselectalloption, System.String selectalllabel, System.Boolean? filterbyproxy, System.Boolean? dictatingOnly);
 			}
 	
-	public partial class GetAssociateRow
+	public partial class GetAssociate2Row
 	{
 		public System.Int32 AssociateID { get; set; }
 		public System.Int32 ClientID { get; set; }
@@ -4505,7 +4501,6 @@ namespace Emdat.InVision.Sql
 		public System.Int32? ReferralLocationID { get; set; }
 		public System.Int32 RegionMask { get; set; }
 		public System.String AssociateUsername { get; set; }
-		public System.String AssociatePassword { get; set; }
 		public System.String FilePath { get; set; }
 		public System.Int32 ExportType { get; set; }
 		public System.Boolean AssociateActive { get; set; }
@@ -4514,7 +4509,7 @@ namespace Emdat.InVision.Sql
 		public System.String HCNAccountID { get; set; }
 		public System.Boolean AssociateAutoFax { get; set; }
 	}
-	public partial class SearchAssociatesRow
+	public partial class SearchAssociates2Row
 	{
 		public System.Int32 AssociateID { get; set; }
 		public System.Int32 ClientID { get; set; }
@@ -4543,7 +4538,6 @@ namespace Emdat.InVision.Sql
 		public System.Int32? ReferralLocationID { get; set; }
 		public System.Int32 RegionMask { get; set; }
 		public System.String AssociateUsername { get; set; }
-		public System.String AssociatePassword { get; set; }
 		public System.String FilePath { get; set; }
 		public System.Int32 ExportType { get; set; }
 		public System.Boolean AssociateActive { get; set; }

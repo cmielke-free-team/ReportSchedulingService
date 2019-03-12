@@ -73,8 +73,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Emdat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7554a3dbfe92db3b, processorArchitecture=MSIL" />
-    <Reference Include="Emdat.Net20, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Essential.Diagnostics, Version=1.2.0.0, Culture=neutral, PublicKeyToken=9d041bca93991466, processorArchitecture=MSIL">
       <HintPath>..\packages\Essential.Diagnostics.1.2.501.0\lib\Essential.Diagnostics.dll</HintPath>
       <Private>True</Private>
@@ -107,6 +105,9 @@
     <Compile Include="Classes\ReportExecutionEventArgs.cs" />
     <Compile Include="Classes\ReportExecutionErrorEnum.cs" />
     <Compile Include="Classes\ReportExecutionException.cs" />
+    <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\TimeZoneInforExtensions.cs" />
+    <Compile Include="Common\WorkerThreadBase.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -187,8 +188,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Emdat.dll" />
-    <Content Include="Emdat.Net20.dll" />
     <None Include="MSDeployParameters.xml" />
   </ItemGroup>
   <ItemGroup>

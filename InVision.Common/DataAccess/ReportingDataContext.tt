@@ -28,8 +28,8 @@ var password = "";
 
 var procs = new Proc[]
 {	
-	new Proc("DATA_001", "Reporting", "Get_Associate"),	
-	new Proc("DATA_001", "Reporting", "Search_Associates"),	
+	new Proc("DATA_001", "Reporting", "Get_Associate2"),	
+	new Proc("DATA_001", "Reporting", "Search_Associates2"),	
 	new Proc("DATA_001", "Reporting", "List_Reports_ByASPUser"),
 	new Proc("DATA_001", "Reporting", "List_Reports_ByMntUser"),
 	new Proc("DATA_001", "Reporting", "List_Reports_ByInqUser"),

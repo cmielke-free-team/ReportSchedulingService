@@ -21,7 +21,7 @@ namespace Emdat.InVision
             using (var data = new Emdat.InVision.Sql.ReportingDataContext())
             {
                 var assocs =
-                    (from a in data.SearchAssociates(clientId, assocFirstName, assocLastName, assocClientCode, false)
+                    (from a in data.SearchAssociates2(clientId, assocFirstName, assocLastName, assocClientCode, false)
                      select new AssociateItem
                      {
                          Id = a.AssociateID.ToString(),
@@ -51,7 +51,7 @@ namespace Emdat.InVision
             using (var data = new Emdat.InVision.Sql.ReportingDataContext())
             {
                 var assoc =
-                    from a in data.GetAssociate(assocId)
+                    from a in data.GetAssociate2(assocId)
                     select new AssociateItem
                     {
                         Id = a.AssociateID.ToString(),
