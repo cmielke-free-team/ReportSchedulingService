@@ -9,6 +9,7 @@ using Emdat.InVision;
 using Emdat;
 using System.Linq;
 using Emdat.InVision.Sql;
+using InVisionMvc.Infrastructure;
 
 namespace InVision.SchedulingService.TestProject
 {
@@ -86,10 +87,10 @@ namespace InVision.SchedulingService.TestProject
                 4, //Monday
                 1, //every 1 week
                 null,
-                (DateTime?)TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone),
+                (DateTime?)TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone),
                 "000000",
                 "000000");
-            DateTime? nextRun = sched.GetNextRunDate(TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone));            
+            DateTime? nextRun = sched.GetNextRunDate(TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone));            
             DateTime? expectedNextRun = new DateTime(2010, 2, 8, 0, 0, 0);
             Assert.AreEqual(expectedNextRun.Value, nextRun.Value);            
         }
@@ -108,10 +109,10 @@ namespace InVision.SchedulingService.TestProject
                 4, //Monday
                 1, //every 1 week
                 null,
-                (DateTime?)TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone),
+                (DateTime?)TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone),
                 "000000",
                 "000000");
-            DateTime? nextRun = sched.GetNextRunDate(TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone));
+            DateTime? nextRun = sched.GetNextRunDate(TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(scheduledStartDate, serverTimeZone, baseTranCoTimeZone));
             DateTime? expectedNextRun = new DateTime(2010, 2, 8, 0, 0, 0);
             Assert.AreEqual(expectedNextRun.Value, nextRun.Value);
         }        
