@@ -106,7 +106,6 @@
     <Compile Include="Classes\ReportExecutionErrorEnum.cs" />
     <Compile Include="Classes\ReportExecutionException.cs" />
     <Compile Include="Common\Logger.cs" />
-    <Compile Include="Common\TimeZoneInforExtensions.cs" />
     <Compile Include="Common\WorkerThreadBase.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
