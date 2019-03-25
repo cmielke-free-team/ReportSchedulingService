@@ -2,6 +2,7 @@
 using Emdat.InVision.SSRSExecution;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,18 +22,18 @@ namespace InVision.Sandbox
                 (from a in args
                  where a.StartsWith("/p:")
                  let parts = a.Substring(3).Split('=')
-                 select new ParameterValue 
-                 { 
+                 select new ParameterValue
+                 {
                      Name = parts[0],
                      Value = (string.IsNullOrEmpty(parts[1]) ? null : parts[1])
                  })
                  .ToArray();
 
-			bool hideDetail = parameterValues
-				.Where(pv => pv.Name == "HideDetail")
-				.Select(pv => (bool.TrueString.Equals(pv.Value ?? "false", StringComparison.OrdinalIgnoreCase)))
-				.DefaultIfEmpty(false)
-				.FirstOrDefault();
+            bool hideDetail = parameterValues
+                .Where(pv => pv.Name == "HideDetail")
+                .Select(pv => (bool.TrueString.Equals(pv.Value ?? "false", StringComparison.OrdinalIgnoreCase)))
+                .DefaultIfEmpty(false)
+                .FirstOrDefault();
 
             //Load report options. In production this will come from the DB, but for this test app, load from Options.xml file
             XElement optionsElement = XElement.Load("Options.xml");
@@ -41,7 +42,7 @@ namespace InVision.Sandbox
 
             //get rdl template from server
             var reportService = new Emdat.InVision.SSRS.ReportingService2005();
-            reportService.UseDefaultCredentials = true;
+            SetCredentials(reportService);
             byte[] rdlTemplate = reportService.GetReportDefinition(reportPath);
 
             using (var rdlTemplateStream = new MemoryStream(rdlTemplate))
@@ -59,7 +60,8 @@ namespace InVision.Sandbox
 
                 //execute the report using the new RDL
                 var reportExecution = new Emdat.InVision.SSRSExecution.ReportExecutionService();
-                reportExecution.UseDefaultCredentials = true;
+                reportExecution.UseDefaultCredentials = reportService.UseDefaultCredentials;
+                reportExecution.Credentials = reportService.Credentials;
 
                 Emdat.InVision.SSRSExecution.Warning[] warnings;
                 string extension;
@@ -99,13 +101,14 @@ namespace InVision.Sandbox
                     xw.WriteEndElement();
                     xw.WriteEndElement();
                     xw.WriteEndElement();
-                }                                
-                
+                }
+
                 var requestBytes = Encoding.UTF8.GetBytes(requestBuilder.ToString());
-                
+
                 var renderRequest = (HttpWebRequest)WebRequest.Create(reportExecution.Url);
                 renderRequest.Method = "POST";
-                renderRequest.UseDefaultCredentials = true;
+                renderRequest.UseDefaultCredentials = reportService.UseDefaultCredentials;
+                renderRequest.Credentials = reportService.Credentials;
                 renderRequest.Headers.Add("SOAPAction", "http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Render");
                 renderRequest.ContentType = "text/xml; charset=utf-8";
                 renderRequest.ContentLength = requestBytes.LongLength;
@@ -146,22 +149,33 @@ namespace InVision.Sandbox
                     }
 
                     //save to file and open
-                    File.WriteAllBytes("output." + "csv", pdf);
-                    System.Diagnostics.Process.Start("output." + "csv");
+                    File.WriteAllBytes("output." + "xls", pdf);
+                    System.Diagnostics.Process.Start("output." + "xls");
                 }
-                catch(WebException ex)
+                catch (WebException ex)
                 {
                     if (ex.Response == null)
                     {
                         throw;
                     }
-                    using(var responseStream = ex.Response.GetResponseStream())
-                    using(var fs = File.Create("WebException.txt"))
+                    using (var responseStream = ex.Response.GetResponseStream())
+                    using (var fs = File.Create("WebException.txt"))
                     {
                         responseStream.CopyTo(fs);
                     }
                     throw;
                 }
+            }
+        }
+
+        private static void SetCredentials(System.Web.Services.Protocols.SoapHttpClientProtocol service)
+        {
+            service.UseDefaultCredentials = bool.TrueString.Equals(ConfigurationManager.AppSettings["ReportServerUseDefaultCredentials"], StringComparison.OrdinalIgnoreCase);
+            if (!service.UseDefaultCredentials)
+            {
+                string username = ConfigurationManager.AppSettings["ReportServerUserName"];
+                string password = ConfigurationManager.AppSettings["ReportServerPassword"];
+                service.Credentials = new NetworkCredential(username, password);
             }
         }
     }    

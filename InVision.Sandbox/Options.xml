@@ -1,8 +1,294 @@
 ﻿<Options>
   <ReportParametersURL>/InVisionMvc/InCommand/Subscriptions/EditSubscription</ReportParametersURL>
-  <ReportPath>/Production/InCommand Reports/Validation Rule Action</ReportPath>
-  <ReportColumns>
+  <ReportPath>/Production/InCommand Reports/MT Productivity Summary with Custom Columns</ReportPath>
+  <ReportColumns>    
+    <AvailableLayouts>
+      <Columns Title="By Transcriptionist" IsDefault="True">
+        <Column>
+          <FieldName>Transcriptionist</FieldName>
+          <GroupOrder>1</GroupOrder>
+          <SortOrder>1</SortOrder>
+          <DisplayOrder>-1</DisplayOrder>
+          <SortDirection>Ascending</SortDirection>
+        </Column>
+        <Column>
+          <FieldName>Transcription_ID</FieldName>
+          <FunctionName>Count</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>0</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines_Edited</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>1</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines_Typed</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>2</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>3</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Active_Editor_Time_Hours_Edited</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>4</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Active_Editor_Time_Hours_Typed</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>5</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Active_Editor_Time_Hours</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>6</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Production_Rate_Edited_Lines_Per_Hour</FieldName>
+          <FunctionName>Average</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>7</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Production_Rate_Typed_Lines_Per_Hour</FieldName>
+          <FunctionName>Average</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>8</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Production_Rate_Lines_Per_Hour</FieldName>
+          <FunctionName>Average</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>9</DisplayOrder>
+        </Column>
+      </Columns>
+      <Columns Title="By Address 3, then Transcriptionist">
+        <Column>
+          <FieldName>MT_Address3</FieldName>
+          <GroupOrder>0</GroupOrder>
+          <SortOrder>0</SortOrder>
+          <DisplayOrder>-1</DisplayOrder>
+          <SortDirection>Ascending</SortDirection>
+        </Column>
+        <Column>
+          <FieldName>Transcriptionist</FieldName>
+          <GroupOrder>1</GroupOrder>
+          <SortOrder>1</SortOrder>
+          <DisplayOrder>-1</DisplayOrder>
+          <SortDirection>Ascending</SortDirection>
+        </Column>
+        <Column>
+          <FieldName>Transcription_ID</FieldName>
+          <FunctionName>Count</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>0</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines_Edited</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>1</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines_Typed</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>2</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>3</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Active_Editor_Time_Hours_Edited</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>4</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Active_Editor_Time_Hours_Typed</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>5</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Active_Editor_Time_Hours</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>6</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Production_Rate_Edited_Lines_Per_Hour</FieldName>
+          <FunctionName>Average</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>7</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Production_Rate_Typed_Lines_Per_Hour</FieldName>
+          <FunctionName>Average</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>8</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Production_Rate_Lines_Per_Hour</FieldName>
+          <FunctionName>Average</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>9</DisplayOrder>
+        </Column>
+      </Columns>
+      <Columns Title="Detail">
+        <Column>
+          <FieldName>Transcriptionist</FieldName>
+          <GroupOrder>0</GroupOrder>
+          <SortOrder>0</SortOrder>
+          <DisplayOrder>-1</DisplayOrder>
+          <SortDirection>Ascending</SortDirection>
+        </Column>
+        <Column>
+          <FieldName>Lines</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>0</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Template_Lines</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>1</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Lines</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>2</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Initial_Inactivity_Editor_Time</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>3</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Idle_Editor_Time</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>4</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Productive_Editor_Time</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>5</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Total_Editor_Time</FieldName>
+          <FunctionName>Sum</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>6</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Revision</FieldName>
+          <FunctionName>Count</FunctionName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>7</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Transcription_ID</FieldName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>8</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>MT_Work</FieldName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>9</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Client_Name</FieldName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>10</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Dictating_User_Full_Name</FieldName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>11</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Location</FieldName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>12</DisplayOrder>
+        </Column>
+        <Column>
+          <FieldName>Document_Type</FieldName>
+          <GroupOrder>-1</GroupOrder>
+          <SortOrder>-1</SortOrder>
+          <DisplayOrder>13</DisplayOrder>
+        </Column>
+      </Columns>
+    </AvailableLayouts>
     <AvailableColumns>
+
+      <!-- 
+      **********************************************
+      Client fields
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Client_ID</FieldName>
+        <UIDisplayName>Client ID</UIDisplayName>
+        <CaptionExpression>Client ID</CaptionExpression>
+        <ValueExpression>=Fields!Client_ID.Value</ValueExpression>
+        <SortExpression>=Fields!Client_ID.Value</SortExpression>
+        <GroupExpression>=Fields!Client_ID.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
       <AvailableColumn>
         <FieldName>Client_Name</FieldName>
         <UIDisplayName>Client</UIDisplayName>
@@ -10,138 +296,48 @@
         <ValueExpression>=Fields!Client_Name.Value</ValueExpression>
         <SortExpression>=Fields!Client_Name.Value</SortExpression>
         <GroupExpression>=Fields!Client_Name.Value</GroupExpression>
-        <Width>1.5</Width>
+        <Width>1.0</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Transcriptionist fields
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>MT_ID</FieldName>
+        <UIDisplayName>MT ID</UIDisplayName>
+        <CaptionExpression>MT ID</CaptionExpression>
+        <ValueExpression>=Fields!Transcriptionist_ID.Value</ValueExpression>
+        <SortExpression>=Fields!Transcriptionist_ID.Value</SortExpression>
+        <GroupExpression>=Fields!Transcriptionist_ID.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Client_FullName</FieldName>
-        <UIDisplayName>Client Full Name</UIDisplayName>
-        <CaptionExpression>Client Full Name</CaptionExpression>
-        <ValueExpression>=Fields!Client_FullName.Value</ValueExpression>
-        <SortExpression>=Fields!Client_FullName.Value</SortExpression>
-        <GroupExpression>=Fields!Client_FullName.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Status</FieldName>
+        <UIDisplayName>MT Status</UIDisplayName>
+        <CaptionExpression>MT Status</CaptionExpression>
+        <ValueExpression>=Fields!MT_Status.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Status.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Status.Value</GroupExpression>
+        <Width>0.50</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Transcription_ID</FieldName>
-        <UIDisplayName>TID</UIDisplayName>
-        <CaptionExpression>TID</CaptionExpression>
-        <ValueExpression>=Fields!Transcription_ID.Value</ValueExpression>
-        <SortExpression>=Fields!Transcription_ID.Value</SortExpression>
-        <GroupExpression>=Fields!Transcription_ID.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Location</FieldName>
-        <UIDisplayName>Location</UIDisplayName>
-        <CaptionExpression>Location</CaptionExpression>
-        <ValueExpression>=Fields!Location.Value</ValueExpression>
-        <SortExpression>=Fields!Location.Value</SortExpression>
-        <GroupExpression>=Fields!Location.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Location_Client_Code</FieldName>
-        <UIDisplayName>Location Client Code</UIDisplayName>
-        <CaptionExpression>Location Client Code</CaptionExpression>
-        <ValueExpression>=Fields!Location_Client_Code.Value</ValueExpression>
-        <SortExpression>=Fields!Location_Client_Code.Value</SortExpression>
-        <GroupExpression>=Fields!Location_Client_Code.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Location_Dictation_ID</FieldName>
-        <UIDisplayName>Location Dictation ID</UIDisplayName>
-        <CaptionExpression>Location Dictation ID</CaptionExpression>
-        <ValueExpression>=Fields!Location_Dictation_ID.Value</ValueExpression>
-        <SortExpression>=Fields!Location_Dictation_ID.Value</SortExpression>
-        <GroupExpression>=Fields!Location_Dictation_ID.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Document_Type</FieldName>
-        <UIDisplayName>Document Type</UIDisplayName>
-        <CaptionExpression>Document Type</CaptionExpression>
-        <ValueExpression>=Fields!Document_Type.Value</ValueExpression>
-        <SortExpression>=Fields!Document_Type.Value</SortExpression>
-        <GroupExpression>=Fields!Document_Type.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Document_Description</FieldName>
-        <UIDisplayName>Document Type Description</UIDisplayName>
-        <CaptionExpression>Document Type Description</CaptionExpression>
-        <ValueExpression>=Fields!Document_Description.Value</ValueExpression>
-        <SortExpression>=Fields!Document_Description.Value</SortExpression>
-        <GroupExpression>=Fields!Document_Description.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Document_Type_TAT</FieldName>
-        <UIDisplayName>Document Type TAT</UIDisplayName>
-        <CaptionExpression>Document Type TAT</CaptionExpression>
-        <ValueExpression>=Fields!Document_Type_TAT.Value</ValueExpression>
-        <SortExpression>=Fields!Document_Type_TAT.Value</SortExpression>
-        <GroupExpression>=Fields!Document_Type_TAT.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Dictation_Document_Type</FieldName>
-        <UIDisplayName>Dictation Document Type</UIDisplayName>
-        <CaptionExpression>Dictation Document Type</CaptionExpression>
-        <ValueExpression>=Fields!Dictation_Document_Type.Value</ValueExpression>
-        <SortExpression>=Fields!Dictation_Document_Type.Value</SortExpression>
-        <GroupExpression>=Fields!Dictation_Document_Type.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Dictation_Location</FieldName>
-        <UIDisplayName>Dictation Location</UIDisplayName>
-        <CaptionExpression>Dictation Location</CaptionExpression>
-        <ValueExpression>=Fields!Dictation_Location.Value</ValueExpression>
-        <SortExpression>=Fields!Dictation_Location.Value</SortExpression>
-        <GroupExpression>=Fields!Dictation_Location.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>MT_Username</FieldName>
-        <UIDisplayName>MT Username</UIDisplayName>
-        <CaptionExpression>MT Username</CaptionExpression>
-        <ValueExpression>=Fields!MT_Username.Value</ValueExpression>
-        <SortExpression>=Fields!MT_Username.Value</SortExpression>
-        <GroupExpression>=Fields!MT_Username.Value</GroupExpression>
+        <FieldName>Transcriptionist</FieldName>
+        <UIDisplayName>Transcriptionist</UIDisplayName>
+        <CaptionExpression>Transcriptionist</CaptionExpression>
+        <ValueExpression>=(Fields!MT_Name.Value + " (" +  Fields!MT_Status.Value + ")" )</ValueExpression>
+        <SortExpression>=(Fields!MT_Name.Value + " (" +  Fields!MT_Status.Value + ")" )</SortExpression>
+        <GroupExpression>=Fields!Transcriptionist_ID.Value</GroupExpression>
         <Width>1.5</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
@@ -154,592 +350,1781 @@
         <ValueExpression>=Fields!MT_Name.Value</ValueExpression>
         <SortExpression>=Fields!MT_Name.Value</SortExpression>
         <GroupExpression>=Fields!MT_Name.Value</GroupExpression>
-        <Width>1.5</Width>
+        <Width>1.25</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>QALevel</FieldName>
-        <UIDisplayName>QA Level</UIDisplayName>
-        <CaptionExpression>QA Level</CaptionExpression>
-        <ValueExpression>=Fields!QALevel.Value</ValueExpression>
-        <SortExpression>=Fields!QALevel.Value</SortExpression>
-        <GroupExpression>=Fields!QALevel.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Username</FieldName>
+        <UIDisplayName>MT Username</UIDisplayName>
+        <CaptionExpression>MT Username</CaptionExpression>
+        <ValueExpression>=Fields!MT_Username.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Username.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Username.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Clinician_Username</FieldName>
-        <UIDisplayName>Clinician Username</UIDisplayName>
-        <CaptionExpression>Clinician Username</CaptionExpression>
-        <ValueExpression>=Fields!Clinician_Username.Value</ValueExpression>
-        <SortExpression>=Fields!Clinician_Username.Value</SortExpression>
-        <GroupExpression>=Fields!Clinician_Username.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_First_Name</FieldName>
+        <UIDisplayName>MT First Name</UIDisplayName>
+        <CaptionExpression>MT First Name</CaptionExpression>
+        <ValueExpression>=Fields!MT_First_Name.Value</ValueExpression>
+        <SortExpression>=Fields!MT_First_Name.Value</SortExpression>
+        <GroupExpression>=Fields!MT_First_Name.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Clinician_Name</FieldName>
-        <UIDisplayName>Clinician</UIDisplayName>
-        <CaptionExpression>Clinician</CaptionExpression>
-        <ValueExpression>=Fields!Clinician_Name.Value</ValueExpression>
-        <SortExpression>=Fields!Clinician_Name.Value</SortExpression>
-        <GroupExpression>=Fields!Clinician_Name.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Middle_Name</FieldName>
+        <UIDisplayName>MT Middle Initial</UIDisplayName>
+        <CaptionExpression>MT Middle Initial</CaptionExpression>
+        <ValueExpression>=Fields!MT_Middle_Name.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Middle_Name.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Middle_Name.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Department</FieldName>
-        <UIDisplayName>Department</UIDisplayName>
-        <CaptionExpression>Department</CaptionExpression>
-        <ValueExpression>=Fields!Department.Value</ValueExpression>
-        <SortExpression>=Fields!Department.Value</SortExpression>
-        <GroupExpression>=Fields!Department.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Last_Name</FieldName>
+        <UIDisplayName>MT Last Name</UIDisplayName>
+        <CaptionExpression>MT Last Name</CaptionExpression>
+        <ValueExpression>=Fields!MT_Last_Name.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Last_Name.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Last_Name.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Appointment_Date</FieldName>
-        <UIDisplayName>Appointment Date</UIDisplayName>
-        <CaptionExpression>Appointment Date</CaptionExpression>
-        <ValueExpression>=Fields!Appointment_Date.Value</ValueExpression>
-        <SortExpression>=Fields!Appointment_Date.Value</SortExpression>
-        <GroupExpression>=Fields!Appointment_Date.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Initials</FieldName>
+        <UIDisplayName>MT Initials</UIDisplayName>
+        <CaptionExpression>MT Initials</CaptionExpression>
+        <ValueExpression>=Fields!MT_Initials.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Initials.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Initials.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Admit_Date</FieldName>
-        <UIDisplayName>Admit Date</UIDisplayName>
-        <CaptionExpression>Admit Date</CaptionExpression>
-        <ValueExpression>=Fields!Admit_Date.Value</ValueExpression>
-        <SortExpression>=Fields!Admit_Date.Value</SortExpression>
-        <GroupExpression>=Fields!Admit_Date.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Address1</FieldName>
+        <UIDisplayName>Address1</UIDisplayName>
+        <CaptionExpression>Address1</CaptionExpression>
+        <ValueExpression>=Fields!MT_Address1.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Address1.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Address1.Value</GroupExpression>
+        <Width>1.0</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Discharge_Date</FieldName>
-        <UIDisplayName>Discharge Date</UIDisplayName>
-        <CaptionExpression>Discharge Date</CaptionExpression>
-        <ValueExpression>=Fields!Discharge_Date.Value</ValueExpression>
-        <SortExpression>=Fields!Discharge_Date.Value</SortExpression>
-        <GroupExpression>=Fields!Discharge_Date.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Address2</FieldName>
+        <UIDisplayName>Address2</UIDisplayName>
+        <CaptionExpression>Address2</CaptionExpression>
+        <ValueExpression>=Fields!MT_Address2.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Address2.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Address2.Value</GroupExpression>
+        <Width>1.0</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Patient_Class_Code</FieldName>
-        <UIDisplayName>Patient Class Code</UIDisplayName>
-        <CaptionExpression>Patient Class Code</CaptionExpression>
-        <ValueExpression>=Fields!Patient_Class_Code.Value</ValueExpression>
-        <SortExpression>=Fields!Patient_Class_Code.Value</SortExpression>
-        <GroupExpression>=Fields!Patient_Class_Code.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Address3</FieldName>
+        <UIDisplayName>Address3</UIDisplayName>
+        <CaptionExpression>Address3</CaptionExpression>
+        <ValueExpression>=Fields!MT_Address3.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Address3.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Address3.Value</GroupExpression>
+        <Width>1.0</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Patient_Class</FieldName>
-        <UIDisplayName>Patient Class</UIDisplayName>
-        <CaptionExpression>Patient Class</CaptionExpression>
-        <ValueExpression>=Fields!Patient_Class.Value</ValueExpression>
-        <SortExpression>=Fields!Patient_Class.Value</SortExpression>
-        <GroupExpression>=Fields!Patient_Class.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_City</FieldName>
+        <UIDisplayName>City</UIDisplayName>
+        <CaptionExpression>City</CaptionExpression>
+        <ValueExpression>=Fields!MT_City.Value</ValueExpression>
+        <SortExpression>=Fields!MT_City.Value</SortExpression>
+        <GroupExpression>=Fields!MT_City.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Patient_Type_Code</FieldName>
-        <UIDisplayName>Patient Type Code</UIDisplayName>
-        <CaptionExpression>Patient Type Code</CaptionExpression>
-        <ValueExpression>=Fields!Patient_Type_Code.Value</ValueExpression>
-        <SortExpression>=Fields!Patient_Type_Code.Value</SortExpression>
-        <GroupExpression>=Fields!Patient_Type_Code.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_State</FieldName>
+        <UIDisplayName>State</UIDisplayName>
+        <CaptionExpression>State</CaptionExpression>
+        <ValueExpression>=Fields!MT_State.Value</ValueExpression>
+        <SortExpression>=Fields!MT_State.Value</SortExpression>
+        <GroupExpression>=Fields!MT_State.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Patient_Type</FieldName>
-        <UIDisplayName>Patient Type</UIDisplayName>
-        <CaptionExpression>Patient Type</CaptionExpression>
-        <ValueExpression>=Fields!Patient_Type.Value</ValueExpression>
-        <SortExpression>=Fields!Patient_Type.Value</SortExpression>
-        <GroupExpression>=Fields!Patient_Type.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>MT_Zip_Code</FieldName>
+        <UIDisplayName>Zip Code</UIDisplayName>
+        <CaptionExpression>Zip Code</CaptionExpression>
+        <ValueExpression>=Fields!MT_Zip_Code.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Zip_Code.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Zip_Code.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Transcription ID
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Transcription_ID</FieldName>
+        <UIDisplayName>Transcription ID</UIDisplayName>
+        <CaptionExpression>Transcription ID</CaptionExpression>
+        <ValueExpression>=Fields!Transcription_ID.Value</ValueExpression>
+        <SortExpression>=Fields!Transcription_ID.Value</SortExpression>
+        <GroupExpression>=Fields!Transcription_ID.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Document Type fields
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Document_ID</FieldName>
+        <UIDisplayName>Document Type ID</UIDisplayName>
+        <CaptionExpression>Document Type ID</CaptionExpression>
+        <ValueExpression>=Fields!Document_ID.Value</ValueExpression>
+        <SortExpression>=Fields!Document_ID.Value</SortExpression>
+        <GroupExpression>=Fields!Document_ID.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Admitting_Provider</FieldName>
-        <UIDisplayName>Admitting Provider</UIDisplayName>
-        <CaptionExpression>Admitting Provider</CaptionExpression>
-        <ValueExpression>=Fields!Admitting_Provider.Value</ValueExpression>
-        <SortExpression>=Fields!Admitting_Provider.Value</SortExpression>
-        <GroupExpression>=Fields!Admitting_Provider.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>Document_Type</FieldName>
+        <UIDisplayName>Document Type</UIDisplayName>
+        <CaptionExpression>Document Type</CaptionExpression>
+        <ValueExpression>=Fields!Document_Type.Value</ValueExpression>
+        <SortExpression>=Fields!Document_Type.Value</SortExpression>
+        <GroupExpression>=Fields!Document_ID.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Attending_Provider</FieldName>
-        <UIDisplayName>Attending Provider</UIDisplayName>
-        <CaptionExpression>Attending Provider</CaptionExpression>
-        <ValueExpression>=Fields!Attending_Provider.Value</ValueExpression>
-        <SortExpression>=Fields!Attending_Provider.Value</SortExpression>
-        <GroupExpression>=Fields!Attending_Provider.Value</GroupExpression>
-        <Width>1.5</Width>
+        <FieldName>Document_Name</FieldName>
+        <UIDisplayName>Document Type Name</UIDisplayName>
+        <CaptionExpression>Document Type Name</CaptionExpression>
+        <ValueExpression>=Fields!Document_Name.Value</ValueExpression>
+        <SortExpression>=Fields!Document_Name.Value</SortExpression>
+        <GroupExpression>=Fields!Document_ID.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Location fields
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Location_ID</FieldName>
+        <UIDisplayName>Location ID</UIDisplayName>
+        <CaptionExpression>Location ID</CaptionExpression>
+        <ValueExpression>=Fields!Location_ID.Value</ValueExpression>
+        <SortExpression>=Fields!Location_ID.Value</SortExpression>
+        <GroupExpression>=Fields!Location_ID.Value</GroupExpression>
+        <Width>0.75</Width>
         <AvailableFunctions>
           <Function Name="Count">=CountRows()</Function>
         </AvailableFunctions>
       </AvailableColumn>
       <AvailableColumn>
-        <FieldName>Consulting_Provider</FieldName>
-        <UIDisplayName>Consulting Provider</UIDisplayName>
-        <CaptionExpression>Consulting Provider</CaptionExpression>
-        <ValueExpression>=Fields!Consulting_Provider.Value</ValueExpression>
-        <SortExpression>=Fields!Consulting_Provider.Value</SortExpression>
-        <GroupExpression>=Fields!Consulting_Provider.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Primary_Care_Provider</FieldName>
-        <UIDisplayName>Primary Care Provider</UIDisplayName>
-        <CaptionExpression>Primary Care Provider</CaptionExpression>
-        <ValueExpression>=Fields!Primary_Care_Provider.Value</ValueExpression>
-        <SortExpression>=Fields!Primary_Care_Provider.Value</SortExpression>
-        <GroupExpression>=Fields!Primary_Care_Provider.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Referring_Provider</FieldName>
-        <UIDisplayName>Referring Provider</UIDisplayName>
-        <CaptionExpression>Referring Provider</CaptionExpression>
-        <ValueExpression>=Fields!Referring_Provider.Value</ValueExpression>
-        <SortExpression>=Fields!Referring_Provider.Value</SortExpression>
-        <GroupExpression>=Fields!Referring_Provider.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Validation_Rule_Name</FieldName>
-        <UIDisplayName>Validation Rule</UIDisplayName>
-        <CaptionExpression>Validation Rule</CaptionExpression>
-        <ValueExpression>=Fields!Validation_Rule_Name.Value</ValueExpression>
-        <SortExpression>=Fields!Validation_Rule_Name.Value</SortExpression>
-        <GroupExpression>=Fields!Validation_Rule_Name.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Marked_For_QA</FieldName>
-        <UIDisplayName>Marked For QA</UIDisplayName>
-        <CaptionExpression>Marked For QA</CaptionExpression>
-        <ValueExpression>=Fields!Marked_For_QA.Value</ValueExpression>
-        <SortExpression>=Fields!Marked_For_QA.Value</SortExpression>
-        <GroupExpression>=Fields!Marked_For_QA.Value</GroupExpression>
-        <Width>1.5</Width>
-        <Format>"Yes";"";"No"</Format>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Marked_For_Review</FieldName>
-        <UIDisplayName>Marked For Review</UIDisplayName>
-        <CaptionExpression>Marked For Review</CaptionExpression>
-        <ValueExpression>=Fields!Marked_For_Review.Value</ValueExpression>
-        <SortExpression>=Fields!Marked_For_Review.Value</SortExpression>
-        <GroupExpression>=Fields!Marked_For_Review.Value</GroupExpression>
-        <Width>1.5</Width>
-        <Format>"Yes";"";"No"</Format>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Comment_Tag_Name</FieldName>
-        <UIDisplayName>Comment Tag</UIDisplayName>
-        <CaptionExpression>Comment Tag</CaptionExpression>
-        <ValueExpression>=Fields!Comment_Tag_Name.Value</ValueExpression>
-        <SortExpression>=Fields!Comment_Tag_Name.Value</SortExpression>
-        <GroupExpression>=Fields!Comment_Tag_Name.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Date_Received_In_Display_Time_Zone</FieldName>
-        <UIDisplayName>Date Received</UIDisplayName>
-        <CaptionExpression>Date Received</CaptionExpression>
-        <ValueExpression>=Fields!Date_Received_In_Display_Time_Zone.Value</ValueExpression>
-        <SortExpression>=Fields!Date_Received_In_Display_Time_Zone.Value</SortExpression>
-        <GroupExpression>=Fields!Date_Received_In_Display_Time_Zone.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Date_Delivered_In_Display_Time_Zone</FieldName>
-        <UIDisplayName>Date Delivered</UIDisplayName>
-        <CaptionExpression>Date Delivered</CaptionExpression>
-        <ValueExpression>=Fields!Date_Delivered_In_Display_Time_Zone.Value</ValueExpression>
-        <SortExpression>=Fields!Date_Delivered_In_Display_Time_Zone.Value</SortExpression>
-        <GroupExpression>=Fields!Date_Delivered_In_Display_Time_Zone.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-      <AvailableColumn>
-        <FieldName>Date_Uploaded_By_MT_In_Display_Time_Zone</FieldName>
-        <UIDisplayName>Date Uploaded By MT</UIDisplayName>
-        <CaptionExpression>Date Uploaded By MT</CaptionExpression>
-        <ValueExpression>=Fields!Date_Uploaded_By_MT_In_Display_Time_Zone.Value</ValueExpression>
-        <SortExpression>=Fields!Date_Uploaded_By_MT_In_Display_Time_Zone.Value</SortExpression>
-        <GroupExpression>=Fields!Date_Uploaded_By_MT_In_Display_Time_Zone.Value</GroupExpression>
-        <Width>1.5</Width>
-        <AvailableFunctions>
-          <Function Name="Count">=CountRows()</Function>
-        </AvailableFunctions>
-      </AvailableColumn>
-    </AvailableColumns>
-    <Columns>
-      <Column>
-        <FieldName>Client_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>0</SortOrder>
-        <DisplayOrder>0</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
         <FieldName>Location</FieldName>
+        <UIDisplayName>Location</UIDisplayName>
+        <CaptionExpression>Location</CaptionExpression>
+        <ValueExpression>=Fields!Location.Value</ValueExpression>
+        <SortExpression>=Fields!Location.Value</SortExpression>
+        <GroupExpression>=Fields!Location_ID.Value</GroupExpression>
+        <Width>1.0</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      User fields
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>User_ID</FieldName>
+        <UIDisplayName>User ID</UIDisplayName>
+        <CaptionExpression>User ID</CaptionExpression>
+        <ValueExpression>=Fields!User_ID.Value</ValueExpression>
+        <SortExpression>=Fields!User_ID.Value</SortExpression>
+        <GroupExpression>=Fields!User_ID.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Dictating_User_Full_Name</FieldName>
+        <UIDisplayName>User</UIDisplayName>
+        <CaptionExpression>User</CaptionExpression>
+        <ValueExpression>=Fields!Dictating_User_Full_Name.Value</ValueExpression>
+        <SortExpression>=Fields!Dictating_User_Full_Name.Value</SortExpression>
+        <GroupExpression>=Fields!User_ID.Value</GroupExpression>
+        <Width>1.0</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Line Counts
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Lines</FieldName>
+        <UIDisplayName>Std Lines</UIDisplayName>
+        <CaptionExpression>Std Lines</CaptionExpression>
+        <ValueExpression>=Fields!Lines.Value</ValueExpression>
+        <SortExpression>=Fields!Lines.Value</SortExpression>
+        <GroupExpression>=Fields!Lines.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Lines.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Lines.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Lines.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Lines.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Lines_Edited</FieldName>
+        <UIDisplayName>Std Lines Edited</UIDisplayName>
+        <CaptionExpression>Std Lines Edited</CaptionExpression>
+        <ValueExpression>=Fields!Lines_Edited.Value</ValueExpression>
+        <SortExpression>=Fields!Lines_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Lines_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Lines_Edited.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Lines_Edited.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Lines_Edited.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Lines_Edited.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Lines_Typed</FieldName>
+        <UIDisplayName>Std Lines Typed</UIDisplayName>
+        <CaptionExpression>Std Lines Typed</CaptionExpression>
+        <ValueExpression>=Fields!Lines_Typed.Value</ValueExpression>
+        <SortExpression>=Fields!Lines_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Lines_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Lines_Typed.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Lines_Typed.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Lines_Typed.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Lines_Typed.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Template_Lines</FieldName>
+        <UIDisplayName>QT Lines</UIDisplayName>
+        <CaptionExpression>QT Lines</CaptionExpression>
+        <ValueExpression>=Fields!Template_Lines.Value</ValueExpression>
+        <SortExpression>=Fields!Template_Lines.Value</SortExpression>
+        <GroupExpression>=Fields!Template_Lines.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Template_Lines.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Template_Lines.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Template_Lines.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Template_Lines.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Template_Lines_Edited</FieldName>
+        <UIDisplayName>QT Lines Edited</UIDisplayName>
+        <CaptionExpression>QT Lines Edited</CaptionExpression>
+        <ValueExpression>=Fields!Template_Lines_Edited.Value</ValueExpression>
+        <SortExpression>=Fields!Template_Lines_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Template_Lines_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Template_Lines_Edited.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Template_Lines_Edited.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Template_Lines_Edited.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Template_Lines_Edited.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Template_Lines_Typed</FieldName>
+        <UIDisplayName>QT Lines Typed</UIDisplayName>
+        <CaptionExpression>QT Lines Typed</CaptionExpression>
+        <ValueExpression>=Fields!Template_Lines_Typed.Value</ValueExpression>
+        <SortExpression>=Fields!Template_Lines_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Template_Lines_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Template_Lines_Typed.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Template_Lines_Typed.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Template_Lines_Typed.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Template_Lines_Typed.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Lines</FieldName>
+        <UIDisplayName>Total Lines</UIDisplayName>
+        <CaptionExpression>Total Lines</CaptionExpression>
+        <ValueExpression>=Fields!Total_Lines.Value</ValueExpression>
+        <SortExpression>=Fields!Total_Lines.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Lines.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Total_Lines.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Total_Lines.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Total_Lines.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Total_Lines.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Lines_Edited</FieldName>
+        <UIDisplayName>Total Lines Edited</UIDisplayName>
+        <CaptionExpression>Total Lines Edited</CaptionExpression>
+        <ValueExpression>=Fields!Total_Lines_Edited.Value</ValueExpression>
+        <SortExpression>=Fields!Total_Lines_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Lines_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Total_Lines_Edited.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Total_Lines_Edited.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Total_Lines_Edited.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Total_Lines_Edited.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Lines_Typed</FieldName>
+        <UIDisplayName>Total Lines Typed</UIDisplayName>
+        <CaptionExpression>Total Lines Typed</CaptionExpression>
+        <ValueExpression>=Fields!Total_Lines_Typed.Value</ValueExpression>
+        <SortExpression>=Fields!Total_Lines_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Lines_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Total_Lines_Typed.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Total_Lines_Typed.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Total_Lines_Typed.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Total_Lines_Typed.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+
+      <!-- 
+      **********************************************
+      Character Counts
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Characters</FieldName>
+        <UIDisplayName>Characters</UIDisplayName>
+        <CaptionExpression>Characters</CaptionExpression>
+        <ValueExpression>=Fields!Characters.Value</ValueExpression>
+        <SortExpression>=Fields!Characters.Value</SortExpression>
+        <GroupExpression>=Fields!Characters.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Characters.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Characters.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Characters.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Characters.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Characters_Edited</FieldName>
+        <UIDisplayName>Characters Edited</UIDisplayName>
+        <CaptionExpression>Characters Edited</CaptionExpression>
+        <ValueExpression>=Fields!Characters_Edited.Value</ValueExpression>
+        <SortExpression>=Fields!Characters_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Characters_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Characters_Edited.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Characters_Edited.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Characters_Edited.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Characters_Edited.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Characters_Typed</FieldName>
+        <UIDisplayName>Characters Typed</UIDisplayName>
+        <CaptionExpression>Characters Typed</CaptionExpression>
+        <ValueExpression>=Fields!Characters_Typed.Value</ValueExpression>
+        <SortExpression>=Fields!Characters_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Characters_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Characters_Typed.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Characters_Typed.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Characters_Typed.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Characters_Typed.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Template_Characters</FieldName>
+        <UIDisplayName>QT Characters</UIDisplayName>
+        <CaptionExpression>QT Characters</CaptionExpression>
+        <ValueExpression>=Fields!Template_Characters.Value</ValueExpression>
+        <SortExpression>=Fields!Template_Characters.Value</SortExpression>
+        <GroupExpression>=Fields!Template_Characters.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Template_Characters.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Template_Characters.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Template_Characters.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Template_Characters.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Template_Characters_Edited</FieldName>
+        <UIDisplayName>QT Characters Edited</UIDisplayName>
+        <CaptionExpression>QT Characters Edited</CaptionExpression>
+        <ValueExpression>=Fields!Template_Characters_Edited.Value</ValueExpression>
+        <SortExpression>=Fields!Template_Characters_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Template_Characters_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Template_Characters_Edited.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Template_Characters_Edited.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Template_Characters_Edited.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Template_Characters_Edited.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Template_Characters_Typed</FieldName>
+        <UIDisplayName>QT Characters Typed</UIDisplayName>
+        <CaptionExpression>QT Characters Typed</CaptionExpression>
+        <ValueExpression>=Fields!Template_Characters_Typed.Value</ValueExpression>
+        <SortExpression>=Fields!Template_Characters_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Template_Characters_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Template_Characters_Typed.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Template_Characters_Typed.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Template_Characters_Typed.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Template_Characters_Typed.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Characters</FieldName>
+        <UIDisplayName>QT Characters</UIDisplayName>
+        <CaptionExpression>QT Characters</CaptionExpression>
+        <ValueExpression>=Fields!Total_Characters.Value</ValueExpression>
+        <SortExpression>=Fields!Total_Characters.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Characters.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Total_Characters.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Total_Characters.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Total_Characters.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Total_Characters.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Characters_Edited</FieldName>
+        <UIDisplayName>QT Characters Edited</UIDisplayName>
+        <CaptionExpression>QT Characters Edited</CaptionExpression>
+        <ValueExpression>=Fields!Total_Characters_Edited.Value</ValueExpression>
+        <SortExpression>=Fields!Total_Characters_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Characters_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Total_Characters_Edited.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Total_Characters_Edited.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Total_Characters_Edited.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Total_Characters_Edited.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Characters_Typed</FieldName>
+        <UIDisplayName>QT Characters Typed</UIDisplayName>
+        <CaptionExpression>QT Characters Typed</CaptionExpression>
+        <ValueExpression>=Fields!Total_Characters_Typed.Value</ValueExpression>
+        <SortExpression>=Fields!Total_Characters_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Characters_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=Min(Fields!Total_Characters_Typed.Value)</Function>
+          <Function Name="Maximum">=Max(Fields!Total_Characters_Typed.Value)</Function>
+          <Function Name="Average">=Avg(Fields!Total_Characters_Typed.Value)</Function>
+          <Function Name="Sum">=Sum(Fields!Total_Characters_Typed.Value)</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Active Time                         
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time</FieldName>
+        <UIDisplayName>Active Time</UIDisplayName>
+        <CaptionExpression>Active Time</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value)</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Minutes</FieldName>
+        <UIDisplayName>Active Time (Minutes)</UIDisplayName>
+        <CaptionExpression>Active Time (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Hours</FieldName>
+        <UIDisplayName>Active Time (Hours)</UIDisplayName>
+        <CaptionExpression>Active Time (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Edited</FieldName>
+        <UIDisplayName>Active Time Edited</UIDisplayName>
+        <CaptionExpression>Active Time Edited</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value)</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>        
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Edited.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Minutes_Edited</FieldName>
+        <UIDisplayName>Active Time Edited (Minutes)</UIDisplayName>
+        <CaptionExpression>Active Time Edited (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Hours_Edited</FieldName>
+        <UIDisplayName>Active Time Edited (Hours)</UIDisplayName>
+        <CaptionExpression>Active Time Edited (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Edited.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Typed</FieldName>
+        <UIDisplayName>Active Time Typed</UIDisplayName>
+        <CaptionExpression>Active Time Typed</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value)</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Typed.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Minutes_Typed</FieldName>
+        <UIDisplayName>Active Time Typed (Minutes)</UIDisplayName>
+        <CaptionExpression>Active Time Typed (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Active_Editor_Time_Hours_Typed</FieldName>
+        <UIDisplayName>Active Time Typed (Hours)</UIDisplayName>
+        <CaptionExpression>Active Time Typed (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Active_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Active_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Active_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Active_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Active_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Typed.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Initial Idle Time                         
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time</FieldName>
+        <UIDisplayName>Initial Idle Time</UIDisplayName>
+        <CaptionExpression>Initial Idle Time</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds.Value)</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Minutes</FieldName>
+        <UIDisplayName>Initial Idle Time (Minutes)</UIDisplayName>
+        <CaptionExpression>Initial Idle Time (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Hours</FieldName>
+        <UIDisplayName>Initial Idle Time (Hours)</UIDisplayName>
+        <CaptionExpression>Initial Idle Time (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Edited</FieldName>
+        <UIDisplayName>Initial Idle Time Edited</UIDisplayName>
+        <CaptionExpression>Initial Idle Time Edited</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Minutes_Edited</FieldName>
+        <UIDisplayName>Initial Idle Time Edited (Minutes)</UIDisplayName>
+        <CaptionExpression>Initial Idle Time Edited (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Hours_Edited</FieldName>
+        <UIDisplayName>Initial Idle Time Edited (Hours)</UIDisplayName>
+        <CaptionExpression>Initial Idle Time Edited (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds_Edited.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Typed</FieldName>
+        <UIDisplayName>Initial Idle Time Typed</UIDisplayName>
+        <CaptionExpression>Initial Idle Time Typed</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Minutes_Typed</FieldName>
+        <UIDisplayName>Initial Idle Time Typed (Minutes)</UIDisplayName>
+        <CaptionExpression>Initial Idle Time Typed (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Initial_Inactivity_Editor_Time_Hours_Typed</FieldName>
+        <UIDisplayName>Initial Idle Time Typed (Hours)</UIDisplayName>
+        <CaptionExpression>Initial Idle Time Typed (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Initial_Inactivity_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Initial_Inactivity_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Initial_Inactivity_Editor_Seconds_Typed.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Idle Time                         
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time</FieldName>
+        <UIDisplayName>Idle Time</UIDisplayName>
+        <CaptionExpression>Idle Time</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds.Value)</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Minutes</FieldName>
+        <UIDisplayName>Idle Time (Minutes)</UIDisplayName>
+        <CaptionExpression>Idle Time (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Hours</FieldName>
+        <UIDisplayName>Idle Time (Hours)</UIDisplayName>
+        <CaptionExpression>Idle Time (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Edited</FieldName>
+        <UIDisplayName>Idle Time Edited</UIDisplayName>
+        <CaptionExpression>Idle Time Edited</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds_Edited.Value)</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds_Edited.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Minutes_Edited</FieldName>
+        <UIDisplayName>Idle Time Edited (Minutes)</UIDisplayName>
+        <CaptionExpression>Idle Time Edited (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds_Edited.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Hours_Edited</FieldName>
+        <UIDisplayName>Idle Time Edited (Hours)</UIDisplayName>
+        <CaptionExpression>Idle Time Edited (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds_Edited.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds_Edited.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Typed</FieldName>
+        <UIDisplayName>Idle Time Typed</UIDisplayName>
+        <CaptionExpression>Idle Time Typed</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds_Typed.Value)</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds_Typed.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Minutes_Typed</FieldName>
+        <UIDisplayName>Idle Time Typed (Minutes)</UIDisplayName>
+        <CaptionExpression>Idle Time Typed (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds_Typed.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Idle_Editor_Time_Hours_Typed</FieldName>
+        <UIDisplayName>Idle Time Typed (Hours)</UIDisplayName>
+        <CaptionExpression>Idle Time Typed (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Idle_Editor_Seconds_Typed.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Idle_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Idle_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Idle_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Idle_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Idle_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Idle_Editor_Seconds_Typed.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Total Time                         
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time</FieldName>
+        <UIDisplayName>Total Time</UIDisplayName>
+        <CaptionExpression>Total Time</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds.Value)</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Minutes</FieldName>
+        <UIDisplayName>Total Time (Minutes)</UIDisplayName>
+        <CaptionExpression>Total Time (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Hours</FieldName>
+        <UIDisplayName>Total Time (Hours)</UIDisplayName>
+        <CaptionExpression>Total Time (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Edited</FieldName>
+        <UIDisplayName>Total Time Edited</UIDisplayName>
+        <CaptionExpression>Total Time Edited</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds_Edited.Value)</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds_Edited.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Minutes_Edited</FieldName>
+        <UIDisplayName>Total Time Edited (Minutes)</UIDisplayName>
+        <CaptionExpression>Total Time Edited (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds_Edited.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Hours_Edited</FieldName>
+        <UIDisplayName>Total Time Edited (Hours)</UIDisplayName>
+        <CaptionExpression>Total Time Edited (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds_Edited.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds_Edited.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Typed</FieldName>
+        <UIDisplayName>Total Time Typed</UIDisplayName>
+        <CaptionExpression>Total Time Typed</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds_Typed.Value)</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds_Typed.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Minutes_Typed</FieldName>
+        <UIDisplayName>Total Time Typed (Minutes)</UIDisplayName>
+        <CaptionExpression>Total Time Typed (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds_Typed.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Total_Editor_Time_Hours_Typed</FieldName>
+        <UIDisplayName>Total Time Typed (Hours)</UIDisplayName>
+        <CaptionExpression>Total Time Typed (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Total_Editor_Seconds_Typed.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Total_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Total_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Total_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Total_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Total_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Total_Editor_Seconds_Typed.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Productive Time                         
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time</FieldName>
+        <UIDisplayName>Productive Time</UIDisplayName>
+        <CaptionExpression>Productive Time</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds.Value)</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Minutes</FieldName>
+        <UIDisplayName>Productive Time (Minutes)</UIDisplayName>
+        <CaptionExpression>Productive Time (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Hours</FieldName>
+        <UIDisplayName>Productive Time (Hours)</UIDisplayName>
+        <CaptionExpression>Productive Time (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Edited</FieldName>
+        <UIDisplayName>Productive Time Edited</UIDisplayName>
+        <CaptionExpression>Productive Time Edited</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds_Edited.Value)</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds_Edited.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds_Edited.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Minutes_Edited</FieldName>
+        <UIDisplayName>Productive Time Edited (Minutes)</UIDisplayName>
+        <CaptionExpression>Productive Time Edited (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds_Edited.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds_Edited.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Hours_Edited</FieldName>
+        <UIDisplayName>Productive Time Edited (Hours)</UIDisplayName>
+        <CaptionExpression>Productive Time Edited (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds_Edited.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds_Edited.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds_Edited.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds_Edited.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds_Edited.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Typed</FieldName>
+        <UIDisplayName>Productive Time Typed</UIDisplayName>
+        <CaptionExpression>Productive Time Typed</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds_Typed.Value)</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds_Typed.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds_Typed.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Minutes_Typed</FieldName>
+        <UIDisplayName>Productive Time Typed (Minutes)</UIDisplayName>
+        <CaptionExpression>Productive Time Typed (Minutes)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds_Typed.Value).TotalMinutes</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds_Typed.Value)).TotalMinutes</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Productive_Editor_Time_Hours_Typed</FieldName>
+        <UIDisplayName>Productive Time Typed (Hours)</UIDisplayName>
+        <CaptionExpression>Productive Time Typed (Hours)</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Productive_Editor_Seconds_Typed.Value).TotalHours</ValueExpression>
+        <SortExpression>=Fields!Productive_Editor_Seconds_Typed.Value</SortExpression>
+        <GroupExpression>=Fields!Productive_Editor_Seconds_Typed.Value</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Productive_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Productive_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Productive_Editor_Seconds_Typed.Value)).TotalHours</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Productive_Editor_Seconds_Typed.Value)).TotalHours</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Production Rate                      
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Production_Rate_Lines_Per_Minute</FieldName>
+        <UIDisplayName>Production Rate (Lines/Minute)</UIDisplayName>
+        <CaptionExpression>Production Rate (Lines/Minute)</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Active_Editor_Seconds.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalMinutes, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Active_Editor_Seconds.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalMinutes, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Active_Editor_Seconds.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalMinutes, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Active_Editor_Seconds.Value) &gt; 0, Sum(Fields!Lines.Value) / TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds.Value)).TotalMinutes, 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Production_Rate_Lines_Per_Hour</FieldName>
+        <UIDisplayName>Production Rate (Lines/Hour)</UIDisplayName>
+        <CaptionExpression>Production Rate (Lines/Hour)</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Active_Editor_Seconds.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalHours, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Active_Editor_Seconds.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalHours, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Active_Editor_Seconds.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds.Value).TotalHours, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Active_Editor_Seconds.Value) &gt; 0, Sum(Fields!Lines.Value) / TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds.Value)).TotalHours, 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Production_Rate_Edited_Lines_Per_Minute</FieldName>
+        <UIDisplayName>Production Rate Edited (Lines/Minute)</UIDisplayName>
+        <CaptionExpression>Production Rate Edited (Lines/Minute)</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Active_Editor_Seconds_Edited.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalMinutes, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Active_Editor_Seconds_Edited.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalMinutes, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Active_Editor_Seconds_Edited.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalMinutes, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Active_Editor_Seconds_Edited.Value) &gt; 0, Sum(Fields!Lines.Value) / TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Edited.Value)).TotalMinutes, 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Production_Rate_Edited_Lines_Per_Hour</FieldName>
+        <UIDisplayName>Production Rate Edited (Lines/Hour)</UIDisplayName>
+        <CaptionExpression>Production Rate Edited (Lines/Hour)</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Active_Editor_Seconds_Edited.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalHours, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Active_Editor_Seconds_Edited.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalHours, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Active_Editor_Seconds_Edited.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Edited.Value).TotalHours, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Active_Editor_Seconds_Edited.Value) &gt; 0, Sum(Fields!Lines.Value) / TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Edited.Value)).TotalHours, 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <AvailableColumn>
+        <FieldName>Production_Rate_Typed_Lines_Per_Minute</FieldName>
+        <UIDisplayName>Production Rate Typed (Lines/Minute)</UIDisplayName>
+        <CaptionExpression>Production Rate Typed (Lines/Minute)</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Active_Editor_Seconds_Typed.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalMinutes, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Active_Editor_Seconds_Typed.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalMinutes, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Active_Editor_Seconds_Typed.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalMinutes, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Active_Editor_Seconds_Typed.Value) &gt; 0, Sum(Fields!Lines.Value) / TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Typed.Value)).TotalMinutes, 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Production_Rate_Typed_Lines_Per_Hour</FieldName>
+        <UIDisplayName>Production Rate Typed (Lines/Hour)</UIDisplayName>
+        <CaptionExpression>Production Rate Typed (Lines/Hour)</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Active_Editor_Seconds_Typed.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalHours, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Active_Editor_Seconds_Typed.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalHours, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Active_Editor_Seconds_Typed.Value &gt; 0, Fields!Lines.Value / TimeSpan.FromSeconds(Fields!Active_Editor_Seconds_Typed.Value).TotalHours, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Active_Editor_Seconds_Typed.Value) &gt; 0, Sum(Fields!Lines.Value) / TimeSpan.FromSeconds(Sum(Fields!Active_Editor_Seconds_Typed.Value)).TotalHours, 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+      <!-- 
+      **********************************************
+      Prod Factor                    
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Prod_Factor</FieldName>
+        <UIDisplayName>Prod Factor</UIDisplayName>
+        <CaptionExpression>Prod Factor</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Transcription_Length_In_Seconds.Value &gt; 0, Fields!Active_Editor_Seconds.Value / Fields!Transcription_Length_In_Seconds.Value, 0)</ValueExpression>
+        <SortExpression>=IIf(Fields!Transcription_Length_In_Seconds.Value &gt; 0, Fields!Active_Editor_Seconds.Value / Fields!Transcription_Length_In_Seconds.Value, 0)</SortExpression>
+        <GroupExpression>=IIf(Fields!Transcription_Length_In_Seconds.Value &gt; 0, Fields!Active_Editor_Seconds.Value / Fields!Transcription_Length_In_Seconds.Value, 0)</GroupExpression>
+        <Width>0.75</Width>
+        <Format>#,0.00</Format>
+        <AvailableFunctions>
+          <Function Name="Average">=IIf(Sum(Fields!Transcription_Length_In_Seconds.Value) &gt; 0, Sum(Fields!Active_Editor_Seconds.Value) / Sum(Fields!Transcription_Length_In_Seconds.Value), 0)</Function>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>      
+
+      <!-- 
+      **********************************************
+      Misc fields                       
+      ********************************************** 
+      -->
+      <AvailableColumn>
+        <FieldName>Is_Valid_Timer</FieldName>
+        <UIDisplayName>Valid Timer</UIDisplayName>
+        <CaptionExpression>Valid Timer</CaptionExpression>
+        <ValueExpression>=IIf(Fields!Is_Valid_Timer.Value = 1, &quot;True&quot;, &quot;False&quot;)</ValueExpression>
+        <SortExpression>=Fields!Is_Valid_Timer.Value</SortExpression>
+        <GroupExpression>=Fields!Is_Valid_Timer.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Audio_Time</FieldName>
+        <UIDisplayName>Audio Time</UIDisplayName>
+        <CaptionExpression>Audio Time</CaptionExpression>
+        <ValueExpression>=TimeSpan.FromSeconds(Fields!Transcription_Length_In_Seconds.Value)</ValueExpression>
+        <SortExpression>=Fields!Transcription_Length_In_Seconds.Value</SortExpression>
+        <GroupExpression>=Fields!Transcription_Length_In_Seconds.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+          <Function Name="Minimum">=TimeSpan.FromSeconds(Min(Fields!Transcription_Length_In_Seconds.Value))</Function>
+          <Function Name="Maximum">=TimeSpan.FromSeconds(Max(Fields!Transcription_Length_In_Seconds.Value))</Function>
+          <Function Name="Average">=TimeSpan.FromSeconds(Avg(Fields!Transcription_Length_In_Seconds.Value))</Function>
+          <Function Name="Sum">=TimeSpan.FromSeconds(Sum(Fields!Transcription_Length_In_Seconds.Value))</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>MT_Work</FieldName>
+        <UIDisplayName>MT Work</UIDisplayName>
+        <CaptionExpression>MTWork</CaptionExpression>
+        <ValueExpression>=Fields!MT_Work.Value</ValueExpression>
+        <SortExpression>=Fields!MT_Work.Value</SortExpression>
+        <GroupExpression>=Fields!MT_Work.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+      <AvailableColumn>
+        <FieldName>Revision</FieldName>
+        <UIDisplayName>Version</UIDisplayName>
+        <CaptionExpression>Version</CaptionExpression>
+        <ValueExpression>=Fields!Revision.Value</ValueExpression>
+        <SortExpression>=Fields!Revision.Value</SortExpression>
+        <GroupExpression>=Fields!Revision.Value</GroupExpression>
+        <Width>0.75</Width>
+        <AvailableFunctions>
+          <Function Name="Count">=CountRows()</Function>
+        </AvailableFunctions>
+      </AvailableColumn>
+
+    </AvailableColumns>
+    <Columns Title="Detail">
+      <Column>
+        <FieldName>Transcriptionist</FieldName>
+        <GroupOrder>0</GroupOrder>
+        <SortOrder>0</SortOrder>
+        <DisplayOrder>-1</DisplayOrder>
+        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Lines</FieldName>
+        <FunctionName>Sum</FunctionName>
         <GroupOrder>-1</GroupOrder>
-        <SortOrder>1</SortOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>0</DisplayOrder>
+      </Column>
+      <Column>
+        <FieldName>Template_Lines</FieldName>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
         <DisplayOrder>1</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
       </Column>
       <Column>
-        <FieldName>Document_Type_Description</FieldName>
+        <FieldName>Total_Lines</FieldName>
+        <FunctionName>Sum</FunctionName>
         <GroupOrder>-1</GroupOrder>
-        <SortOrder>2</SortOrder>
+        <SortOrder>-1</SortOrder>
         <DisplayOrder>2</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
       </Column>
       <Column>
-        <FieldName>Clinician_Name</FieldName>
+        <FieldName>Initial_Inactivity_Editor_Time</FieldName>
+        <FunctionName>Sum</FunctionName>
         <GroupOrder>-1</GroupOrder>
-        <SortOrder>3</SortOrder>
+        <SortOrder>-1</SortOrder>
         <DisplayOrder>3</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Idle_Editor_Time</FieldName>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>4</DisplayOrder>
+      </Column>
+      <Column>
+        <FieldName>Productive_Editor_Time</FieldName>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>5</DisplayOrder>
+      </Column>
+      <Column>
+        <FieldName>Total_Editor_Time</FieldName>
+        <FunctionName>Sum</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>6</DisplayOrder>
+      </Column>
+      <Column>
+        <FieldName>Revision</FieldName>
+        <FunctionName>Count</FunctionName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>7</DisplayOrder>
       </Column>
       <Column>
         <FieldName>Transcription_ID</FieldName>
         <GroupOrder>-1</GroupOrder>
         <SortOrder>-1</SortOrder>
-        <DisplayOrder>4</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>QALevel</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>4</SortOrder>
-        <DisplayOrder>5</DisplayOrder>
-        <SortDirection>Ascending</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>MT_Username</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>6</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>MT_Name</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
-        <DisplayOrder>7</DisplayOrder>
-        <SortDirection>None</SortDirection>
-      </Column>
-      <Column>
-        <FieldName>Date_Uploaded_By_MT_In_Display_Time_Zone</FieldName>
-        <GroupOrder>-1</GroupOrder>
-        <SortOrder>-1</SortOrder>
         <DisplayOrder>8</DisplayOrder>
-        <SortDirection>None</SortDirection>
       </Column>
       <Column>
-        <FieldName>Validation_Rule_Name</FieldName>
+        <FieldName>MT_Work</FieldName>
         <GroupOrder>-1</GroupOrder>
         <SortOrder>-1</SortOrder>
         <DisplayOrder>9</DisplayOrder>
-        <SortDirection>None</SortDirection>
       </Column>
       <Column>
-        <FieldName>Marked_For_QA</FieldName>
+        <FieldName>Client_Name</FieldName>
         <GroupOrder>-1</GroupOrder>
         <SortOrder>-1</SortOrder>
         <DisplayOrder>10</DisplayOrder>
-        <SortDirection>None</SortDirection>
       </Column>
       <Column>
-        <FieldName>Marked_For_Review</FieldName>
+        <FieldName>Dictating_User_Full_Name</FieldName>
         <GroupOrder>-1</GroupOrder>
         <SortOrder>-1</SortOrder>
         <DisplayOrder>11</DisplayOrder>
-        <SortDirection>None</SortDirection>
       </Column>
       <Column>
-        <FieldName>Comment_Tag_Name</FieldName>
+        <FieldName>Location</FieldName>
         <GroupOrder>-1</GroupOrder>
         <SortOrder>-1</SortOrder>
         <DisplayOrder>12</DisplayOrder>
-        <SortDirection>None</SortDirection>
+      </Column>
+      <Column>
+        <FieldName>Document_Type</FieldName>
+        <GroupOrder>-1</GroupOrder>
+        <SortOrder>-1</SortOrder>
+        <DisplayOrder>13</DisplayOrder>
       </Column>
     </Columns>
-    <AvailableLayouts>
-      <Columns Title="Default" IsDefault="True">
-        <Column>
-          <FieldName>Client_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>0</SortOrder>
-          <DisplayOrder>0</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Location</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>1</SortOrder>
-          <DisplayOrder>1</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Document_Type_Description</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>2</SortOrder>
-          <DisplayOrder>2</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Clinician_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>3</SortOrder>
-          <DisplayOrder>3</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Transcription_ID</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>4</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>QALevel</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>4</SortOrder>
-          <DisplayOrder>5</DisplayOrder>
-          <SortDirection>Ascending</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>MT_Username</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>6</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>MT_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>7</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Date_Uploaded_By_MT_In_Display_Time_Zone</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>8</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Validation_Rule_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>9</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Marked_For_QA</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>10</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Marked_For_Review</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>11</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-        <Column>
-          <FieldName>Comment_Tag_Name</FieldName>
-          <GroupOrder>-1</GroupOrder>
-          <SortOrder>-1</SortOrder>
-          <DisplayOrder>12</DisplayOrder>
-          <SortDirection>None</SortDirection>
-        </Column>
-      </Columns>
-    </AvailableLayouts>
     <SampleData>
       <Row>
-        <Client_Name>Sample Client Name</Client_Name>
-        <Client_FullName>Sample Client FullName</Client_FullName>
-        <Transcription_ID>0</Transcription_ID>
-        <Location>Sample Location</Location>
-        <Location_Client_Code>Sample Location Client Code</Location_Client_Code>
-        <Location_Dictation_ID>Sample Location Dictation ID</Location_Dictation_ID>
-        <Document_Type>Sample Document Type</Document_Type>
-        <Document_Description>Sample Document Description</Document_Description>
-        <Document_Type_TAT>0</Document_Type_TAT>
-        <Dictation_Document_Type>Sample Dictation Document Type</Dictation_Document_Type>
-        <Dictation_Location>Sample Dictation Location</Dictation_Location>
-        <MT_Username>Sample MT Username</MT_Username>
-        <MT_Name>Sample MT Name</MT_Name>
-        <QALevel>0</QALevel>
-        <Clinician_Username>Sample Clinician Username</Clinician_Username>
-        <Clinician_Name>Sample Clinician Name</Clinician_Name>
-        <Department>Sample Department</Department>
-        <Appointment_Date>2016-11-14 13:37</Appointment_Date>
-        <Admit_Date>2016-11-14 13:37</Admit_Date>
-        <Discharge_Date>2016-11-14 13:37</Discharge_Date>
-        <Patient_Class_Code>Sample Patient Class Code</Patient_Class_Code>
-        <Patient_Class>Sample Patient Class</Patient_Class>
-        <Patient_Type_Code>Sample Patient Type Code</Patient_Type_Code>
-        <Patient_Type>Sample Patient Type</Patient_Type>
-        <Admitting_Provider>Sample Admitting Provider</Admitting_Provider>
-        <Attending_Provider>Sample Attending Provider</Attending_Provider>
-        <Consulting_Provider>Sample Consulting Provider</Consulting_Provider>
-        <Primary_Care_Provider>Sample Primary Care Provider</Primary_Care_Provider>
-        <Referring_Provider>Sample Referring Provider</Referring_Provider>
-        <Validation_Rule_Name>Sample Validation Rule Name</Validation_Rule_Name>
-        <Marked_For_QA>True</Marked_For_QA>
-        <Marked_For_Review>True</Marked_For_Review>
-        <Comment_Tag_Name>Sample Comment Tag Name</Comment_Tag_Name>
-        <Date_Received_In_Display_Time_Zone>2016-11-14 13:37</Date_Received_In_Display_Time_Zone>
-        <Date_Delivered_In_Display_Time_Zone>2016-11-14 13:37</Date_Delivered_In_Display_Time_Zone>
-        <Date_Uploaded_By_MT_In_Display_Time_Zone>2016-11-14 13:37</Date_Uploaded_By_MT_In_Display_Time_Zone>
+        <Transcriptionist>Demo, John (Status1)</Transcriptionist>
+        <MT_Name>Demo, John</MT_Name>
+        <MT_First_Name>John</MT_First_Name>
+        <MT_Last_Name>Demo</MT_Last_Name>
+        <MT_Middle_Initial>M</MT_Middle_Initial>
+        <Client_Name>Client X</Client_Name>
+        <MT_Status>Status1</MT_Status>
+        <Transcription_ID>42</Transcription_ID>
+        <Lines_Edited>20</Lines_Edited>
+        <Lines_Typed>50</Lines_Typed>
+        <TotalLines>70</TotalLines>
+        <Active_Edited_Time>2.5</Active_Edited_Time>
+        <Active_Typed_Time>3.5</Active_Typed_Time>
+        <ActiveTotalHours>7</ActiveTotalHours>
+        <ProductionRateEdited>10</ProductionRateEdited>
+        <ProductionRateTyped>10</ProductionRateTyped>
+        <ProductionRateTotal>10</ProductionRateTotal>
+        <Document_Type>Doc1</Document_Type>
+        <Document_Name>Document 1</Document_Name>
+        <Prod_Factor>2.0</Prod_Factor>
+        <MT_Initials>R</MT_Initials>
+        <MT_Address1>Add1</MT_Address1>
+        <MT_Address2>Add2</MT_Address2>
+        <MT_Address3>Add3</MT_Address3>
+        <MT_City>City1</MT_City>
+        <MT_State>State1</MT_State>
+        <MT_Zip_Code>456</MT_Zip_Code>
+        <Location>Location A</Location>
+        <QT_Lines_Edited>1</QT_Lines_Edited>
+        <QT_Lines_Typed>2</QT_Lines_Typed>
+        <Total_Lines_Edited>21</Total_Lines_Edited>
+        <Total_Lines_Typed>52</Total_Lines_Typed>
+        <Total_Time>4</Total_Time>
+        <Total_Idle_Time>0.5</Total_Idle_Time>
+        <Total_Initial_Idle_Time>0.5</Total_Initial_Idle_Time>
+        <Total_Productive_Time>3</Total_Productive_Time>
+        <TotalHours>4</TotalHours>
+        <TotalIdleHours>0.5</TotalIdleHours>
+        <TotalInitialIdleHours>0.5</TotalInitialIdleHours>
+        <TotalProductiveHours>3</TotalProductiveHours>
+        <TotalMinutes>240</TotalMinutes>
+        <TotalIdleMinutes>30</TotalIdleMinutes>
+        <TotalInitialIdleMinutes>30</TotalInitialIdleMinutes>
+        <TotalProductiveMinutes>180</TotalProductiveMinutes>
       </Row>
       <Row>
-        <Client_Name>Sample Client Name</Client_Name>
-        <Client_FullName>Sample Client FullName</Client_FullName>
-        <Transcription_ID>0</Transcription_ID>
-        <Location>Sample Location</Location>
-        <Location_Client_Code>Sample Location Client Code</Location_Client_Code>
-        <Location_Dictation_ID>Sample Location Dictation ID</Location_Dictation_ID>
-        <Document_Type>Sample Document Type</Document_Type>
-        <Document_Description>Sample Document Description</Document_Description>
-        <Document_Type_TAT>0</Document_Type_TAT>
-        <Dictation_Document_Type>Sample Dictation Document Type</Dictation_Document_Type>
-        <Dictation_Location>Sample Dictation Location</Dictation_Location>
-        <MT_Username>Sample MT Username</MT_Username>
-        <MT_Name>Sample MT Name</MT_Name>
-        <QALevel>0</QALevel>
-        <Clinician_Username>Sample Clinician Username</Clinician_Username>
-        <Clinician_Name>Sample Clinician Name</Clinician_Name>
-        <Department>Sample Department</Department>
-        <Appointment_Date>2016-11-14 13:37</Appointment_Date>
-        <Admit_Date>2016-11-14 13:37</Admit_Date>
-        <Discharge_Date>2016-11-14 13:37</Discharge_Date>
-        <Patient_Class_Code>Sample Patient Class Code</Patient_Class_Code>
-        <Patient_Class>Sample Patient Class</Patient_Class>
-        <Patient_Type_Code>Sample Patient Type Code</Patient_Type_Code>
-        <Patient_Type>Sample Patient Type</Patient_Type>
-        <Admitting_Provider>Sample Admitting Provider</Admitting_Provider>
-        <Attending_Provider>Sample Attending Provider</Attending_Provider>
-        <Consulting_Provider>Sample Consulting Provider</Consulting_Provider>
-        <Primary_Care_Provider>Sample Primary Care Provider</Primary_Care_Provider>
-        <Referring_Provider>Sample Referring Provider</Referring_Provider>
-        <Validation_Rule_Name>Sample Validation Rule Name</Validation_Rule_Name>
-        <Marked_For_QA>True</Marked_For_QA>
-        <Marked_For_Review>True</Marked_For_Review>
-        <Comment_Tag_Name>Sample Comment Tag Name</Comment_Tag_Name>
-        <Date_Received_In_Display_Time_Zone>2016-11-14 13:37</Date_Received_In_Display_Time_Zone>
-        <Date_Delivered_In_Display_Time_Zone>2016-11-14 13:37</Date_Delivered_In_Display_Time_Zone>
-        <Date_Uploaded_By_MT_In_Display_Time_Zone>2016-11-14 13:37</Date_Uploaded_By_MT_In_Display_Time_Zone>
+        <Transcriptionist>Demo, John (Status2)</Transcriptionist>
+        <MT_Name>Demo, John</MT_Name>
+        <MT_First_Name>Jake</MT_First_Name>
+        <MT_Last_Name>Jake</MT_Last_Name>
+        <MT_Middle_Initial>R</MT_Middle_Initial>
+        <Client_Name>Client X</Client_Name>
+        <MT_Status>Status2</MT_Status>
+        <Transcription_ID>45</Transcription_ID>
+        <Lines_Edited>50</Lines_Edited>
+        <Lines_Typed>60</Lines_Typed>
+        <TotalLines>110</TotalLines>
+        <Active_Edited_Time>5</Active_Edited_Time>
+        <Active_Typed_Time>6</Active_Typed_Time>
+        <ActiveTotalHours>11</ActiveTotalHours>
+        <ProductionRateEdited>10</ProductionRateEdited>
+        <ProductionRateTyped>10</ProductionRateTyped>
+        <ProductionRateTotal>10</ProductionRateTotal>
+        <Document_Type>Doc2</Document_Type>
+        <Document_Name>Document 2</Document_Name>
+        <Prod_Factor>4.0</Prod_Factor>
+        <MT_Initials>R</MT_Initials>
+        <MT_Address1>test</MT_Address1>
+        <MT_Address2>wer</MT_Address2>
+        <MT_Address3>Adsdfd3</MT_Address3>
+        <MT_City>City2</MT_City>
+        <MT_State>State2</MT_State>
+        <MT_Zip_Code>6489</MT_Zip_Code>
+        <Location>Location B</Location>
+        <QT_Lines_Edited>1</QT_Lines_Edited>
+        <QT_Lines_Typed>2</QT_Lines_Typed>
+        <Total_Lines_Edited>21</Total_Lines_Edited>
+        <Total_Lines_Typed>52</Total_Lines_Typed>
+        <Total_Time>4</Total_Time>
+        <Total_Idle_Time>0.5</Total_Idle_Time>
+        <Total_Initial_Idle_Time>0.5</Total_Initial_Idle_Time>
+        <Total_Productive_Time>3</Total_Productive_Time>
+        <TotalHours>4</TotalHours>
+        <TotalIdleHours>0.5</TotalIdleHours>
+        <TotalInitialIdleHours>0.5</TotalInitialIdleHours>
+        <TotalProductiveHours>3</TotalProductiveHours>
+        <TotalMinutes>240</TotalMinutes>
+        <TotalIdleMinutes>30</TotalIdleMinutes>
+        <TotalInitialIdleMinutes>30</TotalInitialIdleMinutes>
+        <TotalProductiveMinutes>180</TotalProductiveMinutes>
       </Row>
       <Row>
-        <Client_Name>Sample Client Name</Client_Name>
-        <Client_FullName>Sample Client FullName</Client_FullName>
-        <Transcription_ID>0</Transcription_ID>
-        <Location>Sample Location</Location>
-        <Location_Client_Code>Sample Location Client Code</Location_Client_Code>
-        <Location_Dictation_ID>Sample Location Dictation ID</Location_Dictation_ID>
-        <Document_Type>Sample Document Type</Document_Type>
-        <Document_Description>Sample Document Description</Document_Description>
-        <Document_Type_TAT>0</Document_Type_TAT>
-        <Dictation_Document_Type>Sample Dictation Document Type</Dictation_Document_Type>
-        <Dictation_Location>Sample Dictation Location</Dictation_Location>
-        <MT_Username>Sample MT Username</MT_Username>
-        <MT_Name>Sample MT Name</MT_Name>
-        <QALevel>0</QALevel>
-        <Clinician_Username>Sample Clinician Username</Clinician_Username>
-        <Clinician_Name>Sample Clinician Name</Clinician_Name>
-        <Department>Sample Department</Department>
-        <Appointment_Date>2016-11-14 13:37</Appointment_Date>
-        <Admit_Date>2016-11-14 13:37</Admit_Date>
-        <Discharge_Date>2016-11-14 13:37</Discharge_Date>
-        <Patient_Class_Code>Sample Patient Class Code</Patient_Class_Code>
-        <Patient_Class>Sample Patient Class</Patient_Class>
-        <Patient_Type_Code>Sample Patient Type Code</Patient_Type_Code>
-        <Patient_Type>Sample Patient Type</Patient_Type>
-        <Admitting_Provider>Sample Admitting Provider</Admitting_Provider>
-        <Attending_Provider>Sample Attending Provider</Attending_Provider>
-        <Consulting_Provider>Sample Consulting Provider</Consulting_Provider>
-        <Primary_Care_Provider>Sample Primary Care Provider</Primary_Care_Provider>
-        <Referring_Provider>Sample Referring Provider</Referring_Provider>
-        <Validation_Rule_Name>Sample Validation Rule Name</Validation_Rule_Name>
-        <Marked_For_QA>True</Marked_For_QA>
-        <Marked_For_Review>True</Marked_For_Review>
-        <Comment_Tag_Name>Sample Comment Tag Name</Comment_Tag_Name>
-        <Date_Received_In_Display_Time_Zone>2016-11-14 13:37</Date_Received_In_Display_Time_Zone>
-        <Date_Delivered_In_Display_Time_Zone>2016-11-14 13:37</Date_Delivered_In_Display_Time_Zone>
-        <Date_Uploaded_By_MT_In_Display_Time_Zone>2016-11-14 13:37</Date_Uploaded_By_MT_In_Display_Time_Zone>
+        <Transcriptionist>Demo, Jay (Status3)</Transcriptionist>
+        <MT_Name>Demo, Jay</MT_Name>
+        <MT_First_Name>Jay</MT_First_Name>
+        <MT_Last_Name>Demo</MT_Last_Name>
+        <MT_Middle_Initial>V</MT_Middle_Initial>
+        <Client_Name>Client Y</Client_Name>
+        <MT_Status>Status3</MT_Status>
+        <Transcription_ID>87</Transcription_ID>
+        <Lines_Edited>40</Lines_Edited>
+        <Lines_Typed>80</Lines_Typed>
+        <Totallines>120</Totallines>
+        <Active_Edited_Time>5</Active_Edited_Time>
+        <Active_Typed_Time>8</Active_Typed_Time>
+        <ActiveTotalHours>13</ActiveTotalHours>
+        <ProductionRateEdited>8</ProductionRateEdited>
+        <ProductionRateTyped>10</ProductionRateTyped>
+        <ProductionRateTotal>9.3</ProductionRateTotal>
+        <Document_Type>Doc3</Document_Type>
+        <Document_Name>Document 3</Document_Name>
+        <Prod_Factor>6.0</Prod_Factor>
+        <MT_Initials>R</MT_Initials>
+        <MT_Address1>Add1yety</MT_Address1>
+        <MT_Address2>Add2rty</MT_Address2>
+        <MT_Address3>Add3y</MT_Address3>
+        <MT_City>City6</MT_City>
+        <MT_State>State5</MT_State>
+        <MT_Zip_Code>45643</MT_Zip_Code>
+        <Location>Location C</Location>
+        <QT_Lines_Edited>1</QT_Lines_Edited>
+        <QT_Lines_Typed>2</QT_Lines_Typed>
+        <Total_Lines_Edited>21</Total_Lines_Edited>
+        <Total_Lines_Typed>52</Total_Lines_Typed>
+        <Total_Time>4</Total_Time>
+        <Total_Idle_Time>0.5</Total_Idle_Time>
+        <Total_Initial_Idle_Time>0.5</Total_Initial_Idle_Time>
+        <Total_Productive_Time>3</Total_Productive_Time>
+        <TotalHours>6</TotalHours>
+        <TotalIdleHours>0.5</TotalIdleHours>
+        <TotalInitialIdleHours>0.5</TotalInitialIdleHours>
+        <TotalProductiveHours>5</TotalProductiveHours>
+        <TotalMinutes>360</TotalMinutes>
+        <TotalIdleMinutes>30</TotalIdleMinutes>
+        <TotalInitialIdleMinutes>30</TotalInitialIdleMinutes>
+        <TotalProductiveMinutes>300</TotalProductiveMinutes>
       </Row>
     </SampleData>
   </ReportColumns>
