@@ -8,7 +8,6 @@ using System.Xml.Serialization;
 using System.Globalization;
 using System.Transactions;
 using Emdat.InVision.SSRS;
-using Emdat.Caching;
 
 namespace Emdat.InVision
 {
@@ -61,12 +60,6 @@ namespace Emdat.InVision
             return retVal;
         }        
 
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static IEnumerable<Execution> ListExecutions(int userId, int? companyId, ReportingApplication application)
-        {
-            return ListExecutions(userId, companyId, application, null, true);
-        }
-
         /// <summary>
         /// Lists the executions.
         /// </summary>
@@ -74,19 +67,9 @@ namespace Emdat.InVision
         /// <param name="application">The application.</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, true)]
-        public static IEnumerable<Execution> ListExecutions(int userId, int? companyId, ReportingApplication application, ICacheProvider cache, bool forceRefresh)
+        public static IEnumerable<Execution> ListExecutions(int userId, int? companyId, ReportingApplication application)
         {
             IEnumerable<Execution> executions = null;
-
-            #region caching
-
-            string cacheKey = string.Format("Emdat.InVision.Execution.ListExecutions({0},{1},{2})", userId, companyId, application);
-            if (!forceRefresh && cache != null)
-            {
-                executions = cache[cacheKey] as IEnumerable<Execution>;
-            }
-
-            #endregion
 
             if (executions == null)
             {
@@ -122,15 +105,6 @@ namespace Emdat.InVision
                         };
                     executions = executionsQuery.ToList();
 
-                    #region caching
-
-                    //add to cache
-                    if (cache != null)
-                    {
-                        cache.Add(cacheKey, executions, CacheDuration);
-                    }
-
-                    #endregion
                 }
             }
             return executions;

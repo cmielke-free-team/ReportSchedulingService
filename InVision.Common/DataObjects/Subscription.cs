@@ -10,9 +10,9 @@ using Emdat.InVision.SSRS;
 using System.Xml;
 using System.Xml.Linq;
 using System.Net;
-using Emdat.Caching;
 using System.Web;
 using System.Configuration;
+using InVisionMvc.Infrastructure;
 
 namespace Emdat.InVision
 {
@@ -84,35 +84,12 @@ namespace Emdat.InVision
         /// <summary>
         /// Lists the subscriptions.
         /// </summary>
-        /// <param name="userId">The user id.</param>
-        /// <param name="companyId">The company id.</param>
-        /// <param name="application">The application.</param>
+        /// <param name="ownerId">The owner id.</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public static IEnumerable<Subscription> ListSubscriptions(int userId, int? companyId, ReportingApplication application)
         {
-            return ListSubscriptions(userId, companyId, application, null, true);
-        }
-
-        /// <summary>
-        /// Lists the subscriptions.
-        /// </summary>
-        /// <param name="ownerId">The owner id.</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static IEnumerable<Subscription> ListSubscriptions(int userId, int? companyId, ReportingApplication application, ICacheProvider cache, bool forceRefresh)
-        {
             IEnumerable<Subscription> subscriptions = null;
-
-            #region caching
-
-            string cacheKey = string.Format("Emdat.InVision.Subscription.ListSubscriptions({0},{1},{2})", userId, companyId, application);
-            if (!forceRefresh && cache != null)
-            {
-                subscriptions = cache[cacheKey] as IEnumerable<Subscription>;
-            }
-
-            #endregion
 
             if (subscriptions == null)
             {
@@ -157,15 +134,6 @@ namespace Emdat.InVision
                         };
                     subscriptions = subscriptionsQuery.ToList();
 
-                    #region caching
-
-                    //add to cache
-                    if (cache != null)
-                    {
-                        cache.Add(cacheKey, subscriptions, CacheDuration);
-                    }
-
-                    #endregion
                 }
             }
             return subscriptions;
@@ -560,7 +528,7 @@ namespace Emdat.InVision
             DateTime? nextRunDateInBaseCoTimeZone = null;
             if (nextRunInfo.Date.HasValue && false == string.IsNullOrEmpty(this.BaseCompanyTimeZoneIdentifier))
             {
-                nextRunDateInBaseCoTimeZone = TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(nextRunInfo.Date.Value, Subscription.ServerTimeZoneIdentifier, this.BaseCompanyTimeZoneIdentifier);
+                nextRunDateInBaseCoTimeZone = TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(nextRunInfo.Date.Value, Subscription.ServerTimeZoneIdentifier, this.BaseCompanyTimeZoneIdentifier);
             }   
                 nextRunInfo.ParametersAsXml = nextRunDateInBaseCoTimeZone.HasValue ? this.GetNextRunParameterValuesXml(nextRunDateInBaseCoTimeZone.Value) : null;
             return nextRunInfo;

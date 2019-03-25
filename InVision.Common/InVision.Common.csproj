@@ -107,10 +107,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Emdat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7554a3dbfe92db3b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\Emdat.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -131,6 +127,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\TimeZoneInfoExtensions.cs" />
     <Compile Include="DataAccess\ReportingDataContext1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
