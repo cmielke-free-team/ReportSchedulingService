@@ -16,6 +16,7 @@ using Emdat.InVision.Generator;
 using Emdat.InVision.Sql;
 using Emdat.InVision.SSRSExecution;
 using System.Globalization;
+using InVisionMvc.Infrastructure;
 
 namespace InVision.SchedulingService
 {
@@ -147,7 +148,7 @@ namespace InVision.SchedulingService
 
 			Logger.TraceEvent(TraceEventType.Verbose, 0, "{0}: Base TranCo Time Zone={1}", System.Threading.Thread.CurrentThread.ManagedThreadId, baseCoTimeZone);
 
-			var startDateInBaseCoTimeZone = TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(execRow.ScheduledStartDate.Value, ServerTimeZoneIdentifier, baseCoTimeZone);
+			var startDateInBaseCoTimeZone = TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(execRow.ScheduledStartDate.Value, ServerTimeZoneIdentifier, baseCoTimeZone);
 			var schedule = (subscriptionRow != null ?
 			new Schedule(
 				subscriptionRow.ScheduleFrequencyID,
@@ -187,7 +188,7 @@ namespace InVision.SchedulingService
 				SubscriptionId = execRow.ReportSubscriptionID.Value,
 				ReportId = execRow.ReportID.Value,
 				NextScheduledRunTime = nextRun.HasValue ?
-				   (DateTime?)TimeZoneInfoExtension.SafeConvertTimeBySystemTimeZoneId(nextRun.Value, baseCoTimeZone, ServerTimeZoneIdentifier) :
+				   (DateTime?)TimeZoneInfoExtensions.SafeConvertTimeBySystemTimeZoneId(nextRun.Value, baseCoTimeZone, ServerTimeZoneIdentifier) :
 				   null,
 				NextScheduledRunParameters = nextPrms,
 				ErrorCount = execRow.ErrorCount.HasValue ? execRow.ErrorCount.Value : 0,
