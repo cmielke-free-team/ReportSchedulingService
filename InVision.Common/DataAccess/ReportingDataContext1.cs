@@ -1763,7 +1763,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(reportFormatIDParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -2427,7 +2427,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(isActiveParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -2475,7 +2475,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(firstExecutionDateParameter);
 					
 					SqlParameter firstExecutionParametersParameter = new SqlParameter("@First_Execution_Parameters", (object)firstExecutionParameters ?? DBNull.Value); 
-					firstExecutionParametersParameter.Size = 4000;
+					firstExecutionParametersParameter.Size = -1;
 					firstExecutionParametersParameter.Direction = ParameterDirection.Input;
 					firstExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(firstExecutionParametersParameter);
@@ -2614,7 +2614,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(isActiveParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -2662,7 +2662,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(firstExecutionDateParameter);
 					
 					SqlParameter firstExecutionParametersParameter = new SqlParameter("@First_Execution_Parameters", (object)firstExecutionParameters ?? DBNull.Value); 
-					firstExecutionParametersParameter.Size = 4000;
+					firstExecutionParametersParameter.Size = -1;
 					firstExecutionParametersParameter.Direction = ParameterDirection.Input;
 					firstExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(firstExecutionParametersParameter);
@@ -2807,7 +2807,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(isActiveParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -2855,7 +2855,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(firstExecutionDateParameter);
 					
 					SqlParameter firstExecutionParametersParameter = new SqlParameter("@First_Execution_Parameters", (object)firstExecutionParameters ?? DBNull.Value); 
-					firstExecutionParametersParameter.Size = 4000;
+					firstExecutionParametersParameter.Size = -1;
 					firstExecutionParametersParameter.Direction = ParameterDirection.Input;
 					firstExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(firstExecutionParametersParameter);
@@ -2988,7 +2988,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(reportFormatIDParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -3109,7 +3109,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(reportFormatIDParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -3236,7 +3236,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(reportFormatIDParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -3357,7 +3357,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(isActiveParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -3405,7 +3405,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(nextExecutionDateParameter);
 					
 					SqlParameter nextExecutionParametersParameter = new SqlParameter("@Next_Execution_Parameters", (object)nextExecutionParameters ?? DBNull.Value); 
-					nextExecutionParametersParameter.Size = 4000;
+					nextExecutionParametersParameter.Size = -1;
 					nextExecutionParametersParameter.Direction = ParameterDirection.Input;
 					nextExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(nextExecutionParametersParameter);
@@ -3513,7 +3513,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(isActiveParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -3561,7 +3561,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(nextExecutionDateParameter);
 					
 					SqlParameter nextExecutionParametersParameter = new SqlParameter("@Next_Execution_Parameters", (object)nextExecutionParameters ?? DBNull.Value); 
-					nextExecutionParametersParameter.Size = 4000;
+					nextExecutionParametersParameter.Size = -1;
 					nextExecutionParametersParameter.Direction = ParameterDirection.Input;
 					nextExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(nextExecutionParametersParameter);
@@ -3669,7 +3669,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(isActiveParameter);
 					
 					SqlParameter parametersParameter = new SqlParameter("@Parameters", (object)parameters ?? DBNull.Value); 
-					parametersParameter.Size = 4000;
+					parametersParameter.Size = -1;
 					parametersParameter.Direction = ParameterDirection.Input;
 					parametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(parametersParameter);
@@ -3717,7 +3717,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(nextExecutionDateParameter);
 					
 					SqlParameter nextExecutionParametersParameter = new SqlParameter("@Next_Execution_Parameters", (object)nextExecutionParameters ?? DBNull.Value); 
-					nextExecutionParametersParameter.Size = 4000;
+					nextExecutionParametersParameter.Size = -1;
 					nextExecutionParametersParameter.Direction = ParameterDirection.Input;
 					nextExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(nextExecutionParametersParameter);
@@ -4184,7 +4184,7 @@ namespace Emdat.InVision.Sql
 					cmd.Parameters.Add(nextExecutionDateParameter);
 					
 					SqlParameter nextExecutionParametersParameter = new SqlParameter("@Next_Execution_Parameters", (object)nextExecutionParameters ?? DBNull.Value); 
-					nextExecutionParametersParameter.Size = 4000;
+					nextExecutionParametersParameter.Size = -1;
 					nextExecutionParametersParameter.Direction = ParameterDirection.Input;
 					nextExecutionParametersParameter.SqlDbType = SqlDbType.VarChar;
 					cmd.Parameters.Add(nextExecutionParametersParameter);
@@ -4317,7 +4317,7 @@ namespace Emdat.InVision.Sql
 			}
 		}
 					
-		public IEnumerable<SSRSInqGetUsersRow> SSRSInqGetUsers(System.Int32? clientID, System.Int32? userID, System.Boolean? includeselectalloption, System.String selectalllabel, System.Boolean? filterbyproxy, System.Boolean? dictatingOnly)
+		public IEnumerable<SSRSInqGetUsersRow> SSRSInqGetUsers(System.Int32? clientID, System.Int32? userID, System.Boolean? includeselectalloption, System.String selectalllabel, System.Boolean? filterbyproxy, System.Boolean? dictatingOnly, System.Int32? selectallvalue)
 		{
 			this.traceSource.TraceEvent(System.Diagnostics.TraceEventType.Start, 0, "SSRSInqGetUsers");
 			try
@@ -4365,6 +4365,12 @@ namespace Emdat.InVision.Sql
 					dictatingOnlyParameter.Direction = ParameterDirection.Input;
 					dictatingOnlyParameter.SqlDbType = SqlDbType.Bit;
 					cmd.Parameters.Add(dictatingOnlyParameter);
+					
+					SqlParameter selectallvalueParameter = new SqlParameter("@SelectAllValue", (object)selectallvalue ?? DBNull.Value); 
+					selectallvalueParameter.Size = 4;
+					selectallvalueParameter.Direction = ParameterDirection.Input;
+					selectallvalueParameter.SqlDbType = SqlDbType.Int;
+					cmd.Parameters.Add(selectallvalueParameter);
 
 					SqlDataReader reader;
 					try
@@ -4469,7 +4475,7 @@ namespace Emdat.InVision.Sql
 				int ResetExecutionQueue();
 				int SetExecutionStatus(System.Int32? reportExecutionID, System.String name, System.DateTime? startDate, System.DateTime? endDate, System.Int32? reportExecutionStatusID, System.String errorDescription, System.Int32? errorCount, System.Int32? reportExecutionErrorID, System.Boolean? usedHistory, System.DateTime? nextExecutionDate, System.String nextExecutionParameters, System.Int32? nextExecutionReportID, System.Int32? nextExecutionSubscriptionID, System.Int32? nextExecutionFormatID, System.String modifiedUser, System.DateTime? modifiedDate);
 				IEnumerable<GetClientLabelsRow> GetClientLabels(System.Int32? clientID);
-				IEnumerable<SSRSInqGetUsersRow> SSRSInqGetUsers(System.Int32? clientID, System.Int32? userID, System.Boolean? includeselectalloption, System.String selectalllabel, System.Boolean? filterbyproxy, System.Boolean? dictatingOnly);
+				IEnumerable<SSRSInqGetUsersRow> SSRSInqGetUsers(System.Int32? clientID, System.Int32? userID, System.Boolean? includeselectalloption, System.String selectalllabel, System.Boolean? filterbyproxy, System.Boolean? dictatingOnly, System.Int32? selectallvalue);
 			}
 	
 	public partial class GetAssociate2Row
