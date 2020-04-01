@@ -3,7 +3,9 @@ function Install-Service
     [CmdletBinding]
     param
     (
-        [String]$ServiceName,
+		[ValidateNotNullOrEmpty()]
+		[String]$ServiceName,
+		[ValidateNotNullOrEmpty()]
 	    [String]$PathToExecutable,
         [String]$ExecutableArgs,
 	    [String]$DisplayName,
@@ -119,7 +121,10 @@ function Uninstall-Service
     [CmdletBinding]
     param
     (
-        [String]$ServiceName,
+		[ValidateNotNullOrEmpty()]
+		[String]$ServiceName,
+		[ValidateNotNullOrEmpty()]
+		[String]$PathToExecutable,
         [Boolean]$UseInstallUtil,
 		[String]$InstallUtilExePath
     )
@@ -133,6 +138,20 @@ function Uninstall-Service
 	{
 		Write-Host "Stopping service '$ServiceName'"
 		get-service $ServiceName | stop-service -verbose
+
+		$processName = [system.io.path]::GetFileNameWithoutExtension($PathToExecutable)
+		Write-Host "Waiting for running $processName processes"
+		Get-Process -Name $processName -ErrorAction SilentlyContinue | foreach {
+			Write-Host "Waiting for process $($_.Name) ($($_.Id)) to exit"
+			if ($_.WaitForExit(20000)) {
+				Write-Host "Process $($_.Name) ($($_.Id)) exited"
+			}
+			else {
+				Write-Host "Process $($_.Name) ($($_.Id)) did not exit. Killing process."
+				$_.Kill()
+			}
+		}
+
 
 		if($UseInstallUtil)
 		{
