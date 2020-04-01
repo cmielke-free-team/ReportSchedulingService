@@ -39,7 +39,7 @@ import-module (join-path $PSScriptRoot "psmodules\ConfigureService.ps1")
 ###############################################################################
 # uninstall service
 ###############################################################################
-$unInstallParams = new-object psobject -Property @{
+$unInstallParams = @{
     ServiceName         = $ServiceName;
     PathToExecutable    = $PathToExecutable;
     UseInstallUtil      = $UseInstallUtil;
@@ -62,7 +62,7 @@ $deployServiceParams = @{
 ###############################################################################
 # install and configure service
 ###############################################################################
-$InstallParams = new-object psobject -Property @{
+$InstallParams = @{
     ServiceName         = $ServiceName;
     PathToExecutable    = $PathToExecutable;
     ExecutableArgs      = $ExecutableArgs;
