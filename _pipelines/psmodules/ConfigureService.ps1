@@ -79,7 +79,7 @@ function Install-Service
 
 		import-module (join-path $PSScriptRoot "UserRights.ps1")
     	write-host "Granting SeServiceLogonRight to $StartName"
-    	Grant-UserRight -Account $WindowsServiceRunAsUsername -Right SeServiceLogonRight
+    	Grant-UserRight -Account $StartName -Right SeServiceLogonRight
 	}
 
 	$serviceParams = new-object psobject -Property @{
