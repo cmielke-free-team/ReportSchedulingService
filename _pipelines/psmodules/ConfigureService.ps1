@@ -1,6 +1,6 @@
 function Install-Service
 {
-    [CmdletBinding]
+    [CmdletBinding(SupportsShouldProcess=$true)]
     param
     (
 		[ValidateNotNullOrEmpty()]
@@ -118,7 +118,7 @@ function Install-Service
 
 function Uninstall-Service
 {
-    [CmdletBinding]
+    [CmdletBinding(SupportsShouldProcess=$true)]
     param
     (
 		[ValidateNotNullOrEmpty()]
