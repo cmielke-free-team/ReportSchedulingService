@@ -77,7 +77,7 @@ function Install-Service
 			$StartName = "$env:COMPUTERNAME\$StartName"
 		}
 
-		import-module (join-path $PSScriptRoot "psmodules\UserRights.ps1")
+		import-module (join-path $PSScriptRoot "UserRights.ps1")
     	write-host "Granting SeServiceLogonRight to $StartName"
     	Grant-UserRight -Account $WindowsServiceRunAsUsername -Right SeServiceLogonRight
 	}
