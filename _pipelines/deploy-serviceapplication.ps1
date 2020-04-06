@@ -75,7 +75,7 @@ foreach ($parameter in $msDeployParametersContent.parameters.parameter) {
     }
 
     if ($parameter.value) {
-        $parameter.value = $parameteValue     
+        $parameter.value = $parameterValue     
     }
     elseif ($parameter.defaultValue) {
         $parameter.defaultValue = $parameterValue
