@@ -26,4 +26,7 @@
   <parameter name="Emdat.Invision.SchedulingService.ReportServerExecutionTimeout" defaultValue="%(EMDAT_ENV_INVISION_REPORTSERVEREXECUTIONTIMEOUT)%">
     <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='ReportServerExecutionTimeout']/value/text()" />
   </parameter>
+   <parameter name="Emdat.Invision.SchedulingService.ServerTimeZoneIdentifier" defaultValue="%(EMDAT_ENV_INVISION_SERVERTIMEZONEIDENTIFIER)%">
+    <parameterEntry kind="XmlFile" scope="InVision\.SchedulingService\.exe\.config$" match="/configuration/applicationSettings/InVision.SchedulingService.Properties.Settings/setting[@name='ServerTimeZoneIdentifier']/value/text()" />
+  </parameter>
 </parameters>
