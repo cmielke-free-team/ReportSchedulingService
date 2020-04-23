@@ -12,6 +12,7 @@ param
       
     [String]$ServiceName = "Emdat Report Execution Service",
     [String]$PathToExecutable = "C:\Program Files\Emdat\Reporting\InVision.SchedulingService.exe",
+    [String]$PathToTemp = "C:\Program Files\Emdat\Reporting\Temp",
     [String]$ExecutableArgs = "",
     [String]$DisplayName = "Emdat Report Execution Service",
     [String]$StartMode = $env:Service_StartMode,
@@ -75,6 +76,14 @@ $InstallParams = @{
     InstallUtilExePath  = $InstallUtilExePath;      
 }
 Install-Service @InstallParams
+
+###############################################################################
+# create temp folder
+###############################################################################
+if ($PathToTemp) {
+    Write-Host "Creating temp folder: $PathToTemp"
+    New-Item -Path $PathToTemp -ItemType Directory -Force
+}
 
 ###############################################################################
 # start the service
