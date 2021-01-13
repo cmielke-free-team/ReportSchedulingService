@@ -46,17 +46,17 @@ jobs:
     - name: Add NuGet source
       run: >
         nuget add source https://emdat.pkgs.visualstudio.com/_packaging/Internal/nuget/v3/index.json
-          - n emdat_internal
-          - u dontmatter
-          - p ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }}
+          -n emdat_internal
+          -u dontmatter
+          -p ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }}
           --store-password-in-clear-text
            
     - name: Add NuGet source
       run: >
         nuget add source https://emdat.pkgs.visualstudio.com/_packaging/Legacy/nuget/v3/index.json
-          - n emdat_legacy
-          - u dontmatter
-          - p ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }}
+          -n emdat_legacy
+          -u dontmatter
+          -p ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }}
           --store-password-in-clear-text
     
     - name: Restore NuGet Packages
