@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     strategy:
       fail-fast: false
@@ -36,7 +36,32 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+      
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Setup NuGet.exe for use with actions      
+      uses: NuGet/setup-nuget@v1.0.5
+    
+    - name: Add NuGet source
+      run: >
+        nuget add source https://emdat.pkgs.visualstudio.com/_packaging/Internal/nuget/v3/index.json
+          - n emdat_internal
+          - u dontmatter
+          - p ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }}
+          --store-password-in-clear-text
+           
+    - name: Add NuGet source
+      run: >
+        nuget add source https://emdat.pkgs.visualstudio.com/_packaging/Legacy/nuget/v3/index.json
+          - n emdat_legacy
+          - u dontmatter
+          - p ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }}
+          --store-password-in-clear-text
+    
+    - name: Restore NuGet Packages
+      run: nuget restore InVision.SchedulingService.sln
+      
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
@@ -49,8 +74,8 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
+    #- name: Autobuild
+    #  uses: github/codeql-action/autobuild@v1
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
@@ -63,5 +88,5 @@ jobs:
     #   make bootstrap
     #   make release
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+    #- name: Perform CodeQL Analysis
+    #  uses: github/codeql-action/analyze@v1
