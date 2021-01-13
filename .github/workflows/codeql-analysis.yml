@@ -43,13 +43,11 @@ jobs:
     - name: Setup NuGet.exe for use with actions      
       uses: NuGet/setup-nuget@v1.0.5
     
-    - name: Add NuGet source
-      run: |
-        nuget sources list
-        nuget sources add -Source https://emdat.pkgs.visualstudio.com/_packaging/Internal/nuget/v3/index.json -Name emdat_internal -Username dontmatter -Password ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }} -StorePasswordInClearText
+    - name: Set NuGet source credentials
+      run: nuget sources update -Name "Emdat Internal Feed" -Source https://emdat.pkgs.visualstudio.com/_packaging/Internal/nuget/v3/index.json -Username dontmatter -Password ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }} -StorePasswordInClearText
            
-    - name: Add NuGet source
-      run: nuget sources add -Source https://emdat.pkgs.visualstudio.com/_packaging/Legacy/nuget/v3/index.json -Name emdat_internal -Username dontmatter -Password ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }} -StorePasswordInClearText
+    - name: Set NuGet source credentials
+      run: nuget sources update -Name "Emdat Legacy Feed" -Source https://emdat.pkgs.visualstudio.com/_packaging/Legacy/nuget/v3/index.json -Username dontmatter -Password ${{ secrets.EMDAT_AZDO_ARTIFACT_ACCESS_TOKEN }} -StorePasswordInClearText
     
     - name: Restore NuGet Packages
       run: nuget restore InVision.SchedulingService.sln
